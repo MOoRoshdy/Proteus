@@ -1,0 +1,237 @@
+;************************************************************
+;*                                                          *
+;*                68HC11 S19 Loading Routine                *
+;*                                                          *
+;*       Copyright (C) 1998-1999 Tony Papadimitriou         *
+;*                  All Rights Reserved                     *
+;*                                                          *
+;*----------------------------------------------------------*
+;* Author :         Tony Papadimitriou <tonyp@acm.org>      *
+;* Version:         1.01  Revised 25-Sep-98                 *
+;*                  1.02  Revised 12-Jul-99                 *
+;* Purpose:         This subroutine can be used to load an  *
+;*                  S19 file from the SCI to RAM            *
+;* Status :         FREEWARE. Use freely in your programs.  *
+;*----------------------------------------------------------*
+;* Assembled with Tony Papadimitriou's ASM11, version 1.75  *
+;************************************************************
+#EXTRAON ; Turn on recognition of extra mnemonics supported by ASM11
+
+#ifmain  ;This part is only for testing (will not be included in your program)
+                    #listoff
+                    #include  811E2.INC           ;Target MCU is 811E2
+                    #liston
+
+Offset              equ       0                   ;Offset to adjust loading location
+
+                    #ROM
+Start               lds       #STACKTOP
+                    lda       #$0C
+                    sta       $102D
+                    clrd
+                    clrx
+                    clry
+                    ldx       #Offset
+                    bsr       S19
+
+; Now X holds the execution address based on S9 record info
+; Jump to code if X non-zero (and no error, Carry set)
+                    bcs       Halt                ;Error loading, exit
+                    cmpx      #Offset             ;Check if X = offset (or X = 0)
+                    beq       Halt                ;If zero difference, don't execute
+                    jmp       ,x                  ;Execute loaded program
+
+Halt                cls                           ;Put the MCU to deep sleep
+                    sei                           ;No interrupts (in case they were enabled)
+                    stop                          ;Sleep
+                    bra       *-1                 ;in case of XIRQ, stay put
+
+AnRTI               rti
+
+                    #VECTORS
+                    dw:20     AnRTI
+                    dw        Start
+
+                    end       Start
+#endif
+
+                    #ROM
+; Equates used by subroutine(s) -- Define ONLY if not already defined
+; This allows to $INCLUDE this file even if you're using another EQU
+; include that sets the following values.
+#ifndef REGS
+REGS                EQU       $1000               ;Register Base
+#endif
+#ifndef SCSR
+SCSR                EQU       REGS+$2E            ;SCI Status Register
+#endif
+#ifndef SCDR
+SCDR                EQU       REGS+$2F            ;SCI Data Register
+#endif
+#ifndef CR
+CR                  EQU       13                  ;Carriage Return
+#endif
+#ifndef LF
+LF                  EQU       10                  ;Line Feed
+#endif
+
+;Input : X -> Load Offset for S19 addresses (X holds two's complement offset)
+;Output: X -> Execution address from S9 record (possibly zero)
+;Stack : Stack variables used (accessed by nnn,X) after an TSX
+;         Load Offset                   Offset to adjust by      6,X  word
+;         Temp                          Temporary usage          5,X  byte
+;         RecType                       S-record type field      4,X  byte
+;         Length                        S-record length field    3,X  byte
+;         Address                       S-record address field   1,X  word
+;         CRC                           S-record running CRC     0,X  byte
+
+S19                 pshx                          ;Save two's complement offset
+                    clrx
+                    pshx:3                        ;Reserve three words for variables (init to 0)
+                    tsx                           ;Get base for variables
+?S19.New            jsr       ReadByte            ;Get first character
+                    bcs       ?S19.OK             ;if EOL, get out
+                    cmpa      #'S'                ;Probable S record
+                    bne       ?S19.EOL            ;No, ignore rest of line
+                    jsr       ReadByte            ;Get next character
+                    bcs       ?S19.Error          ;if EOL, get out with error
+                    cmpa      #'0'                ;Header record?
+                    bne       ?S19.S9
+                    bsr       ?ToEOL              ;Yes, ignore rest of line
+                    bra       ?S19.New            ;go read another line
+?S19.S9             cmpa      #'9'                ;Terminator record
+                    beq       ?S19.OK
+                    cmpa      #'1'                ;Code/data record
+                    bne       ?S19.EOL            ;Not a valid record type, ignore line
+?S19.OK             sta       4,x                 ;Save this type
+
+;Get length of Record Bytes (including 16-bit address and 8-bit CRC)
+                    jsr       ReadHex             ;Get next 2 characters in binary
+                    bcs       ?S19.Error          ;if something wrong, get out with error
+                    bsr       UpdateCRC
+                    suba      #3                  ;adjust for 2-byte address and 1-byte CRC
+                    sta       3,X                 ;save Length of record
+
+;Now, get the load address
+                    jsr       ReadHex
+                    bcs       ?S19.Error
+                    bsr       UpdateCRC
+                    sta       1,X                 ;Save MSB
+                    jsr       ReadHex
+                    bcs       ?S19.Error
+                    bsr       UpdateCRC
+                    sta       2,X                 ;Save LSB
+                    ldd       6,X                 ;Get offset
+                    addd      1,X                 ;Add actual address
+                    std       1,X                 ;And re-save actual address
+
+;Now, get the code/data bytes
+                    tst       3,X                 ;Check Length of zero
+?S19.Loop           beq       ?S19.CRC            ;Empty code/data section of record
+                    bsr       ReadHex
+                    bcs       ?S19.Error          ;if something wrong, get out with error
+                    bsr       UpdateCRC
+                    bsr       StoreByte           ;save byte and advance pointer
+                    dec       3,X                 ;One less byte to read
+                    bra       ?S19.Loop
+
+?S19.CRC            bsr       ReadHex             ;Get CRC byte
+                    bcs       ?S19.Error          ;if something wrong, get out with error
+                    com       0,X                 ;Get one's complement of final CRC value
+                    cmpa      0,X                 ;Is it the same as the one calculated
+                    bne       ?S19.Error          ;No, exit with error
+
+;See if we're done
+                    lda       4,X                 ;Check record type
+                    cmpa      #'9'
+                    beq       ?S19.Exit           ;Done, get out without errors
+                    bsr       ?ToEOL
+                    pulx:4
+                    bra       S19                 ;Go back to read another line
+
+?S19.Exit           ldx       1,X                 ;Load X with address
+                    bsr       ?ToEOL
+                    puly:4
+                    clc
+                    rts
+?S19.Error          bsr       ?ToEOL              ;1.01 addition (exit at end-of-line)
+                    pulx:4
+                    sec
+                    rts
+?S19.EOL            bsr       ?ToEOL
+                    bra       ?S19.Error          ;Always out from the error exit
+
+?ToEOL              cmpa      #CR
+                    beq       ?AnRTS
+                    cmpa      #LF
+                    beq       ?AnRTS
+                    bsr       ReadByte
+                    bra       ?ToEOL
+
+UpdateCRC           psha                          ;Adjust the CRC for the record
+                    adda      0,X
+                    sta       0,X
+                    pula
+?AnRTS              rts
+
+StoreByte           pshx                          ;Save RegA to current [PC] address
+                    ldx       1,X                 ;Get address in X
+                    sta       ,X
+                    pulx
+UpdatePC            pshd                          ;Adjust the PC value by 1
+                    ldd       1,X
+                    incd
+                    std       1,X
+                    puld
+                    rts
+
+;Sets Carry of end-of-line character found
+ReadByte            pshx
+                    ldx       #REGS
+                    brclr     [SCSR,X,#$20,*      ;Wait for a character
+                    lda       SCDR                ;Read character
+                    cmpa      #CR
+                    bne       ?ReadByte0
+                    cmpa      #LF
+                    bne       ?ReadByte0
+                    sec
+                    pulx
+                    rts
+?ReadByte0          clc
+                    pulx
+                    rts
+
+ReadHex             bsr       ReadByte            ;Get next character
+                    bcs       ?ReadHex1           ;if EOL, get out with error
+                    bsr       HexToBin            ;Convert from Hex to Binary
+                    bcs       ?ReadHex1           ;if EOL, get out with error
+                    lsla:4                        ;Move to high nibble
+                    sta       5,X                 ;and save in temporary location
+                    bsr       ReadByte            ;Get next 2 characters
+                    bcs       ?ReadHex1           ;if EOL, get out with error
+                    bsr       HexToBin            ;Convert from Hex to Binary
+                    bcs       ?ReadHex1           ;Invalid character, ignore rest of line
+                    ora       5,X                 ;combine LSN with MSN
+                    sta       5,X                 ;and save it back (optional)
+                    clc                           ;Error-free exit
+                    rts
+?ReadHex1           sec                           ;Error exit
+                    rts
+
+; Convert a hex digit (0-F) in RegA to its binary equivalent
+HexToBin            cmpa      #'0'
+                    blo       ?HexToBinE
+                    cmpa      #'9'
+                    bhi       ?HexToBinA
+                    suba      #'0'
+                    clc                           ;Error-free exit
+                    rts
+?HexToBinA          cmpa      #'A'
+                    blo       ?HexToBinE
+                    cmpa      #'F'
+                    bhi       ?HexToBinE
+                    suba      #'A'-10             ;1.01 fix (I mistyped while copying)
+                    clc                           ;Error-free exit
+                    rts
+?HexToBinE          sec                           ;Error exit
+                    rts

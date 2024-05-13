@@ -1,0 +1,713 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+                              C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o (exit)
+c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+                              ./project.X/build/device_config.o (__do_copy_data)
+c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+                              ./project.X/build/OWIUARTBitFunctions.o (__muluhisi3)
+c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+                              c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o) (__umulhisi3)
+
+Allocating common symbols
+Common symbol       size              file
+
+baud_115200         0x2               ./project.X/build/OWIUARTBitFunctions.o
+baud_9600           0x2               ./project.X/build/OWIUARTBitFunctions.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ .text          0x00000000        0x0 ./project.X/build/main.o
+ .data          0x00000000        0x0 ./project.X/build/main.o
+ .bss           0x00000000        0x0 ./project.X/build/main.o
+ .text          0x00000000        0x0 ./project.X/build/mcc.o
+ .data          0x00000000        0x0 ./project.X/build/mcc.o
+ .bss           0x00000000        0x0 ./project.X/build/mcc.o
+ .text.SYSTEM_Initialize
+                0x00000000        0x4 ./project.X/build/mcc.o
+ .text.BOD_Initialize
+                0x00000000        0x4 ./project.X/build/mcc.o
+ .text.CLKCTRL_Initialize
+                0x00000000        0x4 ./project.X/build/mcc.o
+ .text.SLPCTRL_Initialize
+                0x00000000        0x4 ./project.X/build/mcc.o
+ .text.WDT_Initialize
+                0x00000000        0x4 ./project.X/build/mcc.o
+ .text          0x00000000        0x0 ./project.X/build/device_config.o
+ .data          0x00000000        0x0 ./project.X/build/device_config.o
+ .bss           0x00000000        0x0 ./project.X/build/device_config.o
+ .text          0x00000000        0x0 ./project.X/build/protected_io.o
+ .data          0x00000000        0x0 ./project.X/build/protected_io.o
+ .bss           0x00000000        0x0 ./project.X/build/protected_io.o
+ .text.protected_write_io
+                0x00000000        0x8 ./project.X/build/protected_io.o
+ .debug_line    0x00000000       0x72 ./project.X/build/protected_io.o
+ .debug_info    0x00000000       0x85 ./project.X/build/protected_io.o
+ .debug_abbrev  0x00000000       0x14 ./project.X/build/protected_io.o
+ .debug_aranges
+                0x00000000       0x20 ./project.X/build/protected_io.o
+ .text          0x00000000        0x0 ./project.X/build/pin_manager.o
+ .data          0x00000000        0x0 ./project.X/build/pin_manager.o
+ .bss           0x00000000        0x0 ./project.X/build/pin_manager.o
+ .text.PORT_Initialize
+                0x00000000       0x4a ./project.X/build/pin_manager.o
+ .text.PIN_MANAGER_Initialize
+                0x00000000       0x82 ./project.X/build/pin_manager.o
+ .debug_info    0x00000000      0x545 ./project.X/build/pin_manager.o
+ .debug_abbrev  0x00000000       0xee ./project.X/build/pin_manager.o
+ .debug_loc     0x00000000       0x32 ./project.X/build/pin_manager.o
+ .debug_aranges
+                0x00000000       0x28 ./project.X/build/pin_manager.o
+ .debug_ranges  0x00000000       0x18 ./project.X/build/pin_manager.o
+ .debug_line    0x00000000      0x264 ./project.X/build/pin_manager.o
+ .debug_str     0x00000000        0xb ./project.X/build/pin_manager.o
+ .comment       0x00000000       0x30 ./project.X/build/pin_manager.o
+ .debug_frame   0x00000000       0x40 ./project.X/build/pin_manager.o
+ .text          0x00000000        0x0 ./project.X/build/OWIcrc.o
+ .data          0x00000000        0x0 ./project.X/build/OWIcrc.o
+ .bss           0x00000000        0x0 ./project.X/build/OWIcrc.o
+ .text.OWI_ComputeCRC16
+                0x00000000       0x2c ./project.X/build/OWIcrc.o
+ .text          0x00000000        0x0 ./project.X/build/OWIHighLevelFunctions.o
+ .data          0x00000000        0x0 ./project.X/build/OWIHighLevelFunctions.o
+ .bss           0x00000000        0x0 ./project.X/build/OWIHighLevelFunctions.o
+ .text.OWI_SkipRom
+                0x00000000        0x8 ./project.X/build/OWIHighLevelFunctions.o
+ .text.OWI_ReadRom
+                0x00000000       0x3e ./project.X/build/OWIHighLevelFunctions.o
+ .text          0x00000000        0x0 ./project.X/build/OWIUARTBitFunctions.o
+ .data          0x00000000        0x0 ./project.X/build/OWIUARTBitFunctions.o
+ .bss           0x00000000        0x0 ./project.X/build/OWIUARTBitFunctions.o
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00803e00         0x00000200         rw !x
+eeprom           0x00810000         0x00000080         rw !x
+fuse             0x00820000         0x0000000a         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x803e00
+                0x00008000                __RODATA_PM_OFFSET__ = 0x8000
+LOAD C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+                0x00000001                __MPLAB_BUILD = 0x1
+START GROUP
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3/short-calls\libm.a
+END GROUP
+LOAD ./project.X/build/main.o
+LOAD ./project.X/build/mcc.o
+LOAD ./project.X/build/device_config.o
+LOAD ./project.X/build/protected_io.o
+LOAD ./project.X/build/pin_manager.o
+LOAD ./project.X/build/OWIcrc.o
+LOAD ./project.X/build/OWIHighLevelFunctions.o
+LOAD ./project.X/build/OWIUARTBitFunctions.o
+START GROUP
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3/short-calls\libm.a
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3/short-calls\libc.a
+LOAD C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls\libattiny807.a
+END GROUP
+                [0x00000000]                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
+                [0x00803e00]                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x802000
+                [0x00002000]                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x100000
+                [0x00000200]                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
+                [0x00000080]                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                [0x0000000a]                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x00000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x00000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x00000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+                0x00008000                __RODATA_PM_OFFSET__ = DEFINED (__RODATA_PM_OFFSET__)?__RODATA_PM_OFFSET__:0x8000
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000       0x98
+ *(.vectors)
+ .vectors       0x00000000       0x3e C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.dinit)
+ .dinit         0x0000003e        0xa data_init
+                0x00000048                . = ALIGN (0x2)
+                0x00000048                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000048        0x0 linker stubs
+ *(.trampolines*)
+                0x00000048                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+                0x00000048                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000048                __ctors_start = .
+ *(.ctors)
+                0x00000048                __ctors_end = .
+                0x00000048                __dtors_start = .
+ *(.dtors)
+                0x00000048                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000048        0x0 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+                0x00000048                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000048        0xc C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000054       0x3c c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_copy_data.o)
+                0x00000054                __do_copy_data
+                0x00000082                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000090        0x4 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ *(.init9)
+                0x00000094                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000094        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+                0x00000094                _exit
+                0x00000094                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000094        0x4 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000098                _etext = .
+
+.rodata
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.r*)
+
+.data           0x00803e00        0x0 load address 0x00000098
+                [!provide]                PROVIDE (__data_start, .)
+ *(.gnu.linkonce.d*)
+                0x00803e00                . = ALIGN (0x2)
+                0x00803e00                _edata = .
+                [!provide]                PROVIDE (__data_end, .)
+
+.bss            0x00803e00        0x4
+                [!provide]                PROVIDE (__bss_start, .)
+ *(COMMON)
+ COMMON         0x00803e00        0x4 ./project.X/build/OWIUARTBitFunctions.o
+                0x00803e00                baud_115200
+                0x00803e02                baud_9600
+                [!provide]                PROVIDE (__bss_end, .)
+                0x00000098                __data_load_start = LOADADDR (.data)
+                0x00000098                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00803e04        0x0
+                [!provide]                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                [!provide]                PROVIDE (__noinit_end, .)
+                0x00803e04                _end = .
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse           0x00820000        0x9
+ *(.fuse)
+ .fuse          0x00820000        0x9 ./project.X/build/device_config.o
+                0x00820000                __fuse
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x2f
+ *(.comment)
+ .comment       0x00000000       0x2f ./project.X/build/main.o
+                                 0x30 (size before relaxing)
+ .comment       0x0000002f       0x30 ./project.X/build/mcc.o
+ .comment       0x0000002f       0x30 ./project.X/build/device_config.o
+ .comment       0x0000002f       0x30 ./project.X/build/OWIcrc.o
+ .comment       0x0000002f       0x30 ./project.X/build/OWIHighLevelFunctions.o
+ .comment       0x0000002f       0x30 ./project.X/build/OWIUARTBitFunctions.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x158
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x38 ./project.X/build/main.o
+ .debug_aranges
+                0x00000038       0x48 ./project.X/build/mcc.o
+ .debug_aranges
+                0x00000080       0x18 ./project.X/build/device_config.o
+ .debug_aranges
+                0x00000098       0x30 ./project.X/build/OWIcrc.o
+ .debug_aranges
+                0x000000c8       0x48 ./project.X/build/OWIHighLevelFunctions.o
+ .debug_aranges
+                0x00000110       0x48 ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x3e0a
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x1495 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ .debug_info    0x00001495      0x99d ./project.X/build/main.o
+ .debug_info    0x00001e32      0x446 ./project.X/build/mcc.o
+ .debug_info    0x00002278      0x7f9 ./project.X/build/device_config.o
+ .debug_info    0x00002a71      0x30c ./project.X/build/OWIcrc.o
+ .debug_info    0x00002d7d      0x548 ./project.X/build/OWIHighLevelFunctions.o
+ .debug_info    0x000032c5      0xb45 ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_abbrev   0x00000000     0x196a
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000     0x1378 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ .debug_abbrev  0x00001378      0x1c1 ./project.X/build/main.o
+ .debug_abbrev  0x00001539       0xd9 ./project.X/build/mcc.o
+ .debug_abbrev  0x00001612       0x97 ./project.X/build/device_config.o
+ .debug_abbrev  0x000016a9       0x7e ./project.X/build/OWIcrc.o
+ .debug_abbrev  0x00001727       0xdd ./project.X/build/OWIHighLevelFunctions.o
+ .debug_abbrev  0x00001804      0x166 ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_line     0x00000000      0xd4e
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x154 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ .debug_line    0x00000154      0x361 ./project.X/build/main.o
+ .debug_line    0x000004b5      0x1b8 ./project.X/build/mcc.o
+ .debug_line    0x0000066d       0xfd ./project.X/build/device_config.o
+ .debug_line    0x0000076a      0x153 ./project.X/build/OWIcrc.o
+ .debug_line    0x000008bd      0x275 ./project.X/build/OWIHighLevelFunctions.o
+ .debug_line    0x00000b32      0x21c ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_frame    0x00000000      0x31c
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xa8 ./project.X/build/main.o
+ .debug_frame   0x000000a8       0x84 ./project.X/build/mcc.o
+ .debug_frame   0x0000012c       0x54 ./project.X/build/OWIcrc.o
+ .debug_frame   0x00000180      0x108 ./project.X/build/OWIHighLevelFunctions.o
+ .debug_frame   0x00000288       0x94 ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_str      0x00000000      0x9c5
+ *(.debug_str)
+ .debug_str     0x00000000      0x8c7 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+ .debug_str     0x000008c7       0x84 ./project.X/build/main.o
+ .debug_str     0x0000094b       0x17 ./project.X/build/mcc.o
+ .debug_str     0x00000962        0x0 ./project.X/build/device_config.o
+ .debug_str     0x00000962        0x9 ./project.X/build/OWIcrc.o
+ .debug_str     0x0000096b       0x3b ./project.X/build/OWIHighLevelFunctions.o
+ .debug_str     0x000009a6       0x1f ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_loc      0x00000000      0x8cd
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x2c6 ./project.X/build/main.o
+ .debug_loc     0x000002c6      0x1c8 ./project.X/build/OWIcrc.o
+ .debug_loc     0x0000048e      0x3a3 ./project.X/build/OWIHighLevelFunctions.o
+ .debug_loc     0x00000831       0x9c ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000       0xf0
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x28 ./project.X/build/main.o
+ .debug_ranges  0x00000028       0x38 ./project.X/build/mcc.o
+ .debug_ranges  0x00000060       0x20 ./project.X/build/OWIcrc.o
+ .debug_ranges  0x00000080       0x38 ./project.X/build/OWIHighLevelFunctions.o
+ .debug_ranges  0x000000b8       0x38 ./project.X/build/OWIUARTBitFunctions.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(project.elf elf32-avr)
+LOAD linker stubs
+LOAD data_init
+
+.note.gnu.avr.deviceinfo
+                0x00000000       0x3c
+ .note.gnu.avr.deviceinfo
+                0x00000000       0x3c C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+
+.bss.devices.3583
+                0x00803e04       0x48
+ .bss.devices.3583
+                0x00803e04       0x48 ./project.X/build/main.o
+
+.text.SearchBuses
+                0x00000098      0x118
+ .text.SearchBuses
+                0x00000098      0x118 ./project.X/build/main.o
+                0x00000098                SearchBuses
+
+.text.OWI_Init  0x000001b0       0xd8
+ .text.OWI_Init
+                0x000001b0       0xd8 ./project.X/build/OWIUARTBitFunctions.o
+                0x000001b0                OWI_Init
+
+.text.OWI_SearchRom
+                0x00000288       0xcc
+ .text.OWI_SearchRom
+                0x00000288       0xcc ./project.X/build/OWIHighLevelFunctions.o
+                0x00000288                OWI_SearchRom
+
+.text.DS18B20_ReadTemperature
+                0x00000354       0x70
+ .text.DS18B20_ReadTemperature
+                0x00000354       0x70 ./project.X/build/main.o
+                0x00000354                DS18B20_ReadTemperature
+
+.text.main      0x000003c4       0x6a
+ .text.main     0x000003c4       0x6a ./project.X/build/main.o
+                0x000003c4                main
+
+.text.OWI_MatchRom
+                0x0000042e       0x3e
+ .text.OWI_MatchRom
+                0x0000042e       0x3e ./project.X/build/OWIHighLevelFunctions.o
+                0x0000042e                OWI_MatchRom
+
+.text.OWI_CheckRomCRC
+                0x0000046c       0x34
+ .text.OWI_CheckRomCRC
+                0x0000046c       0x34 ./project.X/build/OWIcrc.o
+                0x0000046c                OWI_CheckRomCRC
+
+.text.OWI_SendByte
+                0x000004a0       0x30
+ .text.OWI_SendByte
+                0x000004a0       0x30 ./project.X/build/OWIHighLevelFunctions.o
+                0x000004a0                OWI_SendByte
+
+.text.OWI_DetectPresence
+                0x000004d0       0x2c
+ .text.OWI_DetectPresence
+                0x000004d0       0x2c ./project.X/build/OWIUARTBitFunctions.o
+                0x000004d0                OWI_DetectPresence
+
+.text.OWI_ReceiveByte
+                0x000004fc       0x2a
+ .text.OWI_ReceiveByte
+                0x000004fc       0x2a ./project.X/build/OWIHighLevelFunctions.o
+                0x000004fc                OWI_ReceiveByte
+
+.text.OWI_ComputeCRC8
+                0x00000526       0x26
+ .text.OWI_ComputeCRC8
+                0x00000526       0x26 ./project.X/build/OWIcrc.o
+                0x00000526                OWI_ComputeCRC8
+
+.text.FindFamily
+                0x0000054c       0x20
+ .text.FindFamily
+                0x0000054c       0x20 ./project.X/build/main.o
+                0x0000054c                FindFamily
+
+.text.OWI_TouchBit
+                0x0000056c       0x20
+ .text.OWI_TouchBit
+                0x0000056c       0x20 ./project.X/build/OWIUARTBitFunctions.o
+                0x0000056c                OWI_TouchBit
+
+.text.__vector_2
+                0x0000058c       0x1e
+ .text.__vector_2
+                0x0000058c       0x1e ./project.X/build/mcc.o
+                0x0000058c                __vector_2
+
+.text.libgcc.mul
+                0x000005aa       0x18
+ .text.libgcc.mul
+                0x000005aa       0x18 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_umulhisi3.o)
+                0x000005aa                __umulhisi3
+
+.text.libgcc.mul
+                0x000005c2       0x14
+ .text.libgcc.mul
+                0x000005c2       0x14 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3/short-calls\libgcc.a(_muluhisi3.o)
+                0x000005c2                __muluhisi3
+
+.text.OWI_ReadBit
+                0x000005d6       0x10
+ .text.OWI_ReadBit
+                0x000005d6       0x10 ./project.X/build/OWIUARTBitFunctions.o
+                0x000005d6                OWI_ReadBit
+
+.text.OWI_WriteBit1
+                0x000005e6        0x6
+ .text.OWI_WriteBit1
+                0x000005e6        0x6 ./project.X/build/OWIUARTBitFunctions.o
+                0x000005e6                OWI_WriteBit1
+
+.text.OWI_WriteBit0
+                0x000005ec        0x6
+ .text.OWI_WriteBit0
+                0x000005ec        0x6 ./project.X/build/OWIUARTBitFunctions.o
+                0x000005ec                OWI_WriteBit0
+
+.text           0x000005f2        0x2
+ .text          0x000005f2        0x2 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny807/avrxmega3/short-calls/crtattiny807.o
+                0x000005f2                __vector_22
+                0x000005f2                __vector_28
+                0x000005f2                __vector_1
+                0x000005f2                __vector_24
+                0x000005f2                __vector_12
+                0x000005f2                __bad_interrupt
+                0x000005f2                __vector_6
+                0x000005f2                __vector_3
+                0x000005f2                __vector_23
+                0x000005f2                __vector_30
+                0x000005f2                __vector_25
+                0x000005f2                __vector_11
+                0x000005f2                __vector_13
+                0x000005f2                __vector_17
+                0x000005f2                __vector_19
+                0x000005f2                __vector_7
+                0x000005f2                __vector_27
+                0x000005f2                __vector_5
+                0x000005f2                __vector_4
+                0x000005f2                __vector_9
+                0x000005f2                __vector_21
+                0x000005f2                __vector_15
+                0x000005f2                __vector_29
+                0x000005f2                __vector_8
+                0x000005f2                __vector_26
+                0x000005f2                __vector_14
+                0x000005f2                __vector_10
+                0x000005f2                __vector_16
+                0x000005f2                __vector_18
+                0x000005f2                __vector_20

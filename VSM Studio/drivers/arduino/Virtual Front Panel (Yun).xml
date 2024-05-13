@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<CLIP CATEGORY="Internet of Things" FILE="Arduino/Virtual Front Panel (Yun).pdsclip" DESC="VFP Server (Yun)" FAMILY="ARDUINO" >
+            
+    <PERIPHERAL TYPE="SERVER" DESC="Yun VFP Server" ELEMENT="YUN1" SUFFIX="SERVER" OPTIONAL="1" ENABLED="1">
+        <INTERFACE OBJECT="Yun::VfpServer" EXTERNAL="VFP">
+         <PORT NAME="UART"/>
+         <CONFIG>
+           <SETUP NAME="begin">
+             <PROPERTY NAME="PORT" DESC="IP port to be used by the VFP server" ELEMENT="YUN1" TYPE="INTEGER"/>
+           </SETUP>
+           <MODEL>
+             <PROPERTY NAME="SHOWBROWSER" DESC="Use the built in web browser to display the front panel." ELEMENT="YUN1" TYPE="BOOLEAN"/>
+           </MODEL>
+          </CONFIG>
+          <LOOP NAME="poll"/>
+         <SERVER TYPE="VFP" TRANSPORT="ETHERNET" ELEMENT="YUN1"/>
+        </INTERFACE>
+        <DRIVER FILE="Yun/VfpServer.xml"/>
+    </PERIPHERAL>            	   
+         
+    <PERIPHERAL TYPE="STORAGE" DESC="Yun Storage" ELEMENT="YUN1" SUFFIX="STORAGE" OPTIONAL="1" ENABLED="1">
+       <INTERFACE OBJECT="Yun::FileStore" EXTERNAL="FS" >
+         <SETUP NAME="begin"></SETUP>  
+         <STORAGE NAME="MANIFEST" ELEMENT="YUN1"/>
+        </INTERFACE>
+        <DRIVER FILE="Yun/FileStore.xml"/>
+    </PERIPHERAL>            	   
+
+   <PERIPHERAL TYPE="STORAGE" DESC="Yun Storage" ELEMENT="YUN1" SUFFIX="STORAGE" OPTIONAL="1" ENABLED="1">
+      <INTERFACE OBJECT="Yun::FileStore" EXTERNAL="FS">
+         <SETUP NAME="begin"></SETUP>
+         <STORAGE NAME="MANIFEST" ELEMENT="YUN1" />
+      </INTERFACE>
+      <DRIVER FILE="Yun/FileStore.xml" />
+   </PERIPHERAL>
+
+   <PERIPHERAL TYPE="CLIENT" DESC="Yun HTTP Client" ELEMENT="YUN1" SUFFIX="CLIENT" OPTIONAL="1">
+      <INTERFACE OBJECT="Yun::Client" EXTERNAL="CLIENT">
+         <SETUP NAME="begin"></SETUP>
+      </INTERFACE>
+      <DRIVER FILE="Yun/Client.xml" />
+   </PERIPHERAL>
+
+   <PERIPHERAL TYPE="MQTT" DESC="Yun MQTT" ELEMENT="YUN1" SUFFIX="MQTT" OPTIONAL="1">
+      <INTERFACE OBJECT="Mqtt" EXTERNAL="Mqtt::instance">
+        <CONFIG>
+          <SETUP NAME="begin">
+            <PROPERTY NAME="MQTT_CLIENTID" ALIAS="clientID" DESC="Unique Identifier for this MQTT Client" TYPE="STRING" DEFAULT="VSM-Yun"/>
+            <PROPERTY NAME="MQTT_SERVER" ALIAS="server" DESC="IP address or DNS name of MQTT broker" TYPE="STRING" DEFAULT="localhost" />
+            <PROPERTY NAME="MQTT_PORT" ALIAS="port" DESC="IP port of MQTT broker" TYPE="INTEGER" DEFAULT="1883" />
+            <PROPERTY NAME="MQTT_USER" ALIAS="user" DESC="Username for connect (optional)" TYPE="STRING"  />
+            <PROPERTY NAME="MQTT_PASS" ALIAS="password" DESC="Password for connect (optional)" TYPE="STRING" />
+          </SETUP>
+          <MACRO>
+            <PROPERTY NAME="MQTT_DEBUG" ALIAS="debug" DESC="Emit debug messages to the Bridge Console" TYPE="BOOLEAN" DEFAULT="1"/>
+            <PROPERTY NAME="BRIDGE_BAUDRATE" ALIAS="baudrate" DESC="Baudrate for Bridge Library" TYPE="INTEGER" DEFAULT="250000" HIDDEN="1" />
+          </MACRO>
+        </CONFIG>
+        <LOOP NAME="poll" />
+      </INTERFACE>
+      <DRIVER FILE="MQTT/Mqtt.xml" />
+   </PERIPHERAL>
+
+</CLIP>

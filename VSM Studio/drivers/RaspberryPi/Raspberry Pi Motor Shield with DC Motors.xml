@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Motor Control" FILE="Raspberry Pi/Raspberry Pi Motor Shield with DC Motors.pdsclip" DESC="Raspberry Pi Motor Shield (R3) with DC Motors" FAMILY="Raspberry Pi">
+   <PERIPHERAL TYPE="DC Motor 1" ELEMENT="M1">
+      <INTERFACE OBJECT="DCMotorV1">
+          <PIN NAME="dir" TYPE="DIGITAL">
+              <TERMINAL ELEMENT="GPIO5"/>
+          </PIN> 
+          <PIN NAME="pwm" TYPE="DIGITAL">
+              <TERMINAL ELEMENT="GPIO4"/>
+          </PIN> 
+          <PIN NAME="brake" TYPE="DIGITAL">
+              <TERMINAL ELEMENT="GPIO6"/>
+          </PIN> 
+         <SETUP NAME="begin"/>
+         <!--CONFIG>
+          <PROPERTY NAME="STATE" ALIAS="BREAKA" ELEMENT="JP1" TYPE="JUMPERBOOL"/>
+        </CONFIG-->
+      </INTERFACE>
+
+      <!-- Firmware Driver -->
+      <DRIVER FILE="DC Motor.xml"/>
+      
+   </PERIPHERAL>
+
+   <PERIPHERAL TYPE="DC Motor 2" ELEMENT="M2">
+      <INTERFACE OBJECT="DCMotorV1">
+          <PIN NAME="dir" TYPE="DIGITAL">
+              <TERMINAL ELEMENT="GPIO21"/>
+          </PIN> 
+          <PIN NAME="pwm" TYPE="DIGITAL">
+              <TERMINAL ELEMENT="GPIO20"/>
+          </PIN> 
+          <PIN NAME="brake" TYPE="DIGITAL">
+              <TERMINAL ELEMENT="GPIO22"/>
+          </PIN> 
+         <SETUP NAME="begin"/>
+         <!--CONFIG>
+          <PROPERTY NAME="STATE" ALIAS="BREAK-B" ELEMENT="JP2" TYPE="JUMPERBOOL"/>
+        </CONFIG-->
+      </INTERFACE>
+
+      <!-- Firmware Driver -->
+      <DRIVER FILE="DC Motor.xml"/>
+      
+   </PERIPHERAL>
+
+</CLIP>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!-- Driver Descriptor for Adafruit MCP9601 THC Converter -->
+<DRIVER HEADER="Adafruit_MCP9601.h">
+   <REQUIRE HEADER="Adafruit_I2CDevice.h"/>
+   <REQUIRE HEADER="Adafruit_I2CRegister.h"/>
+   <REQUIRE HEADER="Wire.h"/>
+   <REQUIRE HEADER="SPI.h"/>
+
+   <!-- TCTYPES enumeration -->
+   <ENUMERATION NAME="TCTYPES">
+      <CONSTANT NAME="TCTYPE_K" VALUE="0"/>
+      <CONSTANT NAME="TCTYPE_J" VALUE="1"/>
+      <CONSTANT NAME="TCTYPE_T" VALUE="2"/>
+      <CONSTANT NAME="TCTYPE_N" VALUE="3"/>
+      <CONSTANT NAME="TCTYPE_S" VALUE="4"/>
+      <CONSTANT NAME="TCTYPE_E" VALUE="5"/>
+      <CONSTANT NAME="TCTYPE_B" VALUE="6"/>
+      <CONSTANT NAME="TCTYPE_R" VALUE="7"/>
+   </ENUMERATION>
+
+   <!-- FILTERCOEFF enumeration -->
+   <ENUMERATION NAME="FILTERCOEFF">
+      <CONSTANT NAME="COEF_0" VALUE="0"/>
+      <CONSTANT NAME="COEF_1" VALUE="1"/>
+      <CONSTANT NAME="COEF_2" VALUE="2"/>
+      <CONSTANT NAME="COEF_3" VALUE="3"/>
+      <CONSTANT NAME="COEF_4" VALUE="4"/>
+      <CONSTANT NAME="COEF_5" VALUE="5"/>
+      <CONSTANT NAME="COEF_6" VALUE="6"/>
+      <CONSTANT NAME="COEF_7" VALUE="7"/>
+   </ENUMERATION>
+
+   <!-- ADCRES enumeration -->
+   <ENUMERATION NAME="ADCRES">
+      <CONSTANT NAME="RES_18BIT" VALUE="0"/>
+      <CONSTANT NAME="RES_16BIT" VALUE="1"/>
+      <CONSTANT NAME="RES_14BIT" VALUE="2"/>
+      <CONSTANT NAME="RES_12BIT" VALUE="3"/>
+   </ENUMERATION>
+
+   <!-- ALERTEN enumeration -->
+   <ENUMERATION NAME="ALERTEN">
+      <CONSTANT NAME="DISABLED"  VALUE="false"/>
+      <CONSTANT NAME="ENABLED"   VALUE="true"/>
+   </ENUMERATION>
+
+   <!-- EDGE enumeration -->
+   <ENUMERATION NAME="EDGE">
+      <CONSTANT NAME="LOW"  VALUE="false"/>
+      <CONSTANT NAME="HIGH" VALUE="true"/>
+   </ENUMERATION>
+   
+   <!-- MONITOR enumeration -->
+   <ENUMERATION NAME="MONITOR">
+      <CONSTANT NAME="TH"  VALUE="false"/>
+      <CONSTANT NAME="TC"  VALUE="true"/>
+   </ENUMERATION>
+
+   <!-- ACTIVE enumeration -->
+   <ENUMERATION NAME="ACTIVE">
+      <CONSTANT NAME="LOW"   VALUE="false"/>
+      <CONSTANT NAME="HIGH"  VALUE="true"/>
+   </ENUMERATION>
+
+   <!-- INTMODE enumeration -->
+   <ENUMERATION NAME="INTMODE">
+      <CONSTANT NAME="COMPARATOR" VALUE="false"/>
+      <CONSTANT NAME="INTERRUPT"  VALUE="true"/>
+   </ENUMERATION>
+
+   <!-- Methods with parameters -->
+   <METHOD NAME="setThermocoupleType" DESC="Set Thermocouple Type.">
+      <PARAMETER NAME="type" TYPE="TCTYPES" DEFAULT="TCTYPE_K" DESC="Thermocouple Type."/>
+   </METHOD>
+
+   <METHOD NAME="setFilterCoefficient" DESC="Set Filter Coefficients.">
+      <PARAMETER NAME="filterCoef" TYPE="FILTERCOEFF" DEFAULT="COEF_0" DESC="Filter Coefficient."/>
+   </METHOD>
+
+   <METHOD NAME="setADCresolution" DESC="Set ADC Resolution.">
+      <PARAMETER NAME="adcRes" TYPE="ADCRES" DEFAULT="RES_18BIT" DESC="ADC Resolution."/>
+   </METHOD>
+
+   <METHOD NAME="setAlertTemperature" DESC="Set Alert Channel Temperature.">
+      <PARAMETER NAME="alertCh"   TYPE="INTEGER" DEFAULT="1"   DESC="Alert Channel 1 to 4."/>
+      <PARAMETER NAME="alertTemp" TYPE="FLOAT"   DEFAULT="0.0" DESC="Temperature Value."/>
+   </METHOD>
+
+   <METHOD NAME="configureAlert"   DESC="Configure Alert Channel.">
+      <PARAMETER NAME="alertCh"    TYPE="INTEGER" DEFAULT="1"          DESC="Alert Channel 1 to 4."/>
+      <PARAMETER NAME="enabled"    TYPE="ALERTEN" DEFAULT="ENABLED"    DESC="Alert Enable"/>
+      <PARAMETER NAME="edge"       TYPE="EDGE"    DEFAULT="RISE"       DESC="Rise/Fall"/>
+      <PARAMETER NAME="monitor"    TYPE="MONITOR" DEFAULT="TC"         DESC="Cold Junction/Hot Juction"/>
+      <PARAMETER NAME="active"     TYPE="ACTIVE"  DEFAULT="LOW"        DESC="Active High/Active Low"/>
+      <PARAMETER NAME="intMode"    TYPE="INTMODE" DEFAULT="COMPARATOR" DESC="Interrupt/Comparator"/>
+   </METHOD>
+
+   <METHOD NAME="enable" DESC="Sampling Enable.">
+      <PARAMETER NAME="flag"  TYPE="BOOLEAN" DEFAULT="TRUE"   DESC=" FALSE=shutdown, TRUE=Normal."/>
+   </METHOD>
+
+
+   <!-- Additional Methods returning value -->
+   <METHOD NAME="readThermocouple" DESC="Read Thermocouple Temperature.">
+      <RETURN NAME="thTemp"  TYPE="FLOAT"/>
+   </METHOD>
+
+   <METHOD NAME="readAmbient" DESC="Read Cold Juction Temperature.">
+      <RETURN NAME="cjTemp"  TYPE="FLOAT"/>
+   </METHOD>
+
+   <METHOD NAME="enabled" DESC="Is Enabled ?">
+      <RETURN NAME="flag"  TYPE="BOOLEAN"/>
+   </METHOD>
+
+   <METHOD NAME="getThermocoupleType" DESC="Get Thermocouple type.">
+      <RETURN NAME="type"  TYPE="INTEGER"/>
+   </METHOD>
+
+   <METHOD NAME="getFilterCoefficient" DESC="Get Filter Coefficient.">
+      <RETURN NAME="coeff"  TYPE="INTEGER"/>
+   </METHOD>
+
+   <METHOD NAME="getADCresolution" DESC="Get ADC Resolution.">
+      <RETURN NAME="adcRes"  TYPE="INTEGER"/>
+   </METHOD>
+
+   <METHOD NAME="getAlertTemperature" DESC="Get Alert Temperature.">
+      <PARAMETER NAME="alert#"  TYPE="INTEGER" DEFAULT="1"   DESC="Alert Channel 1 to 4."/>
+      <RETURN NAME="alertTemp"  TYPE="FLOAT"/>
+   </METHOD>
+
+   <METHOD NAME="getStatus" DESC="Get Status Register.">
+      <RETURN NAME="status"  TYPE="INTEGER"/>
+   </METHOD>
+
+</DRIVER>
+
+

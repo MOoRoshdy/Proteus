@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Grove" FILE="Grove/Grove Touch Sensor.pdsclip" DESC="Grove Touch Sensor Module" FAMILY="ARDUINO" >
+   <PERIPHERAL TYPE="Grove Touch Sensor" ELEMENT="TS1" >
+     <!-- Hardware Interface -->
+     <INTERFACE OBJECT="GroveTouchSensor">
+         <CONFIG>
+           <PROPERTY NAME="STATE" ALIAS="PORT" ELEMENT="GC1" TYPE="INTEGER" GROVE="DIGITAL"/>
+           <ENUMERATION NAME="CONTACT">
+            <CONSTANT NAME="ON" VALUE="0"/>
+            <CONSTANT NAME="OFF" VALUE="500"/>
+          </ENUMERATION>
+          <!-- Touch configuration -->
+          <PROPERTY NAME="STATE" ALIAS="CONTACT" ELEMENT="TS1" TYPE="CONTACT"/>
+         </CONFIG>
+     </INTERFACE>
+   
+     <!-- Firmware Driver -->
+     <DRIVER HEADER="Grove.h">
+        <FUNCTION DESC="Touch Sensor State"> 
+           <RETURN TYPE="BOOLEAN"/>
+        </FUNCTION>
+     </DRIVER>
+   </PERIPHERAL>
+</CLIP>	

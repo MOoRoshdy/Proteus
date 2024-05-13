@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Breakout Peripherals" FILE="Arduino-STM32/Arduino Alphanumeric LCD Breakout Board.pdsclip" DESC="Arduino Alphanumeric Lcd 16x2 breakout board" FAMILY="Arduino-STM32">
+   <PERIPHERAL TYPE="Alphanumeric LCD Display" ELEMENT="LCD1">
+      <INTERFACE OBJECT="AlphanumericLcd">
+         <PIN NAME="RS" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PB6"/>
+         </PIN>
+         <PIN NAME="E" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PB5"/>
+         </PIN>
+         <PIN NAME="D4" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PB4"/>
+         </PIN>
+         <PIN NAME="D5" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PB3"/>
+         </PIN>
+         <PIN NAME="D6" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PB1"/>
+         </PIN>
+         <PIN NAME="D7" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PB0"/>
+         </PIN>
+         <SETUP NAME="begin">
+             <PROPERTY NAME="NUMCOLS" ELEMENT="LCD1" TYPE="INTEGER"/>
+             <PROPERTY NAME="NUMROWS" ELEMENT="LCD1" TYPE="INTEGER"/>
+         </SETUP>   
+      </INTERFACE>
+      <DRIVER FILE="AlphanumericLcd/AlphanumericLcd.xml"/> 
+   </PERIPHERAL>
+</CLIP>
+
+

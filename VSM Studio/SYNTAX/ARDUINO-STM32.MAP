@@ -1,0 +1,6 @@
+#Syntax Highlight Extension Mappings for CM3
+ASM=CM3.SYN
+H=CPP.SYN
+C=CPP.SYN
+HPP=CPP.SYN
+CPP=CPP.SYN

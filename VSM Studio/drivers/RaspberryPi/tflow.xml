@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DRIVER HEADER="tflow">
+   <METHOD        NAME="WordRecogniser"                         DESC="Start Word Recogniser">
+      <PARAMETER  NAME="modelPath"        TYPE="STRING"         DESC=".tflite Model File Path"/>
+      <PARAMETER  NAME="event"            TYPE="STRING"         DESC="Callback Event"/>
+   </METHOD> 
+</DRIVER>

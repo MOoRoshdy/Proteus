@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Breakout Peripherals" FILE="Raspberry Pi/RaspberryPi Seven Seg Breakout.pdsclip" FAMILY="Raspberry Pi" DESC="Seven segment Breakout (Red)">
+   <PERIPHERAL TYPE="RPi Seven Seg" ELEMENT="SEG1" >
+     <!-- Hardware Interface -->
+     <INTERFACE OBJECT="SevenSeg">
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO5"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO6"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO13"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO19"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO26"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO16"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO20"/>
+         </PIN>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="GPIO21"/>
+         </PIN>
+   	</INTERFACE>
+   
+     <!-- Firmware Driver -->
+     <DRIVER HEADER="SevenSeg">
+     
+     <!-- Accepted Letters -->
+       <ENUMERATION NAME="Characters">
+         <CONSTANT NAME="A" VALUE="0"/>
+         <CONSTANT NAME="B" VALUE="1"/>
+         <CONSTANT NAME="C" VALUE="2"/>
+         <CONSTANT NAME="D" VALUE="3"/>
+         <CONSTANT NAME="E" VALUE="4"/>
+         <CONSTANT NAME="F" VALUE="5"/>
+       </ENUMERATION>
+       
+       
+         <METHOD NAME="displayCharacter" DESC="Display a single character.">
+            <PARAMETER NAME="character" TYPE="Characters" DEFAULT="A" DESC="Charcter to display"/>
+         </METHOD>
+         
+         <METHOD NAME="displayInteger" DESC="Display a single integer.">
+            <PARAMETER NAME="integer" TYPE="INTEGER" DESC="Integer to display"/>
+         </METHOD>
+         
+         <METHOD NAME="setDecimal" DESC="Set the state of decimal segment.">
+            <PARAMETER NAME="state" TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of decimal segment"/>
+         </METHOD>
+         
+         <METHOD NAME="setSegment" DESC="Display a single integer.">
+            <PARAMETER NAME="segment" TYPE="INTEGER" DESC="Segment to set (1-8)"/>
+            <PARAMETER NAME="state"   TYPE="BOOLEAN" DESC="State of segment"/>
+         </METHOD>
+         
+         <METHOD NAME="setDisplay" DESC="Set Segments.">
+            <PARAMETER NAME="segmentOne"     TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of first segment"/>
+            <PARAMETER NAME="segmentTwo"     TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of second segment"/>
+            <PARAMETER NAME="segmentThree"   TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of third segment"/>
+            <PARAMETER NAME="segmentFour"    TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of fouth segment"/>
+            <PARAMETER NAME="segmentFive"    TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of fith segment"/>
+            <PARAMETER NAME="segmentSix"     TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of sixth segment"/>
+            <PARAMETER NAME="segmentSeven"   TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of seventh segment"/>
+            <PARAMETER NAME="decimal"        TYPE="BOOLEAN" DEFAULT="TRUE" DESC="State of decimal segment"/>
+         </METHOD>
+         
+         <METHOD NAME="clear"  DESC="Clears display."/>
+      </DRIVER>
+   </PERIPHERAL>
+</CLIP>	
+  

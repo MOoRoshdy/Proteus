@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<COMPILER NAME="Arduino IDE" CHART="Visual Designer for Arduino" ID="ARDUINO" VERSION="2.1.0" URL="http://www.arduino.cc/" DOWNLOAD_URL="http://downloads.labcenter.co.uk/vsmstudio/win/compilers/arduino-ide_2.1.0_Windows_64bit.msi" AVAILABILITY="Hosted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schema/compiler.xsd">
+  <TOOL NAME="CLI" FILE="arduino-cli">
+    <OPTION NAME="--board-options " DESC="string List of board options separated by commas. Or can be used multiple times for multiple options." PARAM="STRING" MULTIPLE="1" ADVANCED="1"/>
+    <OPTION NAME="--build-cache-path " DESC="string Builds of 'core.a' are saved into this path to be cached and reused." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--build-path " DESC="string Path where to save compiled files. If omitted, a directory will be created in the default temporary path of your OS." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--build-property " DESC="string Override a build property with a custom value. Can be used multiple times for multiple properties." PARAM="STRING" MULTIPLE="1" ADVANCED="1"/>
+    <OPTION NAME="--clean" DESC="Optional, cleanup the build folder and do not use any cached build." ADVANCED="1"/>
+    <OPTION NAME="--discovery-timeout " DESC="duration Max time to wait for port discovery, e.g.: 30s, 1m (default 1s)" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--dump-profile" DESC="Create and print a profile configuration from the build." ADVANCED="1"/>
+    <OPTION NAME="--encrypt-key " DESC="string The name of the custom encryption key to use to encrypt a binary during the compile process. Used only by the platforms that support it." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--export-binaries" DESC="If set built binaries will be exported to the sketch folder." ADVANCED="1"/>
+    <OPTION NAME="--fqbn " DESC="string Fully Qualified Board Name, e.g.: arduino:avr:uno" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--help" DESC="help for compile" ADVANCED="1"/>
+    <OPTION NAME="--keys-keychain " DESC="string The path of the dir to search for the custom keys to sign and encrypt a binary. Used only by the platforms that support it." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--libraries " DESC="string Path to a collection of libraries. Can be used multiple times or entries can be comma separated." PARAM="STRING" ADVANCED="0"/>
+    <OPTION NAME="--library " DESC="string Path to a single library’s root folder. Can be used multiple times or entries can be comma separated." PARAM="STRING" ADVANCED="0"/>
+    <OPTION NAME="--only-compilation-database" DESC="Just produce the compilation database, without actually compiling. All build commands are skipped except pre* hooks." ADVANCED="1"/>
+    <OPTION NAME="--optimize-for-debug" DESC="Optional, optimize compile output for debugging, rather than for release." ADVANCED="1"/>
+    <OPTION NAME="--output-dir " DESC="string Save build artifacts in this directory." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--port " DESC="string Upload port address, e.g.: COM3 or /dev/ttyACM2" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--preprocess" DESC="Print preprocessed code to stdout instead of compiling." ADVANCED="1"/>
+    <OPTION NAME="--profile " DESC="string Sketch profile to use" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--programmer " DESC="string Programmer to use, e.g: atmel_ice" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--protocol " DESC="string Upload port protocol, e.g: serial" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--quiet" DESC="Optional, suppresses almost every output." ADVANCED="1"/>
+    <OPTION NAME="--show-properties " DESC="string[=&quot;unexpanded&quot;]   Show build properties instead of compiling. The properties are returned exactly as they are defined. Use &quot;--show-properties=expanded&quot; to replace placeholders with compilation context values. (default &quot;disabled&quot;)" PARAM="STRING" ADVANCED="0"/>
+    <OPTION NAME="--sign-key " DESC="The name of the custom signing key to use to sign a binary during the compile process. Used only by the platforms that support it." PARAM="STRING" ADVANCED="0"/>
+    <OPTION NAME="--upload" DESC="Upload the binary after the compilation." ADVANCED="1"/>
+    <OPTION NAME="--verify" DESC="Verify uploaded binary after the upload." ADVANCED="1"/>
+    <OPTION NAME="--vid-pid " DESC="When specified, VID/PID specific build properties are used, if board supports them." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--warnings " DESC="string Optional, can be: none, default, more, all. Used to tell gcc which warning level to use (-W flag). (default &quot;none&quot;)" PARAM="STRING" ADVANCED="0"/>
+    <OPTION NAME="--additional-urls " DESC="strings Comma-separated list of additional URLs for the Boards Manager." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--config-file " DESC="string The custom config file (if not specified the default will be used)." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--format " DESC="string The output format for the logs, can be: text, json, jsonmini, yaml (default &quot;text&quot;)" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--log-file " DESC="string Path to the file where logs will be written." PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--log-format " DESC="string The output format for the logs, can be: text, json" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--log-level " DESC="string Messages with this level and above will be logged. Valid levels are: trace, debug, info, warn, error, fatal, panic" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="--no-color" DESC="Disable colored output." ADVANCED="1"/>
+    <OPTION NAME="--verbose" DESC="Print the logs on the standard output." ADVANCED="0"/>
+  </TOOL>
+
+  <FAMILY NAME="ARDUINO" DRIVERS="Arduino"> <!-- The Drivers attribute indicates Visual Designer/Peripheheral Gallery Support -->
+    <CONTROLLER NAME="Arduino Uno">
+      <OPTION NAME="-b " VALUE="arduino:avr:uno" DEFAULT="1"/>
+      <PROPERTY NAME="PROGRAMMER" VALUE="AVRDUDE"/>
+      <PROPERTY NAME="BOARD" VALUE="pro328"/>
+      <PROPERTY NAME="INTERFACE" VALUE="Arduino (ATmega328)"/>
+    </CONTROLLER>
+    <CONTROLLER NAME="Arduino Nano">
+      <OPTION NAME="-b " VALUE="arduino:avr:nano" DEFAULT="1"/>
+      <PROPERTY NAME="PROGRAMMER" VALUE="AVRDUDE"/>
+      <PROPERTY NAME="BOARD" VALUE="pro328"/>
+      <PROPERTY NAME="INTERFACE" VALUE="Arduino (ATmega328)"/>
+    </CONTROLLER>
+    <CONTROLLER NAME="Arduino Mega">
+      <OPTION NAME="-b " VALUE="arduino:avr:mega" DEFAULT="1"/>
+      <PROPERTY NAME="PROGRAMMER" VALUE="AVRDUDE"/>
+      <PROPERTY NAME="BOARD" VALUE="mega2560"/>
+      <PROPERTY NAME="INTERFACE" VALUE="Arduino Mega2560"/>
+    </CONTROLLER>
+    <CONTROLLER NAME="Arduino Leonardo">
+      <OPTION NAME="-b " VALUE="arduino:avr:leonardo" DEFAULT="1"/>
+      <PROPERTY NAME="PROGRAMMER" VALUE="LEODUDE"/>
+      <PROPERTY NAME="BOARD" VALUE="leonardo"/>
+      <PROPERTY NAME="INTERFACE" VALUE="Arduino Leonardo"/>
+    </CONTROLLER>
+    <CONTROLLER NAME="Arduino Yun">
+      <OPTION NAME="-b " VALUE="arduino:avr:yun" DEFAULT="1"/>
+      <PROPERTY NAME="PROGRAMMER" VALUE="LEODUDE"/>
+      <PROPERTY NAME="BOARD" VALUE="yun"/>
+      <PROPERTY NAME="INTERFACE" VALUE="Arduino Yun"/>
+    </CONTROLLER>
+    <CONTROLLER NAME="Arduino Zero">
+      <OPTION NAME="-b " VALUE="arduino:samd:arduino_zero_edbg" DEFAULT="1"/>
+      <OPTION NAME="--build-property " VALUE="&quot;build.ldscript=linker_scripts/gcc/flash_without_bootloader.ld&quot;"/>
+      <OPTION NAME="--build-property " VALUE="&quot;build.vid=0&quot;"/>
+      <OPTION NAME="--build-property " VALUE="&quot;build.pid=0&quot;"/>
+      <OPTION NAME="--build-property " VALUE="&quot;build.extra_flags=-D__SAMD21G18A__&quot;"/>
+      <PROPERTY NAME="PROGRAMMER" VALUE="LEODUDE"/>
+      <PROPERTY NAME="BOARD" VALUE="Zero Native"/>
+      <PROPERTY NAME="INTERFACE" VALUE="Arduino Zero"/>
+    </CONTROLLER>
+    <PERIPHERALS>
+       <TEMPLATE NAME="CONFIG_COMMENT" VALUE="// Peripheral Configuration Code (do not edit)" />
+       <TEMPLATE NAME="CONFIG_BEGIN" VALUE="//---CONFIG_BEGIN---"/>
+       <TEMPLATE NAME="CONFIG_END" VALUE="//---CONFIG_END---"/>
+       <TEMPLATE NAME="PERIPHERAL_SETUP" VALUE="peripheral_setup();"/>
+       <TEMPLATE NAME="PERIPHERAL_LOOP" VALUE="peripheral_loop();"/>
+       <TEMPLATE NAME="PERIPHERAL_HANDLER" VALUE="void\s*(%1_%2)\s*\(\)"/>
+    </PERIPHERALS>
+  </FAMILY>
+
+  <!-- Compiler Detection -->
+  <DETECT PATH="%PROGRAMW6432%/Arduino IDE/resources/app/node_modules/arduino-ide-extension/build" SUF="arduino-cli.exe">
+    <CHECK ARG="-h" STR="Arduino Command Line Interface"/>
+  </DETECT>
+
+  <DETECT PATH="%PROGRAMFILES%/Arduino IDE/resources/app/node_modules/arduino-ide-extension/build" SUF="arduino-cli.exe">
+    <CHECK ARG="-h" STR="Arduino Command Line Interface"/>
+  </DETECT>
+
+  <DETECT PATH="%LOCALAPPDATA%/Programs/arduino-ide/resources/app/node_modules/arduino-ide-extension/build" SUF="arduino-cli.exe">
+    <CHECK ARG="-h" STR="Arduino Command Line Interface"/>
+  </DETECT>
+
+  <!-- File Types -->
+  <FILE NAME="chart" DESC="Flowchart" CATEGORY="Flowchart" PHANTOM="1" ICON="project_chart.png"/>
+  <FILE NAME="ino" DESC="Arduino Source" CATEGORY="Source" SOURCE="1" ICON="project_c.png" SYNTAX="ARDUINO.SYN"/>
+  <FILE NAME="c" DESC="C Source" CATEGORY="Source" SOURCE="1" ICON="project_c.png"/>
+  <FILE NAME="cpp" DESC="C++ Source" CATEGORY="Source" SOURCE="1" ICON="project_c++.png"/>
+  <FILE NAME="s" DESC="Assembler Source" CATEGORY="Source" SOURCE="1" ICON="project_assembly.png"/>
+  <FILE NAME="h" DESC="C Include" CATEGORY="Header" SOURCE="1" ICON="project_header.png"/>
+  <FILE NAME="hpp" DESC="C++ Include" CATEGORY="Header" SOURCE="1" ICON="project_header.png"/>
+  <FILE NAME="inc" DESC="Assembler Include" CATEGORY="Header" SOURCE="1" ICON="project_source.png"/>
+  <FILE NAME="lib" DESC="Object Library" CATEGORY="Library"/>
+  <FILE NAME="a" DESC="Object Library" CATEGORY="Library"/>
+  <FILE NAME="elf" DESC="ELF" CATEGORY="Firmware Binary" FIRMWARE="1"/>
+  <FILE NAME="hex" DESC="Intel Hex" CATEGORY="Firmware Binary" FIRMWARE="1"/>
+  <FILE NAME="o" DESC="Object" CATEGORY="Intermediate Binary"/>
+
+  <!-- Flowchart Compiler -->
+  <PROCESS TOOL="FLOWCHART" NAME="Flowchart Compiler" PREPROCESS="1">
+    <FILE OUTPUT="ino">
+      <FILE INPUT="chart"/>
+    </FILE>
+  </PROCESS>
+
+  <!-- Command Line Compiler -->
+  <PROCESS TOOL="CLI" NAME="Arduino Command Line Compiler" CMDLINE="$(CLI) compile $(CLIFLAGS) %OPTIONS% &quot;%INFILE_DIR%&quot;">
+    <FILE OUTPUT="elf">
+      <FILE INPUT="ino"/>
+    </FILE>
+    <FILE OUTPUT="hex">
+      <FILE INPUT="ino"/>
+    </FILE>
+    <FILE INFO="ino" NAME="%INFILE_DIR%/%INFILE_NAME%.ino"/>
+    <!-- Main sketch file name should match the directory name -->
+    <PREPROCESS CMDLINE="@if not exist &quot;%INFILE_DIR%/%INFILE_DIR_NAME%.ino&quot; echo // &gt; &quot;%INFILE_DIR%/%INFILE_DIR_NAME%.ino&quot;" />
+    <!-- Drivers Directory -->
+    <OPTION NAME="--libraries " VALUE="&quot;%DRIVERS_ABS_DIR%&quot;"/>
+    <OPTION NAME="--build-cache-path " VALUE="&quot;./cache&quot;"/>
+    <OPTION NAME="--build-path " VALUE="&quot;.&quot;"/>
+    <OPTION NAME="--no-color"/>
+    <POSTPROCESS CMDLINE="@copy /B &quot;%INFILE_DIR_NAME%.ino.elf&quot; &quot;$(TARGET).elf&quot;" />
+    <POSTPROCESS CMDLINE="@copy /B &quot;%INFILE_DIR_NAME%.ino.hex&quot; &quot;$(TARGET).hex&quot;" />
+  </PROCESS>
+
+  <!-- Compilation Targets -->
+  <TARGET NAME="Debug">
+    <FILE OUTPUT="elf"/>
+    <OPTION TOOL="CLI" NAME="--optimize-for-debug"/>
+    <OPTION TOOL="CLI" NAME="--build-property " VALUE="&quot;compiler.cpp.extra_flags=-Os -g3 -gdwarf-2&quot;"/>
+  </TARGET>
+  <TARGET NAME="Release">
+    <FILE OUTPUT="hex"/>
+  </TARGET>
+
+  <!-- Quick Start Source Files -->
+  <SOURCE NAME="main.ino" FROM="arduinomain.ino" OPEN="1"/>
+</COMPILER>

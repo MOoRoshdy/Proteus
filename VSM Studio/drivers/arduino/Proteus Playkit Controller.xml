@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CONTROLLER NAME="Proteus Playkit" FAMILY="ARDUINO" DESC="Proteus Playkit Controller">
+    
+    <PERIPHERAL NAME="cpu" TYPE="CPU" DESC="Arduino Processor" ELEMENT="U1">
+       <INTERFACE OBJECT="CPU" EXTERNAL="Cpu"/>
+       <DRIVER FILE="Cpu/Cpu.xml"/>
+    </PERIPHERAL>            	   
+      
+    <PERIPHERAL NAME="timer1" TYPE="TIMER1" DESC="Timer One" ELEMENT="U1" OPTIONAL="1">
+        <INTERFACE OBJECT="TimerOne" EXTERNAL="Timer1"/>
+        <DRIVER FILE="TimerOne/TimerOne.xml"/>
+    </PERIPHERAL>            	   
+
+    <PERIPHERAL NAME="spi" TYPE="SPI" DESC="SPI Port" ELEMENT="U1" OPTIONAL="1" >
+       <INTERFACE OBJECT="SpiPort" EXTERNAL="Spi">
+          <SETUP NAME="begin"/>
+       </INTERFACE>
+       <DRIVER FILE="SPIPORT/spi.xml"/>
+    </PERIPHERAL>            	   
+
+    <PERIPHERAL NAME="i2c" TYPE="I2C" DESC="I2C Port" ELEMENT="U1" OPTIONAL="1" >
+       <INTERFACE OBJECT="I2CPort" EXTERNAL="I2C">
+          <SETUP NAME="begin"/>
+       </INTERFACE>
+       <DRIVER FILE="I2CPORT/i2c.xml"/>
+    </PERIPHERAL>            	   
+
+    <PERIPHERAL NAME="eeprom" TYPE="EEPROM" DESC="EEPROM" ELEMENT="U1" OPTIONAL="1" >
+       <INTERFACE OBJECT="EESTORE" EXTERNAL="EEstore"/>
+       <DRIVER FILE="EESTORE/eestore.xml"/>
+    </PERIPHERAL>            	   
+     
+    <PERIPHERAL NAME="server" TYPE="SERVER" DESC="ESP8266 VFP Server" ELEMENT="ESP1" OPTIONAL="1" ENABLED="1">
+        <INTERFACE OBJECT="Vfp8266::Server" EXTERNAL="VFP">
+         <PORT NAME="UART"/>          
+         <SETUP NAME="begin">
+            <PROPERTY NAME="PORT" ELEMENT="ESP1" TYPE="INTEGER"/>
+         </SETUP>         
+         <LOOP NAME="poll"/>
+         <SERVER TYPE="VFP" TRANSPORT="ETHERNET" ELEMENT="ESP1"/>
+        </INTERFACE>
+        <DRIVER FILE="Vfp8266/VfpServer.xml"/>
+    </PERIPHERAL>            	   
+    
+    <PERIPHERAL NAME="storage" TYPE="STORAGE" DESC="ESP8266 Storage" ELEMENT="ESP1" OPTIONAL="1" ENABLED="1">
+       <INTERFACE OBJECT="Vfp8266::FileStore" EXTERNAL="FS" >
+         <SETUP NAME="begin"></SETUP>  
+         <STORAGE NAME="MANIFEST" ELEMENT="ESP1"/>
+        </INTERFACE>
+        <DRIVER FILE="Vfp8266/FileStore.xml"/>
+    </PERIPHERAL>            	   
+
+    <PERIPHERAL NAME="client" TYPE="CLIENT" DESC="ESP8266 HTTP Client" ELEMENT="ESP1" OPTIONAL="1">
+       <INTERFACE OBJECT="Vfp8266::Client" EXTERNAL="CLIENT" >
+         <SETUP NAME="begin"></SETUP>  
+        </INTERFACE>
+        <DRIVER FILE="Vfp8266/Client.xml"/>
+    </PERIPHERAL>    
+
+    <PERIPHERAL NAME="mqtt" TYPE="MQTT" DESC="ESP8266 MQTT" ELEMENT="ESP1" OPTIONAL="1">
+       <INTERFACE OBJECT="Mqtt" EXTERNAL="Mqtt::instance">
+         <CONFIG>
+           <SETUP NAME="begin">
+             <PROPERTY NAME="MQTT_CLIENTID" ALIAS="clientID" DESC="Unique Identifier for this MQTT Client" TYPE="STRING" DEFAULT="VSM-Playkit"/>
+             <PROPERTY NAME="MQTT_SERVER" ALIAS="server" DESC="IP address or DNS name of MQTT broker" TYPE="STRING" DEFAULT="localhost" />
+             <PROPERTY NAME="MQTT_PORT" ALIAS="port" DESC="IP port of MQTT broker" TYPE="INTEGER" DEFAULT="1883" />
+             <PROPERTY NAME="MQTT_USER" ALIAS="user" DESC="Username for connect (optional)" TYPE="STRING"  />
+             <PROPERTY NAME="MQTT_PASS" ALIAS="password" DESC="Password for connect (optional)" TYPE="STRING" />
+           </SETUP>
+           <MACRO>
+             <PROPERTY NAME="MQTT_DEBUG" ALIAS="debug" DESC="Emit debug messages to the Bridge Console" TYPE="BOOLEAN" DEFAULT="1"/>
+             <PROPERTY NAME="BRIDGE_BAUDRATE" ALIAS="baudrate" DESC="Baudrate for Bridge Library" TYPE="INTEGER" DEFAULT="115200" HIDDEN="1"/>
+           </MACRO>
+         </CONFIG>
+         <LOOP NAME="poll"/>
+       </INTERFACE>
+      <DRIVER FILE="MQTT/mqtt.xml"/>
+    </PERIPHERAL>         	   
+
+</CONTROLLER>
+	
+  

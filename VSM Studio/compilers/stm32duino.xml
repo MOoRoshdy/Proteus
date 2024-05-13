@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<COMPILER NAME="STM32DUINO" CHART="Visual Designer for Arduino STM32" ID="STM32DUINO" VERSION="1.8.15" URL="http://www.arduino.cc/" DOWNLOAD_URL="http://downloads.labcenter.co.uk/vsmstudio/win/compilers/STM32DUINO.exe" AVAILABILITY="Hosted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schema/compiler.xsd">
+
+  <!-- Arduino Builder -->
+  <TOOL NAME="BLD" FILE="arduino-builder">
+    <OPTION NAME="-build-cache " DESC="builds of 'core.a' are saved into this folder to be cached and reused" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-build-options-file " DESC="Instead of specifying --hardware, --tools etc every time, you can load all such options from a file" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-build-path " DESC="build path" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-built-in-libraries " DESC="Specify a built-in 'libraries' folder. These are low priority libraries. Can be added multiple times for specifying multiple built-in 'libraries' folders"  PARAM="STRING" MULTIPLE="1" ADVANCED="1"/>
+    <OPTION NAME="-code-complete-at " DESC="output code completions for sketch at a specific location. Location format is &quot;file:line:col&quot;"  PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-compile" DESC="compiles the given sketch" ADVANCED="1"/>
+    <OPTION NAME="-core-api-version " DESC="version of core APIs (used to populate ARDUINO #define) (default &quot;10600&quot;)" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-daemon" DESC="daemonizes and serves its functions via rpc" ADVANCED="1"/>
+    <OPTION NAME="-debug-level " DESC="Turns on debugging messages. The higher, the chattier (default 5)" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-dump-prefs" DESC="dumps build properties used when compiling" ADVANCED="1"/>
+    <OPTION NAME="-experimental" DESC="enables experimental features" ADVANCED="1"/>
+    <OPTION NAME="-fqbn " DESC="fully qualified board name" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-hardware " DESC="Specify a 'hardware' folder. Can be added multiple times for specifying multiple 'hardware' folders" PARAM="STRING" MULTIPLE="1" ADVANCED="1"/>
+    <OPTION NAME="-jobs " DESC="specify how many concurrent gcc processes should run at the same time. Defaults to the number of available cores on the running machine" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-libraries " DESC="Specify a 'libraries' folder. Can be added multiple times for specifying multiple 'libraries' folders" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-logger " DESC="Sets type of logger. Available values are 'human', 'humantags', 'machine' (default &quot;human&quot;)" PARAM="CHOICE" ADVANCED="1">
+      <PARAM VALUE="human" DESC=""/>
+      <PARAM VALUE="humantags" DESC=""/>
+      <PARAM VALUE="machine" DESC=""/>
+    </OPTION>
+    <OPTION NAME="-prefs " DESC="Specify a custom preference. Can be added multiple times for specifying multiple custom preferences" PARAM="STRING" MULTIPLE="1" ADVANCED="1"/>
+    <OPTION NAME="-preprocess" DESC="preprocess the given sketch" ADVANCED="1"/>
+    <OPTION NAME="-quiet" DESC="if 'true' doesn't print any warnings or progress or whatever" ADVANCED="1"/>
+    <OPTION NAME="-tools " DESC="Specify a 'tools' folder. Can be added multiple times for specifying multiple 'tools' folders" PARAM="STRING" MULTIPL="1" ADVANCED="1"/>
+    <OPTION NAME="-trace" DESC="traces the whole process lifecycle" ADVANCED="1"/>
+    <OPTION NAME="-verbose" DESC="if 'true' prints lots of stuff" ADVANCED="1"/>
+    <OPTION NAME="-version" DESC="prints version and exits" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-vid-pid " DESC="specify to use vid/pid specific build properties, as defined in boards.txt" PARAM="STRING" ADVANCED="1"/>
+    <OPTION NAME="-warnings " DESC="Sets warnings level. Available values are 'none', 'default', 'more' and 'all'" PARAM="CHOICE" ADVANCED="1">
+      <PARAM VALUE="none" DESC="Supress all warnings"/>
+      <PARAM VALUE="default" DESC=""/>
+      <PARAM VALUE="more" DESC=""/>
+      <PARAM VALUE="all" DESC=""/>
+    </OPTION>
+  </TOOL>
+
+  <!--Object copy tool to build binaries-->
+  <TOOL NAME="OBJ" FILE="avr-objcopy">
+    <OPTION NAME="" DESC="Generic Option" MULTIPLE="1" PARAM="STRING"/>
+  </TOOL>
+
+  
+  <!-- Available controllers for this compiler -->
+  <FAMILY NAME="Cortex-M3">
+    <CONTROLLER NAME="STM32F103C8">
+      <PROPERTY NAME="PROGRAMMER" VALUE="ST-LINK"/>
+    </CONTROLLER>
+  </FAMILY>
+  
+  <FAMILY NAME="ARDUINO-STM32" DRIVERS="Arduino-STM32"> <!-- The Drivers attribute indicates Visual Designer/Peripheheral Gallery Support -->
+    <CONTROLLER NAME="BluePill">
+      <PROPERTY NAME="PROGRAMMER" VALUE="ST-LINK"/>
+    </CONTROLLER>
+    <PERIPHERALS>
+       <TEMPLATE NAME="CONFIG_COMMENT" VALUE="// Peripheral Configuration Code (do not edit)" />
+       <TEMPLATE NAME="CONFIG_BEGIN" VALUE="//---CONFIG_BEGIN---"/>
+       <TEMPLATE NAME="CONFIG_END" VALUE="//---CONFIG_END---"/>
+       <TEMPLATE NAME="PERIPHERAL_SETUP" VALUE="peripheral_setup();"/>
+       <TEMPLATE NAME="PERIPHERAL_LOOP" VALUE="peripheral_loop();"/>
+       <TEMPLATE NAME="PERIPHERAL_HANDLER" VALUE="void\s*(%1_%2)\s*\(\)"/>
+    </PERIPHERALS>
+  </FAMILY>
+  
+  <DETECT PATH="%TOOLS_DIR%/STM32DUINO" SUF="arduino-builder.exe" DATE="2021-05-21">
+    <CHECK ARG="-version" STR="Arduino Builder"/>
+  </DETECT>
+
+  <PATH ADD="%COMPILER_DIR_ABS_UNIX%"/>
+
+  <!-- File Types -->
+  <FILE NAME="chart" DESC="Flowchart" CATEGORY="Flowchart" PHANTOM="1" ICON="project_chart.png"/>
+  <FILE NAME="ino" DESC="Arduino Source" CATEGORY="Source" SOURCE="1" ICON="project_c.png" SYNTAX="ARDUINO.SYN"/>
+  <FILE NAME="c" DESC="C Source" CATEGORY="Source" SOURCE="1" ICON="project_c.png" SYNTAX="C.SYN"/>
+  <FILE NAME="cpp" DESC="C++ Source" CATEGORY="Source" SOURCE="1" ICON="project_c.png" SYNTAX="C.SYN"/>
+  <FILE NAME="h" DESC="C Header" CATEGORY="Header" SOURCE="1" ICON="project_c.png" SYNTAX="C.SYN"/>
+  <FILE NAME="hpp" DESC="C++ Header" CATEGORY="Header" SOURCE="1" ICON="project_c.png" SYNTAX="C.SYN"/>
+  <FILE NAME="elf" DESC="ELF" CATEGORY="Firmware Binary" FIRMWARE="1"/>
+  <FILE NAME="hex" DESC="Intel Hex" CATEGORY="Firmware Binary" FIRMWARE="1"/>
+ 
+  <!-- Flowchart Compiler -->
+  <PROCESS TOOL="FLOWCHART" NAME="Flowchart Compiler" PREPROCESS="1">
+    <FILE OUTPUT="ino">
+      <FILE INPUT="chart"/>
+    </FILE>
+  </PROCESS>
+  
+  <!-- Builder -->
+  <PROCESS TOOL="BLD" NAME="Arduino Builder" CMDLINE="$(BLD) $(BLDFLAGS) %OPTIONS% -build-path &quot;%OUTFILE_DIR%&quot; -build-cache &quot;%OUTFILE_DIR%/cache&quot; &quot;%INFILE%&quot;">
+    <FILE INPUT="ino"/>
+    <FILE OUTPUT="elf"/>
+    <FILE OUTPUT="hex" />
+    <FILE INFO="hex"/>
+    <FILE INFO="ino" NAME="%INFILE%"/>
+    <OPTION NAME="-hardware " VALUE="&quot;%COMPILER_DIR_ABS_UNIX%&quot;"/>
+    <OPTION NAME="-tools " VALUE="&quot;%COMPILER_DIR_ABS_UNIX%&quot;"/>
+    <OPTION NAME="-tools " VALUE="&quot;%COMPILER_DIR_ABS_UNIX%/tools-builder&quot;"/>
+    <OPTION NAME="-built-in-libraries " VALUE="&quot;%COMPILER_DIR_ABS_UNIX%/libraries&quot;"/>
+    <OPTION NAME="-libraries " VALUE="&quot;%USERPROFILE%/Documents/Arduino/libraries&quot;"/>
+    <OPTION NAME="-libraries " VALUE="&quot;%DRIVERS_DIR_ABS_UNIX%&quot;"/>
+    <OPTION NAME="-fqbn " VALUE="stm32duino:STM32F1:genericSTM32F103C:device_variant=STM32F103C8,upload_method=serialMethod,cpu_speed=speed_16mhz,opt=ogstd"/>
+    <OPTION NAME="-prefs " VALUE="build.warn_data_percentage=75"/>
+    <OPTION NAME="-prefs " VALUE="runtime.tools.stm32tools.path=&quot;%COMPILER_DIR_ABS_UNIX%/stm32duino/tools/stm32tools/2021.5.21&quot;"/>
+    <OPTION NAME="-prefs " VALUE="runtime.tools.stm32tools-2021.5.21.path=&quot;%COMPILER_DIR_ABS_UNIX%/stm32duino/tools/stm32tools/2021.5.21&quot;"/>
+    <OPTION NAME="-prefs " VALUE="runtime.tools.arm-none-eabi-gcc.path=&quot;%COMPILER_DIR_ABS_UNIX%/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1&quot;"/>
+    <OPTION NAME="-prefs " VALUE="runtime.tools.arm-none-eabi-gcc-4.8.3-2014q1.path=&quot;%COMPILER_DIR_ABS_UNIX%/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1&quot;"/>
+    <OPTION NAME="-compile"/>
+    <OPTION NAME="-logger " VALUE="human"/>
+    <OPTION NAME="-verbose"/>
+    <OPTION NAME="-warnings " VALUE="none"/>
+    <MESSAGE VALUE="^(.+):(\d+):(\d+): (error|warning|message): .+$">
+      <FIELD NAME="FILENAME" POSITION="1"/>
+      <FIELD NAME="LINE" POSITION="2" OFFSET="0"/>
+	      <FIELD NAME="COLUMN" POSITION="3" OFFSET="0"/>
+    </MESSAGE>
+    <MESSAGE VALUE="^(.+):(\d+): (error|warning|message): .+$">
+      <FIELD NAME="FILENAME" POSITION="1"/>
+      <FIELD NAME="LINE" POSITION="2" OFFSET="0"/>
+    </MESSAGE>
+    <MESSAGE VALUE="^In file included from (.+):(\d+):$">
+      <FIELD NAME="FILENAME" POSITION="1"/>
+      <FIELD NAME="LINE" POSITION="2" OFFSET="0"/>
+    </MESSAGE>
+    <POSTPROCESS CMDLINE="copy /b &quot;%OUTFILE_DIR%/%INFILE_NAME%.ino.elf&quot; &quot;%OUTFILE%&quot;"/>
+    <POSTPROCESS CMDLINE="&quot;%COMPILER_DIR_ABS_UNIX%/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-objcopy&quot; -O ihex &quot;%OUTFILE_DIR%/%OUTFILE_NAME%.elf&quot; &quot;%OUTFILE_DIR%/%OUTFILE_NAME%.hex&quot;"/>
+  </PROCESS>
+  <!-- Compilation Targets -->
+  <TARGET NAME="Debug">
+    <FILE OUTPUT="elf"/>
+    <OPTION TOOL="CC" NAME="-O" VALUE="0" DEFAULT="1"/>
+    <ENVIRONMENT NAME="CYGWIN" VALUE="nodosfilewarning"/>
+  </TARGET>
+  <TARGET NAME="Release">
+    <FILE OUTPUT="elf"/>
+    <OPTION TOOL="CC" NAME="-O" VALUE="s" DEFAULT="1"/>
+    <POSTPROCESS CMDLINE="cp &quot;%OUTFILE_NAME%.HEX&quot; &quot;%SOLUTION_ABS_DIR%/%PROJECT_NAME%.HEX&quot;"/>
+    <ENVIRONMENT NAME="CYGWIN" VALUE="nodosfilewarning"/>
+  </TARGET>
+  <TARGET NAME="tidy">
+    <ENVIRONMENT NAME="CYGWIN" VALUE="nodosfilewarning"/>
+  </TARGET>
+  <TARGET NAME="clean">
+    <ENVIRONMENT NAME="CYGWIN" VALUE="nodosfilewarning"/>
+  </TARGET>
+  <TARGET NAME="bootloader">
+    <POSTPROCESS CMDLINE="copy /b bootloader.hex+&quot;%OUTFILE_DIR%/%OUTFILE_NAME%.hex&quot; &quot;with.bootloader.hex&quot;"/>
+  </TARGET>
+  <!-- Quick Start Source Files -->
+  <SOURCE NAME="main.ino" FROM="arduinomain.ino" OPEN="1"/>
+</COMPILER>

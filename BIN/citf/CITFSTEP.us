@@ -1,0 +1,104 @@
+!!!!!!!!!! ------ Messages file for CITFSTEP project ------- !!!!!!!!!
+!  Syntax for keywords: NameOfClass.NameOfMethod.NameOfMessage
+!!!!!!!!!! --------------------------------------------------- !!!!!!!!!
+
+!-------------------readFile----------------------------------
+
+.OccObject.readFile.Fail.EmptyName
+Error: Empty file name.
+
+.OccObject.readFile.Fail.NotReadable
+Error: File %s is not accessible for reading. Please  check.
+
+.OccObject.readFile.Fail.Reading
+Error: Error during reading file %s
+
+.OccObject.readFile.Info1
+Info: File %s is read successfully.
+
+.OccObject.readFile.Fail.UnsupportedFormat
+Error: Cannot read file %s: unsupported format
+
+!--------------------exportToFile-------------------------------
+
+.OccObject.exportToFile.Fail1
+Error : Empty name of file for export.
+
+.OccObject.exportToFile.Fail2
+Error: File %s is not accessible for writing. Please  check.
+
+.OccObject.exportToFile.Fail3
+Error: Error during writing file %s.
+
+.OccObject.exportToFile.Info
+Info : File %s was written successfully.
+
+!--------------------OccPackage-------------------------------
+
+.OccPackage.addObject.InvalidArguments
+Error : Invalid arguments.
+
+.OccPackage.addObject.CreatingFailed
+Error : Creating an object is failed.
+
+.OccPackage.addBodyCAD.Fail.WrongObject
+Error: CAD object is Null or has wrong type
+
+.OccPackage.addBodyCAD.Fail.Empty
+Error: CAD object contains no geometry
+
+!--------------------OccPolygroup-------------------------------
+
+.OccPolygroup.addPolygon.EmptyPolygon
+Error : Incoming polygon is empty.
+
+.OccPolygroup.InvalidArguments
+Error : Invalid arguments.
+
+!--------------------OccPolygon-------------------------------
+
+.OccPolygon.SmallDistance
+Warning : Distance between points is too small. Last point skipped.
+
+.OccPolygon.NotEnoughPoints
+Error : Not enough points. The resulting curve is not constructed.
+	
+!--------------------OccCAD-------------------------------
+
+.OccCAD.destroy.Error.NoSuchObject.OccCAD
+Error: OccCAD instance being deleted is not found in registry
+
+.OccCAD.destroy.Error.NoSuchObject.OccPackage
+Error: OccPackage instance being deleted is not found in registry
+
+.OccCAD.destroy.Error.NoSuchObject.OccPolygon
+Error: OccPolygon instance being deleted is not found in registry
+
+.OccCAD.destroy.Error.NoSuchObject.OccPolygroup
+Error: OccPolygroup instance being deleted is not found in registry
+
+.OccCAD.destroy.Error.NoSuchObject.OccCADObject
+Error: OccCADObject instance being deleted is not found in registry
+
+.OccCAD.destroy.Error.NoSuchObject.OccMesh
+Error: OccMesh instance being deleted is not found in registry
+
+.OccCAD.destroy.Error.NoSuchObject.OccPCB
+Error: OccPCB instance being deleted is not found in registry
+
+!------------------------------OccMesh
+
+.OccMesh.setShape.FailedTriangulation
+Error: Building triangulation for face %d failed
+
+!------------------------------OccPCB
+
+.OccPCB.defineLayer.Fail.EmptyPolygroup
+Error: Cannot create layer -- input polygroup is empty.
+
+.OccPCB.defineLayer.CreatingFailed
+Error: Failed to create solid representation of the layer.
+
+.OccPCB.addComponent.Fail.EmptyPolygroup
+Error: Cannot add component -- input package is empty.
+

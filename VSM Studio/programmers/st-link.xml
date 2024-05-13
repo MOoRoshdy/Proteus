@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PROGRAMMER NAME="ST-LINK" ID="ST-LINK" AVAILABILITY="Internal">
+  <TOOL NAME="ST-LINK" FILE="stlink_upload.bat"  PATH="STM32DUINO/stm32duino/tools/stm32tools/2021.5.21/win">
+  </TOOL>
+  <FAMILY NAME="ARDUINO-STM32">
+    <CONTROLLER NAME="BluePill"/>
+  </FAMILY>
+  <FILE TYPE="HEX" DESC="Intel Hex"/>
+  <PROCESS TOOL="ST-LINK" NAME="Program Firmware" ID="PROGRAM" CMDLINE="%OPTIONS% &quot;%INFILE%&quot;">
+  </PROCESS>
+</PROGRAMMER>

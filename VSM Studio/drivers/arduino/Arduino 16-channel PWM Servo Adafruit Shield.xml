@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Adafruit" FILE="Arduino/Arduino 16-channel PWM Servo Adafruit Shield.pdsclip" DESC="Adafruit 16 Channel Pwm Servo Shield" FAMILY="ARDUINO">
+   <PERIPHERAL TYPE="PWM Servo Controller" ELEMENT="PWMC1">
+      <INTERFACE OBJECT="PwmServoController">
+         <!-- JUMPERS DEERMINE I2C ADDRESS -->
+         <PROPERTY NAME="STATE" ELEMENT="JP1" TYPE="INTEGER"/>
+         <PROPERTY NAME="STATE" ELEMENT="JP2" TYPE="INTEGER"/>
+         <PROPERTY NAME="STATE" ELEMENT="JP3" TYPE="INTEGER"/>
+         <PROPERTY NAME="STATE" ELEMENT="JP4" TYPE="INTEGER"/>
+         <PROPERTY NAME="STATE" ELEMENT="JP5" TYPE="INTEGER"/>
+         <PROPERTY NAME="STATE" ELEMENT="JP6" TYPE="INTEGER"/>
+         <SETUP NAME="begin">
+         </SETUP>
+         <CONFIG>
+          <!-- JUMPERS DETERMINE I2C ADDRESS -->
+          <PROPERTY NAME="STATE" ALIAS="JP1" ELEMENT="JP1" TYPE="JUMPERSTATE"/>
+          <PROPERTY NAME="STATE" ALIAS="JP2" ELEMENT="JP2" TYPE="JUMPERSTATE"/>
+          <PROPERTY NAME="STATE" ALIAS="JP3" ELEMENT="JP3" TYPE="JUMPERSTATE"/>
+          <PROPERTY NAME="STATE" ALIAS="JP4" ELEMENT="JP4" TYPE="JUMPERSTATE"/>
+          <PROPERTY NAME="STATE" ALIAS="JP5" ELEMENT="JP5" TYPE="JUMPERSTATE"/>
+          <PROPERTY NAME="STATE" ALIAS="JP6" ELEMENT="JP6" TYPE="JUMPERSTATE"/>
+        </CONFIG>
+      </INTERFACE>
+      <DRIVER FILE="PwmServoDriver/PwmServoDriver.xml"/>
+   </PERIPHERAL>
+</CLIP>
+
+

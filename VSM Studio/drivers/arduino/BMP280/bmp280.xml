@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!-- Driver Descriptor for Arduino BMP280 Pressure transducer -->
+<DRIVER HEADER="BMP280.h">
+   <REQUIRE HEADER="Adafruit_Sensor.h"/>
+   <REQUIRE HEADER="Wire.h"/>
+   <REQUIRE HEADER="SPI.h"/>
+
+   <!-- Function -->
+   <FUNCTION DESC="Return true if Pressure in hPa is greater or equal to the trigger value.">
+      <PARAMETER NAME="Trigger" TYPE="FLOAT" DEFAULT="0" DESC="Trigger value in hPa"/>
+      <RETURN TYPE="BOOLEAN"/>
+   </FUNCTION>
+
+   <!-- Methods returning value -->
+   <METHOD NAME="readTemperature" DESC="Read Ambient Temperature in °C.">
+      <RETURN NAME="t"    TYPE="FLOAT"/>
+   </METHOD>
+   <METHOD NAME="readPressure" DESC="Read Barometric Pressure in hPa.">
+      <RETURN NAME="p"    TYPE="FLOAT"/>
+   </METHOD>
+   <METHOD NAME="readSealevelPressure" DESC="Read Sea Level Pressure in hPa from given altitude value in meter.">
+      <PARAMETER NAME="a" TYPE="FLOAT" DEFAULT="0.0" DESC="Altitude value (meter)"/>
+      <PARAMETER NAME="s" TYPE="FLOAT" DEFAULT="1013.25" DESC="Sea Level Pressure (hPa)"/>
+      <RETURN NAME="p"    TYPE="FLOAT"/>
+   </METHOD>
+   <METHOD NAME="readAltitude" DESC="Read Altitude in meter from a given Sea Level Pressure in hPa.">
+      <PARAMETER NAME="p" TYPE="FLOAT" DEFAULT="1013.25" DESC="Sea Level Pressure (hPa)"/>
+      <RETURN NAME="a"    TYPE="FLOAT"/>
+   </METHOD>
+
+</DRIVER>

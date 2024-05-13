@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DRIVER HEADER="uart.h">
+   <REQUIRE HEADER="core.h"/>
+   <REQUIRE HEADER="HardwareSerial.h"/>
+
+   <ENUMERATION NAME="BAUD">
+      <CONSTANT NAME="300"    VALUE="300"/>
+      <CONSTANT NAME="1200"   VALUE="1200"/>
+      <CONSTANT NAME="2400"   VALUE="2400"/>
+      <CONSTANT NAME="4800"   VALUE="4800"/>
+      <CONSTANT NAME="9600"   VALUE="9600"/>
+      <CONSTANT NAME="19200"  VALUE="19200"/>
+      <CONSTANT NAME="57600"  VALUE="57600"/>
+      <CONSTANT NAME="115200" VALUE="115200"/>
+   </ENUMERATION>
+   <ENUMERATION NAME="CONFIG">           
+      <CONSTANT NAME="SERIAL_8N1" VALUE="0x00"/>
+      <CONSTANT NAME="SERIAL_8N2" VALUE="0x20"/>
+      <CONSTANT NAME="SERIAL_9N1" VALUE="0x08"/>
+      <CONSTANT NAME="SERIAL_9N2" VALUE="0x28"/>
+      
+      <CONSTANT NAME="SERIAL_8E1" VALUE="0x0A"/>
+      <CONSTANT NAME="SERIAL_8E2" VALUE="0x2A"/>
+
+      <CONSTANT NAME="SERIAL_8O1" VALUE="0x0B"/>
+      <CONSTANT NAME="SERIAL_8O2" VALUE="0x2B"/>
+    </ENUMERATION>
+    <ENUMERATION NAME="BASE">
+      <CONSTANT NAME="DECIMAL" VALUE="10"/>
+      <CONSTANT NAME="BINARY" VALUE="2"/>
+      <CONSTANT NAME="OCTAL"  VALUE="8"/>
+      <CONSTANT NAME="HEX"  VALUE="16"/>
+    </ENUMERATION>
+
+   <FUNCTION DESC="Data Available">
+      <RETURN TYPE="BOOLEAN"/>
+   </FUNCTION>         
+
+   <METHOD NAME="setup" DESC="Configure the UART">
+      <PARAMETER NAME="baud" TYPE="BAUD" DEFAULT="9600" DESC="Baud rate"/>
+      <PARAMETER NAME="config" TYPE="CONFIG" DEFAULT="SERIAL_8N1" DESC="Configuration"/>
+   </METHOD>
+   
+   <!-- High level -->   
+   <METHOD NAME="input" DESC="Input a string">
+      <PARAMETER NAME="echo" TYPE="BOOLEAN" DEFAULT="TRUE" DESC="Echo the typed characters"/>
+      <RETURN NAME="input" TYPE="STRING" DEFAULT="input" DESC="Input string"/>
+   </METHOD>            
+   <METHOD NAME="read" DESC="Read delimited data">
+      <PARAMETER TYPE="LIST" BYREF="1" DESC="List of variables to read."/>
+   </METHOD>
+   <METHOD NAME="write"  DESC="Write delimited data">
+      <PARAMETER TYPE="LIST" DEFAULT="" DESC="List of strings or numbers to write"/>
+   </METHOD>               
+   <METHOD NAME="print"  DESC="Print data without newline.">
+       <PARAMETER TYPE="LIST" DEFAULT="" DESC="List of strings or numbers to print"/>
+   </METHOD>
+   <METHOD NAME="println"  DESC="Print data with terminating newline.">
+       <PARAMETER TYPE="LIST" DEFAULT="" DESC="List of strings or numbers to print"/>
+   </METHOD>
+   <METHOD NAME="setBase" DESC="Set the base to use for integer values.">
+       <PARAMETER NAME="base" TYPE="BASE" DESC="Number base"/>
+   </METHOD>
+   <METHOD NAME="setPlaces" DESC="Set the number of places to use for floating point values.">
+      <PARAMETER NAME="places" TYPE="INTEGER" DEFAULT="2" DESC="Number of decimal places"/>
+   </METHOD>
+           
+   <!-- Low level -->
+   <METHOD NAME="send"  DESC="Send a character code.">
+       <PARAMETER NAME="code" TYPE="INTEGER" DEFAULT="" DESC="Character code"/>
+   </METHOD>
+   <METHOD NAME="recv"  DESC="Receive a character code.">
+       <RETURN TYPE="INTEGER" DEFAULT="code" DESC="Character code or -1 if none"/>
+   </METHOD>
+   <METHOD NAME="available"  DESC="Get the number of available characters to read.">
+       <RETURN TYPE="INTEGER" DEFAULT="code" DESC="Number of characters"/>
+   </METHOD>
+   
+
+   
+      
+
+</DRIVER>

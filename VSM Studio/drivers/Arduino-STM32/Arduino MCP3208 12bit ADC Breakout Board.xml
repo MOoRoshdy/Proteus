@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Breakout Peripherals" FILE="Arduino-STM32/Arduino MCP3208 12bit ADC Breakout Board.pdsclip" DESC="Arduino MCP3208 12bit ADC Breakout Board" FAMILY="Arduino-STM32">
+   <PERIPHERAL TYPE="MCP3208 12bit ADC" ELEMENT="ADC1">
+      <INTERFACE OBJECT="MCP3208">
+         <PORT NAME="SPI"/>
+         <PIN NAME="ss" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PA4"/>
+         </PIN>
+         <SETUP NAME="begin"/>
+      </INTERFACE>
+      <DRIVER FILE="mcp3208/mcp3208.xml"/>
+   </PERIPHERAL>
+</CLIP>
+

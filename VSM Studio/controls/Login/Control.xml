@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<CONTROL CHECKPLACEMENT="1">
+   <CONFIG>
+
+      <SETUP NAME="init">
+         <PROPERTY NAME="password" TYPE="STRING" DEFAULT="password123" DESC="Password needed to login" />
+      </SETUP>
+
+      <ENUMERATION NAME="POSITION">
+           <CONSTANT NAME="None" VALUE="0"/> 
+           <CONSTANT NAME="Above" VALUE="1"/> 
+           <CONSTANT NAME="Below" VALUE="2"/>
+           <CONSTANT NAME="Left" VALUE="3"/>       
+           <CONSTANT NAME="Right" VALUE="4"/>       
+      </ENUMERATION>    
+
+  	   <PROPERTY NAME="loginText" DESC="Text for locked button label" TYPE="STRING" DEFAULT="Log In"/>
+      <PROPERTY NAME="logoutText" DESC="Text for unlocked button label" TYPE="STRING" DEFAULT="Log Out"/>
+  	   <PROPERTY NAME="loginPrompt" DESC="Prompt for login dialog box." TYPE="STRING" DEFAULT="Enter the password to log in:"/>
+  	   <PROPERTY NAME="logoutPrompt" DESC="Prompt for logout dialog box." TYPE="STRING" DEFAULT="Do you wish to log out?"/>
+  	   <PROPERTY NAME="errorPrompt" DESC="Prompt for login failure." TYPE="STRING" DEFAULT="The password is incorrect."/>
+  	   <PROPERTY NAME="labelPosition" DESC="Position of button label" TYPE="POSITION" DEFAULT="2"/>
+  	   <PROPERTY NAME="labelSpacing" DESC="Distance of the label from the button" TYPE="INTEGER" DEFAULT="10"/>
+  	   <PROPERTY NAME="labelFont" DESC="Font for the label" TYPE="FONT"/>
+ 	   <PROPERTY NAME="lampColour" DESC="Colour for the state indicator lamp" TYPE="RGB" DEFAULT="#FF9F00" />     
+
+   </CONFIG>
+   
+   <!-- Driver Descriptor for Login Push-Button  -->
+   <DRIVER HEADER="Controls">
+         <REQUIRE MODULE="SERVER" TYPE="VFP" />
+         <RESOURCE FILE="scripts/alerts.js" />
+         <RESOURCE FILE="scripts/alerts.css" />
+         <RESOURCE FILE="images/alert_title.gif" />
+         <RESOURCE FILE="images/alert_info.gif" />
+         <RESOURCE FILE="images/alert_warning.gif" />
+         <RESOURCE FILE="images/alert_error.gif" />
+         <RESOURCE FILE="images/alert_query.gif" />
+         
+         <FUNCTION DESC="Return current authentication state">
+            <RETURN TYPE="BOOLEAN" />
+         </FUNCTION>
+
+         <METHOD NAME="setPassword" DESC="Set new password">
+            <PARAMETER NAME="password" TYPE="STRING" DESC="New password required to login" />
+         </METHOD>
+
+         <METHOD NAME="logOut" DESC="Logout of system and flag user as not logged in"></METHOD>
+
+   </DRIVER>
+</CONTROL>

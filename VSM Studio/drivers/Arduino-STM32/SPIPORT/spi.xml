@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DRIVER HEADER="spiport.h">
+   <REQUIRE HEADER="core.h"/>
+   <REQUIRE HEADER="SPI.h"/>
+
+   <ENUMERATION NAME="CLOCK">
+      <CONSTANT NAME="SPI_CLOCK_DIV2" VALUE="SPI_CLOCK_DIV2"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV4" VALUE="SPI_CLOCK_DIV4"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV8" VALUE="SPI_CLOCK_DIV8"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV16" VALUE="SPI_CLOCK_DIV16"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV32" VALUE="SPI_CLOCK_DIV32"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV64" VALUE="SPI_CLOCK_DIV64"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV128" VALUE="SPI_CLOCK_DIV128"/>
+      <CONSTANT NAME="SPI_CLOCK_DIV256" VALUE="SPI_CLOCK_DIV256"/>
+   </ENUMERATION>
+
+   <ENUMERATION NAME="BITORDER">
+      <CONSTANT NAME="LSBFIRST" VALUE="LSBFIRST"/>
+      <CONSTANT NAME="MSBFIRST" VALUE="MSBFIRST"/>
+   </ENUMERATION>
+
+   <ENUMERATION NAME="SPIMODE">
+      <CONSTANT NAME="SPI_MODE0" VALUE="SPI_MODE0"/>
+      <CONSTANT NAME="SPI_MODE1" VALUE="SPI_MODE1"/>
+      <CONSTANT NAME="SPI_MODE2" VALUE="SPI_MODE2"/>
+      <CONSTANT NAME="SPI_MODE3" VALUE="SPI_MODE3"/>
+   </ENUMERATION>
+
+      
+   <METHOD NAME="setup" DESC="Configure the SPI Hardware">
+      <PARAMETER NAME="clock" TYPE="CLOCK" DEFAULT="SPI_CLOCK_DIV16" DESC="SPI Clock Speed"/>
+      <PARAMETER NAME="order" TYPE="BITORDER" DEFAULT="MSBFIRST" DESC="Bit Order"/>
+      <PARAMETER NAME="mode" TYPE="SPIMODE" DEFAULT="SPI_MODE0" DESC="SPI MODE (Clock Phase &amp; Polarity)"/>      
+   </METHOD>
+   
+   <METHOD NAME="beginTransaction" DESC="Start a bus transaction (SS low)">
+      <PARAMETER NAME="pin" TYPE="INTEGER" DEFAULT="PA4" DESC="Pin to use for NSS"/>      
+   </METHOD>   
+   <METHOD NAME="endTransaction" DESC="End a bus transaction (SS high)"/>
+   
+   <METHOD NAME="send" DESC="Send 8 bit command data, received data is ignored">
+      <PARAMETER TYPE="LIST"  DESC="Data to transmit"/>
+   </METHOD>            
+   <METHOD NAME="send16" DESC="Send 16 bit command data, received data is ignored">
+      <PARAMETER TYPE="LIST"  DESC="Data to transmit"/>
+   </METHOD>            
+   <METHOD NAME="transfer" DESC="Send/Receive 8 bits of data">
+      <PARAMETER NAME="data" TYPE="INTEGER"  DESC="Data to transmit"/>
+      <RETURN NAME="data" TYPE="INTEGER"  DESC="Data to receive"/>
+   </METHOD>            
+   <METHOD NAME="transfer16" DESC="Send/Receive 16 bits of data">
+      <PARAMETER NAME="data" TYPE="INTEGER"  DESC="Data to transmit"/>
+      <RETURN NAME="data" TYPE="INTEGER"  DESC="Data to receive"/>
+   </METHOD>            
+        
+
+</DRIVER>

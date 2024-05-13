@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DRIVER HEADER="eestore.h">
+   <REQUIRE HEADER="Core.h"/>
+   <REQUIRE HEADER="eeprom.h"/>
+
+   <FUNCTION DESC="Storage is valid">
+       <RETURN TYPE="BOOLEAN"/>
+   </FUNCTION>
+
+   <METHOD NAME="rewind" DESC="Reset the current address for put/get operations">
+      <PARAMETER NAME="address" TYPE="INTEGER" DEFAULT="0"  DESC="I2C address"/>
+   </METHOD>      
+   
+   <METHOD NAME="put" DESC="Write a list of values to the EEPROM">
+      <PARAMETER TYPE="LIST"  DESC="Data to transmit"/>
+   </METHOD>            
+   
+   <METHOD NAME="get" DESC="Read a list of values from the EEPROM">
+      <PARAMETER TYPE="LIST"  BYREF="1" DESC="Variables to receive data"/>      
+   </METHOD>            
+        
+   <METHOD NAME="write" DESC="Write byte to the EEPROM">
+      <PARAMETER NAME="addr" TYPE="INTEGER" DESC="EEPROM address (0-511)"/>
+      <PARAMETER NAME="data" TYPE="INTEGER" DESC="Data value"/>
+   </METHOD>
+
+   <METHOD NAME="read" DESC="Read byte from the EEPROM">
+      <PARAMETER NAME="addr" TYPE="INTEGER" DESC="EEPROM address (0-511)"/>
+      <RETURN NAME="data" TYPE="INTEGER" DEFAULT="data" DESC="Data value"/>
+   </METHOD>
+
+</DRIVER>

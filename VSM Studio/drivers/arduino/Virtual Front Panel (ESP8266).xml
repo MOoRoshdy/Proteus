@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<CLIP CATEGORY="Internet of Things" FILE="Arduino/Virtual Front Panel (ESP8266).pdsclip" DESC="VFP Server (ESP8266)" FAMILY="ARDUINO" >
+    
+    <PERIPHERAL TYPE="SERVER" DESC="ESP8266 VFP Server" ELEMENT="ESP1" SUFFIX="SERVER" OPTIONAL="1" ENABLED="1">
+        <INTERFACE OBJECT="Vfp8266::Server" EXTERNAL="VFP">
+         <PORT NAME="UART"/>
+          <CONFIG>
+            <SETUP NAME="begin">
+              <PROPERTY NAME="PORT" DESC="IP port to be used by the VFP server" ELEMENT="ESP1" TYPE="INTEGER"/>
+            </SETUP>
+            <MODEL>
+              <PROPERTY NAME="SHOWBROWSER" DESC="Use the built in web browser to display the front panel." ELEMENT="ESP1" TYPE="BOOLEAN"/>
+            </MODEL>
+          </CONFIG>
+         <LOOP NAME="poll"/>
+         <SERVER TYPE="VFP" TRANSPORT="ETHERNET" ELEMENT="ESP1"/>
+        </INTERFACE>
+        <DRIVER FILE="Vfp8266/VfpServer.xml"/>
+    </PERIPHERAL>            	   
+    
+    <PERIPHERAL TYPE="STORAGE" DESC="ESP8266 Storage" ELEMENT="ESP1" SUFFIX="STORAGE" OPTIONAL="1" ENABLED="1">
+       <INTERFACE OBJECT="Vfp8266::FileStore" EXTERNAL="FS" >
+         <SETUP NAME="begin"></SETUP>  
+         <STORAGE NAME="MANIFEST" ELEMENT="ESP1"/>
+        </INTERFACE>
+        <DRIVER FILE="Vfp8266/FileStore.xml"/>
+    </PERIPHERAL>            	   
+
+    <PERIPHERAL TYPE="CLIENT" DESC="ESP8266 HTTP Client" ELEMENT="ESP1" SUFFIX="CLIENT" OPTIONAL="1">
+       <INTERFACE OBJECT="Vfp8266::Client" EXTERNAL="CLIENT" >
+         <SETUP NAME="begin"></SETUP>  
+       </INTERFACE>
+       <DRIVER FILE="Vfp8266/Client.xml"/>
+    </PERIPHERAL>    
+    
+    <PERIPHERAL TYPE="MQTT" DESC="ESP8266 MQTT" ELEMENT="ESP1" SUFFIX="MQTT" OPTIONAL="1">
+       <INTERFACE OBJECT="Mqtt" EXTERNAL="Mqtt::instance" >
+         <CONFIG>
+           <SETUP NAME="begin">
+             <PROPERTY NAME="MQTT_CLIENTID" ALIAS="clientID" DESC="Unique Identifier for this MQTT Client" TYPE="STRING" DEFAULT="VSM-ESP8266"/>
+             <PROPERTY NAME="MQTT_SERVER" ALIAS="server" DESC="IP address or DNS name of MQTT broker" TYPE="STRING" DEFAULT="localhost" />
+             <PROPERTY NAME="MQTT_PORT" ALIAS="port" DESC="IP port of MQTT broker" TYPE="INTEGER" DEFAULT="1883" />
+             <PROPERTY NAME="MQTT_USER" ALIAS="user" DESC="Username for connect (optional)" TYPE="STRING"  />
+             <PROPERTY NAME="MQTT_PASS" ALIAS="password" DESC="Password for connect (optional)" TYPE="STRING" />
+           </SETUP>
+           <MACRO>
+              <PROPERTY NAME="MQTT_DEBUG" ALIAS="debug" DESC="Emit debug messages to the Bridge Console" TYPE="BOOLEAN" DEFAULT="1"/>
+              <PROPERTY NAME="BRIDGE_BAUDRATE" ALIAS="baudrate" DESC="Baudrate for Bridge Library" TYPE="INTEGER" DEFAULT="115200" HIDDEN="1"/>
+           </MACRO>
+         </CONFIG>
+         <LOOP NAME="poll"/>
+       </INTERFACE>
+      <DRIVER FILE="MQTT/mqtt.xml"/>
+    </PERIPHERAL>           	   
+
+</CLIP>
+	
+  

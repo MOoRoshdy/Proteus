@@ -1,0 +1,39 @@
+;-------------------------------------------------------------------------------
+;
+;		  ASCII control character definitions
+;
+;-------------------------------------------------------------------------------
+
+NUL	EQU	$00		;[^@] Null - string terminator
+SOH	EQU	$01		;[^A] Start of Header
+STX	EQU	$02		;[^B] Start of Text
+ETX	EQU	$03		;[^C] End of Text
+EOT	EQU	$04		;[^D] End of Text
+ENQ	EQU	$05		;[^E] Enquiry
+ACK	EQU	$06		;[^F] Acknowledge
+BEL	EQU	$07		;[^G] Bell
+BS	EQU	$08		;[^H] Backspace
+HT	EQU	$09		;[^I] Horizontal tab
+LF	EQU	$0A		;[^J] Linefeed
+VT	EQU	$0B		;[^K] Vertical tab
+FF	EQU	$0C		;[^L] Form feed
+CR	EQU	$0D		;[^M] Carriage return
+SO	EQU	$0E		;[^N] Shift out
+SI	EQU	$0F		;[^O] Shift in
+DLE	EQU	$10		;[^P]
+DC1	EQU	$11		;[^Q] Device control 1
+DC2	EQU	$12		;[^R] Device control 2
+DC3	EQU	$13		;[^S] Device control 3
+DC4	EQU	$14		;[^T] Device control 4
+NAK	EQU	$15		;[^U] Negative acknowledge
+SYN	EQU	$16		;[^V] Synchronize
+ETB	EQU	$17		;[^W]
+CAN	EQU	$18		;[^X] Cancel
+EM	EQU	$19		;[^Y]
+SUB	EQU	$1A		;[^Z] Substitute
+ESC	EQU	$1B		;[^[] Escape
+FS	EQU	$1C		;[^\] Field separator
+GS	EQU	$1D		;[^]] Group separator
+RS	EQU	$1E		;[^^] Record separator
+US	EQU	$1F		;[^_] Unit separator
+SPC	EQU	$20		;Space

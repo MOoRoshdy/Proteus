@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Grove" FILE="Grove/Grove Luminance Sensor.pdsclip" DESC="Grove Luminance Sensor Module" FAMILY="ARDUINO" >
+   <PERIPHERAL NAME="Grove Luminance Sensor"  ELEMENT="PD1" >   
+     <!-- Hardware Interface -->
+     <INTERFACE OBJECT="GroveLuminanceSensor">
+         <PROPERTY NAME="STATE" ELEMENT="GC1" TYPE="INTEGER" GROVE="ANALOG"/>
+         <CONFIG>
+            <ENUMERATION NAME="LUMLEVEL">
+               <CONSTANT NAME="ZERO (Dark)" VALUE="0"/>
+               <CONSTANT NAME="ONE" VALUE="1"/>
+               <CONSTANT NAME="TWO" VALUE="2"/>
+               <CONSTANT NAME="THREE" VALUE="3"/>
+               <CONSTANT NAME="FOUR" VALUE="4"/>
+               <CONSTANT NAME="FIVE" VALUE="5"/>
+               <CONSTANT NAME="SIX" VALUE="6"/>
+               <CONSTANT NAME="SEVEN" VALUE="7"/>
+               <CONSTANT NAME="EIGHT" VALUE="8"/>
+               <CONSTANT NAME="NINE (Light)" VALUE="9"/>
+             </ENUMERATION>
+          <!-- Luminance configuration -->
+          <PROPERTY NAME="STATE" ALIAS="LUM" ELEMENT="PD1" TYPE="LUMLEVEL"/>
+         </CONFIG>
+     </INTERFACE>
+   
+     <!-- Firmware Driver -->
+     <DRIVER HEADER="Grove.h">
+       <!-- Sensor Function -->
+       <FUNCTION DESC="Return true if light is greater or equal to the trigger value.">
+         <PARAMETER NAME="Trigger" TYPE="FLOAT" DEFAULT="0" DESC="Trigger value in Lux"/>
+         <RETURN TYPE="BOOLEAN"/>
+       </FUNCTION>
+       <!-- Methods -->
+       <METHOD NAME="readLuminance" DESC="Read Light."> 
+         <RETURN NAME="reading" TYPE="FLOAT" DEFAULT="Lux"/>
+       </METHOD>
+       <METHOD NAME="readVoltage" DESC="Read Voltage.">
+           <RETURN NAME="reading" TYPE="FLOAT" DEFAULT="Volt"/>
+       </METHOD>
+     </DRIVER>
+   </PERIPHERAL>
+</CLIP>   

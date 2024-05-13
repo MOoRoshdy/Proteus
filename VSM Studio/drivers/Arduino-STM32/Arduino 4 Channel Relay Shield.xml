@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Adafruit" FILE="Arduino-STM32/Arduino 4 Channel Relay Shield.pdsclip" DESC="Arduino 4 Channel Relay Numato Shield" FAMILY="Arduino-STM32">
+   <PERIPHERAL TYPE="4 Channel Relay Shield" ELEMENT="CRS1">
+      <INTERFACE OBJECT="RelayBoards">
+         <PIN NAME="r1" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PA10"/>
+         </PIN>
+         <PIN NAME="r2" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PA11"/>
+         </PIN>
+         <PIN NAME="r2" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PA12"/>
+         </PIN>
+         <PIN NAME="r3" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="PA13"/>
+         </PIN>
+      </INTERFACE>
+      <DRIVER FILE="RelayBoards/RelayBoards.xml"/>     
+   </PERIPHERAL>
+</CLIP>

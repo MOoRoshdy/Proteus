@@ -1,0 +1,459 @@
+;-------------------------------------------------------------------------------
+;
+;	      Motorola 68HC11E series I/O register definitions
+;
+;-------------------------------------------------------------------------------
+;
+; The symbols defined in this file conform to Motorola's naming conventions.
+;
+; Symbol suffix denotes usage:
+;
+; None	Extended:
+;	LDAA	PORTA
+;
+; "_"	Indirect using index register:
+;	LDAA	PORTA_,X
+;
+; "."	Bit mask for individual bits within a register:
+;	BCLR	PORTA_,X,PA6.
+;
+;-------------------------------------------------------------------------------
+
+IOBase	EQU	$1000		;I/O register base address
+
+;	Port A
+
+PORTA_	EQU	$00		;Port A (8-bit offset address)
+PORTA	EQU	PORTA_+IOBase	;Port A (16-bit absolute address)
+PA0.	EQU	$01		;Port A register bits
+PA1.	EQU	$02		;
+PA2.	EQU	$04		;
+PA3.	EQU	$08		;
+PA4.	EQU	$10		;
+PA5.	EQU	$20		;
+PA6.	EQU	$40		;
+PA7.	EQU	$80		;
+
+;	Port B
+
+PORTB_	EQU	$04		;Port B
+PORTB	EQU	PORTB_+IOBase	;
+PB0.	EQU	$01		;
+PB1.	EQU	$02		;
+PB2.	EQU	$04		;
+PB3.	EQU	$08		;
+PB4.	EQU	$10		;
+PB5.	EQU	$20		;
+PB6.	EQU	$40		;
+PB7.	EQU	$80		;
+
+;	Port C
+
+PORTC_	EQU	$03		;Port C
+PORTC	EQU	PORTC_+IOBase	;
+PC0.	EQU	$01		;
+PC1.	EQU	$02		;
+PC2.	EQU	$04		;
+PC3.	EQU	$08		;
+PC4.	EQU	$10		;
+PC5.	EQU	$20		;
+PC6.	EQU	$40		;
+PC7.	EQU	$80		;
+
+DDRC_	EQU	$07		;Port C data direction
+DDRC	EQU	DDRC_+IOBase	;
+DDC0.	EQU	$01		;
+DDC1.	EQU	$02		;
+DDC2.	EQU	$04		;
+DDC3.	EQU	$08		;
+DDC4.	EQU	$10		;
+DDC5.	EQU	$20		;
+DDC6.	EQU	$40		;
+DDC7.	EQU	$80		;
+
+PIOC_	EQU	$02		;Port C I/O control
+PIOC	EQU	PIOC_+IOBase	;
+INVB.	EQU	$01		;
+EGA.	EQU	$02		;
+PLS.	EQU	$04		;
+OIN.	EQU	$08		;
+HNDS.	EQU	$10		;
+CWOM.	EQU	$20		;
+STAI.	EQU	$40		;
+STAF.	EQU	$80		;
+
+PORTCL_	EQU	$05		;Port C latch
+PORTCL	EQU	PORTCL_+IOBase	;
+PCL0.	EQU	$01		;
+PCL1.	EQU	$02		;
+PCL2.	EQU	$04		;
+PCL3.	EQU	$08		;
+PCL4.	EQU	$10		;
+PCL5.	EQU	$20		;
+PCL6.	EQU	$40		;
+PCL7.	EQU	$80		;
+
+;	Port D
+
+PORTD_	EQU	$08		;Port D
+PORTD	EQU	PORTD_+IOBase	;
+PD0.	EQU	$01		;
+PD1.	EQU	$02		;
+PD2.	EQU	$04		;
+PD3.	EQU	$08		;
+PD4.	EQU	$10		;
+PD5.	EQU	$20		;
+
+DDRD_	EQU	$09		;Port D data direction
+DDRD	EQU	DDRD_+IOBase	;
+DDD0.	EQU	$01		;
+DDD1.	EQU	$02		;
+DDD2.	EQU	$04		;
+DDD3.	EQU	$08		;
+DDD4.	EQU	$10		;
+DDD5.	EQU	$20		;
+
+;	Port E
+
+PORTE_	EQU	$0A		;Port E
+PORTE	EQU	PORTE_+IOBase	;
+PE0.	EQU	$01		;
+PE1.	EQU	$02		;
+PE2.	EQU	$04		;
+PE3.	EQU	$08		;
+PE4.	EQU	$10		;
+PE5.	EQU	$20		;
+PE6.	EQU	$40		;
+PE7.	EQU	$80		;
+
+;	Timer: Output compare control
+
+CFORC_	EQU	$0B		;Timer output compare force
+CFORC	EQU	CFORC_+IOBase	;
+FOC1.	EQU	$80		;
+FOC2.	EQU	$40		;
+FOC3.	EQU	$20		;
+FOC4.	EQU	$10		;
+FOC5.	EQU	$08		;
+
+OC1M_	EQU	$0C		;Output compare #1 mask
+OC1M	EQU	OC1M_+IOBase	;
+OC1M3.	EQU	$08		;
+OC1M4.	EQU	$10		;
+OC1M5.	EQU	$20		;
+OC1M6.	EQU	$40		;
+OC1M7.	EQU	$80		;
+
+OC1D_	EQU	$0D		;Output compare #1 data
+OC1D	EQU	OC1D_+IOBase	;
+OC1D3.	EQU	$08		;
+OC1D4.	EQU	$10		;
+OC1D5.	EQU	$20		;
+OC1D6.	EQU	$40		;
+OC1D7.	EQU	$80		;
+
+;	Timer: counter
+
+TCNT_	EQU	$0E		;Timer counter
+TCNT	EQU	TCNT_+IOBase	;
+
+;	Timer: Input captures
+
+TIC1_	EQU	$10		;Timer input capture #1 [PA2]
+TIC1	EQU	TIC1_+IOBase	;
+
+TIC2_	EQU	$12		;Timer input capture #2 [PA1]
+TIC2	EQU	TIC2_+IOBase	;
+
+TIC3_	EQU	$14		;Timer input capture #3 [PA0]
+TIC3	EQU	TIC3_+IOBase	;
+
+TIC4_	EQU	$1E		;Timer input capture #4 [PA3]
+TIC4	EQU	TIC4_+IOBase	; Note: same location as TOC5
+
+;	Timer: output compares
+
+TOC1_	EQU	$16		;Timer output compare #1 [PA4-PA7]
+TOC1	EQU	TOC1_+IOBase	;
+
+TOC2_	EQU	$18		;Timer output compare #2 [PA6]
+TOC2	EQU	TOC2_+IOBase	;
+
+TOC3_	EQU	$1A		;Timer output compare #3 [PA5]
+TOC3	EQU	TOC2_+IOBase	;
+
+TOC4_	EQU	$1C		;Timer output compare #4 [PA4]
+TOC4	EQU	TOC2_+IOBase	;
+
+TOC5_	EQU	$1E		;Timer output compare #5 [PA3]
+TOC5	EQU	TOC2_+IOBase	; Note: same location as TIC4
+
+;	Timer: control & interrupts
+
+TCTL1_	EQU	$20		;Timer control register 1
+TCTL1	EQU	TCTL1_+IOBase	;
+OL5.	EQU	$01		;
+OM5.	EQU	$02		;
+OL4.	EQU	$04		;
+OM4.	EQU	$08		;
+OL3.	EQU	$10		;
+OM3.	EQU	$20		;
+OL2.	EQU	$40		;
+OM2.	EQU	$80		;
+
+TCTL2_	EQU	$21		;Timer control register 2
+TCTL2	EQU	TCTL2_+IOBase	;
+EDG3A.	EQU	$01		;
+EDG3B.	EQU	$02		;
+EDG2A.	EQU	$04		;
+EDG2B.	EQU	$08		;
+EDG1A.	EQU	$10		;
+EDG1B.	EQU	$20		;
+EDG4A.	EQU	$40		;
+EDG4B.	EQU	$80		;
+
+TMSK1_	EQU	$22		;Timer interrupt mask register 1
+TMSK1	EQU	TMSK1_+IOBase	;
+IC3I.	EQU	$01		;
+IC2I.	EQU	$02		;
+IC1I.	EQU	$04		;
+IC4I.	EQU	$08		;(alias:OC5I)
+OC5I.	EQU	$08		;(alias:IC4I)
+OC4I.	EQU	$10		;
+OC3I.	EQU	$20		;
+OC2I.	EQU	$40		;
+OC1I.	EQU	$80
+
+TFLG1_	EQU	$23		;Timer interrupt flag register 1
+TFLG1	EQU	TFLG1_+IOBase	;
+IC3F.	EQU	$01		;
+IC2F.	EQU	$02		;
+IC1F.	EQU	$04		;
+IC4F.	EQU	$08		;(alias:OC5F)
+OC5F.	EQU	$08		;(alias:IC4F)
+OC4F.	EQU	$10		;
+OC3F.	EQU	$20		;
+OC2F.	EQU	$40		;
+OC1F.	EQU	$80
+
+TMSK2_	EQU	$24		;Timer interrupt mask register 2
+TMSK2.	EQU	TMSK2_+IOBase	;
+PR0.	EQU	$01		;
+PR1.	EQU	$02		;
+PAII.	EQU	$10		;
+PAOVI.	EQU	$20		;
+RTII.	EQU	$40		;
+TOI.	EQU	$80		;
+
+TFLG2_	EQU	$25		;Timer interrupt flag register 2
+TFLG2	EQU	TFLG2_+IOBase	;
+PAIF.	EQU	$10		;
+PAOVF.	EQU	$20		;
+RTIF.	EQU	$40		;
+TOF.	EQU	$80		;
+
+;	Pulse accumulator
+
+PACTL_	EQU	$26		;Pulse accumulator, port A control
+PACTL	EQU	PACTL_+IOBase	;
+RTR0.	EQU	$01		;
+RTR1.	EQU	$02		;
+I4O5.	EQU	$04		;
+DDRA3.	EQU	$08		;
+PEDGE.	EQU	$10		;
+PAMOD.	EQU	$20		;
+PAEN.	EQU	$40		;
+DDRA7.	EQU	$80		;
+
+PACNT_	EQU	$27		;Pulse accumulator counter
+PACNT	EQU	PACNT_+IOBase	;
+
+;	Serial Peripheral Interface (SPI)
+
+SPCR_	EQU	$28		;SPI configuration register
+SPCR	EQU	IOBase+SPCR_	;
+SPR0.	EQU	$01		;
+SPR1.	EQU	$02		;
+CPHA.	EQU	$04		;
+CPOL.	EQU	$08		;
+MSTR.	EQU	$10		;
+DWOM.	EQU	$20		;
+SPE.	EQU	$40		;
+SPIE.	EQU	$80		;
+
+SPSR_	EQU	$29		;SPI status register
+SPSR	EQU	IOBase+SPSR_	;
+MODF.	EQU	$10		;
+WCOL.	EQU	$40		;
+SPIF.	EQU	$80		;
+
+SPDR_	EQU	$2A		;SPI data register
+SPDR	EQU	IOBase+SPDR_	;
+
+;	Serial Communications Interface (SCI)
+
+BAUD_	EQU	$2B		;SCI baud rate control
+BAUD	EQU	IOBase+BAUD_	;
+SCR0.	EQU	$01		;
+SCR1.	EQU	$02		;
+SCR2.	EQU	$04		;
+RCKB.	EQU	$08		;
+SCP0.	EQU	$10		;
+SCP1.	EQU	$20		;
+SCP2.	EQU	$40		;(E20 ONLY)
+TCLR.	EQU	$80		;
+
+SCCR1_	EQU	$2C		;SCI configuration register 1
+SCCR1	EQU	IOBase+SCCR1_	;
+WAKE.	EQU	$08		;
+M.	EQU	$10		;
+T8.	EQU	$40		;
+R8.	EQU	$80		;
+
+SCCR2_	EQU	$2D		;SCI configuration ragister 2
+SCCR2	EQU	IOBase+SCCR2_	;
+SBK.	EQU	$01		;
+RWU.	EQU	$02		;
+RE.	EQU	$04		;
+TE.	EQU	$08		;
+ILIE.	EQU	$10		;
+RIE.	EQU	$20		;
+TCIE.	EQU	$40		;
+TIE.	EQU	$80		;
+
+SCSR_	EQU	$2E		;SCI status register
+SCSR	EQU	IOBase+SCSR_	;
+FE.	EQU	$02		;
+NF.	EQU	$04		;
+OR.	EQU	$08		;
+IDLE.	EQU	$10		;
+RDRF.	EQU	$20		;
+TC.	EQU	$40		;
+TDRE.	EQU	$80		;
+
+SCDR_	EQU	$2F		;SCI data register
+SCDR	EQU	IOBase+SCDR_	;
+
+;	Analog-to-digital converter
+
+ADCTL_	EQU	$30		;A/D converter control
+ADCTL	EQU	IOBase+ADCTL_	;
+CA.	EQU	$01		;
+CB.	EQU	$02		;
+CC.	EQU	$04		;
+CD.	EQU	$08		;
+MULT.	EQU	$10		;
+SCAN.	EQU	$20		;
+CCF.	EQU	$80		;
+
+ADR1_	EQU	$31		;A/D converter result #1
+ADR1	EQU	IOBase+ADR1_	;
+
+ADR2_	EQU	$32		;A/D converter result #2
+ADR2	EQU	IOBase+ADR2_	;
+
+ADR3_	EQU	$33		;A/D converter result #3
+ADR3	EQU	IOBase+ADR3_	;
+
+ADR4_	EQU	$34		;A/D converter result #4
+ADR4	EQU	IOBase+ADR4_	;
+
+;	Nonvolatile memory programming control
+
+BPROT_	EQU	$35		;EEPROM protection control
+BPROT	EQU	IOBase+BPROT_	;
+BPRT0.	EQU	$01		;
+BPRT1.	EQU	$02		;
+BPRT2.	EQU	$04		;
+BPRT3.	EQU	$08		;
+PTCON.	EQU	$10		;
+
+EPROG_	EQU	$36		;EPROM programming control - E20 ONLY
+EPROG	EQU	IOBase+EPROG_	;
+PGM.	EQU	$01		;
+T0.	EQU	$02		;
+T1.	EQU	$04		;
+EXROW.	EQU	$08		;
+EXCOL.	EQU	$10		;
+ELATE.	EQU	$20		;Note - non standard name
+MBE.	EQU	$80		;
+
+PPROG_	EQU	$3B		;EEPROM programming control
+PPROG	EQU	IOBase+PPROG_	;
+EPGM.	EQU	$01		;
+EELAT.	EQU	$02		;
+ERASE.	EQU	$04		;
+ROW.	EQU	$08		;
+BYTE.	EQU	$10		;
+ELAT.	EQU	$20		;
+EVEN.	EQU	$40		;
+ODD.	EQU	$80		;
+
+;	CPU configuration & misc.
+
+OPTION_	EQU	$39		;Misc. options register
+OPTION	EQU	IOBase+OPTION_	;
+CR0.	EQU	$01		;
+CR1.	EQU	$02		;
+CME.	EQU	$08		;
+DLY.	EQU	$10		;
+IRQE.	EQU	$20		;
+CSEL.	EQU	$40		;
+ADPU.	EQU	$80		;
+
+COPRST_	EQU	$3A		;COP watchdog timer reset
+COPRST	EQU	IOBase+COPRST_	;
+
+HPRIO_	EQU	$3C		;Interrupt priority/MCU options
+HPRIO	EQU	IOBase+HPRIO_	;
+PSEL0.	EQU	$01		;
+PSEL1.	EQU	$02		;
+PSEL2.	EQU	$04		;
+PSEL3.	EQU	$08		;
+IRVNE.	EQU	$10		;
+MDA.	EQU	$20		;
+SMOD.	EQU	$40		;
+RBOOT.	EQU	$80		;
+
+INIT_	EQU	$3D		;RAM and I/O register mapping control
+INIT	EQU	IOBase+INIT_	;
+REG0.	EQU	$01		;
+REG1.	EQU	$02		;
+REG2.	EQU	$04		;
+REG3.	EQU	$08		;
+RAM0.	EQU	$10		;
+RAM1.	EQU	$20		;
+RAM2.	EQU	$40		;
+RAM3.	EQU	$80		;
+
+TEST1_	EQU	$3E		;Factory test register
+TEST1	EQU	IOBase+TEST1_	;
+TCON.	EQU	$01		;
+FCOP.	EQU	$02		;
+FCM.	EQU	$04		;
+DISR.	EQU	$08		;
+CBYP.	EQU	$10		;
+OCCR.	EQU	$20		;
+TILOP.	EQU	$80		;
+
+CONFIG_	EQU	$3F		;MCU configuration register (in EEPROM)
+CONFIG	EQU	IOBase+CONFIG_	;
+EEON.	EQU	$01		;
+ROMON.	EQU	$02		;
+NOCOP.	EQU	$04		;
+NOSEC.	EQU	$08		;
+EE0.	EQU	$10		;(E2 ONLY)
+EE1.	EQU	$20		;(E2 ONLY)
+EE2.	EQU	$40		;(E2 ONLY)
+EE3.	EQU	$80		;(E2 ONLY)
+
+;	CPU CCR flags
+
+C.	EQU	$01		;Carry
+V.	EQU	$02		;Overflow
+Z.	EQU	$04		;Zero
+N.	EQU	$08		;Negative
+I.	EQU	$10		;I-interrupt mask
+H.	EQU	$20		;Half-carry
+X.	EQU	$40		;X-interrupt mask
+S.	EQU	$80		;STOP disable

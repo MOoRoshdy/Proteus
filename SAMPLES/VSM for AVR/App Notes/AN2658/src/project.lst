@@ -1,0 +1,1372 @@
+
+project.elf:     file format elf32-avr
+
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	23 c0       	rjmp	.+70     	; 0x48 <__ctors_end>
+   2:	f7 c2       	rjmp	.+1518   	; 0x5f2 <__bad_interrupt>
+   4:	c3 c2       	rjmp	.+1414   	; 0x58c <__vector_2>
+   6:	f5 c2       	rjmp	.+1514   	; 0x5f2 <__bad_interrupt>
+   8:	f4 c2       	rjmp	.+1512   	; 0x5f2 <__bad_interrupt>
+   a:	f3 c2       	rjmp	.+1510   	; 0x5f2 <__bad_interrupt>
+   c:	f2 c2       	rjmp	.+1508   	; 0x5f2 <__bad_interrupt>
+   e:	f1 c2       	rjmp	.+1506   	; 0x5f2 <__bad_interrupt>
+  10:	f0 c2       	rjmp	.+1504   	; 0x5f2 <__bad_interrupt>
+  12:	ef c2       	rjmp	.+1502   	; 0x5f2 <__bad_interrupt>
+  14:	ee c2       	rjmp	.+1500   	; 0x5f2 <__bad_interrupt>
+  16:	ed c2       	rjmp	.+1498   	; 0x5f2 <__bad_interrupt>
+  18:	ec c2       	rjmp	.+1496   	; 0x5f2 <__bad_interrupt>
+  1a:	eb c2       	rjmp	.+1494   	; 0x5f2 <__bad_interrupt>
+  1c:	ea c2       	rjmp	.+1492   	; 0x5f2 <__bad_interrupt>
+  1e:	e9 c2       	rjmp	.+1490   	; 0x5f2 <__bad_interrupt>
+  20:	e8 c2       	rjmp	.+1488   	; 0x5f2 <__bad_interrupt>
+  22:	e7 c2       	rjmp	.+1486   	; 0x5f2 <__bad_interrupt>
+  24:	e6 c2       	rjmp	.+1484   	; 0x5f2 <__bad_interrupt>
+  26:	e5 c2       	rjmp	.+1482   	; 0x5f2 <__bad_interrupt>
+  28:	e4 c2       	rjmp	.+1480   	; 0x5f2 <__bad_interrupt>
+  2a:	e3 c2       	rjmp	.+1478   	; 0x5f2 <__bad_interrupt>
+  2c:	e2 c2       	rjmp	.+1476   	; 0x5f2 <__bad_interrupt>
+  2e:	e1 c2       	rjmp	.+1474   	; 0x5f2 <__bad_interrupt>
+  30:	e0 c2       	rjmp	.+1472   	; 0x5f2 <__bad_interrupt>
+  32:	df c2       	rjmp	.+1470   	; 0x5f2 <__bad_interrupt>
+  34:	de c2       	rjmp	.+1468   	; 0x5f2 <__bad_interrupt>
+  36:	dd c2       	rjmp	.+1466   	; 0x5f2 <__bad_interrupt>
+  38:	dc c2       	rjmp	.+1464   	; 0x5f2 <__bad_interrupt>
+  3a:	db c2       	rjmp	.+1462   	; 0x5f2 <__bad_interrupt>
+  3c:	da c2       	rjmp	.+1460   	; 0x5f2 <__bad_interrupt>
+
+0000003e <.dinit>:
+  3e:	3e 04       	cpc	r3, r14
+  40:	3e 4c       	sbci	r19, 0xCE	; 206
+  42:	80 3e       	cpi	r24, 0xE0	; 224
+  44:	00 3e       	cpi	r16, 0xE0	; 224
+  46:	04 80       	ldd	r0, Z+4	; 0x04
+
+00000048 <__ctors_end>:
+  48:	11 24       	eor	r1, r1
+  4a:	1f be       	out	0x3f, r1	; 63
+  4c:	cf ef       	ldi	r28, 0xFF	; 255
+  4e:	cd bf       	out	0x3d, r28	; 61
+  50:	df e3       	ldi	r29, 0x3F	; 63
+  52:	de bf       	out	0x3e, r29	; 62
+
+00000054 <__do_copy_data>:
+  54:	ee e3       	ldi	r30, 0x3E	; 62
+  56:	f0 e0       	ldi	r31, 0x00	; 0
+  58:	40 e0       	ldi	r20, 0x00	; 0
+  5a:	17 c0       	rjmp	.+46     	; 0x8a <__do_clear_bss+0x8>
+  5c:	b5 91       	lpm	r27, Z+
+  5e:	a5 91       	lpm	r26, Z+
+  60:	35 91       	lpm	r19, Z+
+  62:	25 91       	lpm	r18, Z+
+  64:	05 91       	lpm	r16, Z+
+  66:	07 fd       	sbrc	r16, 7
+  68:	0c c0       	rjmp	.+24     	; 0x82 <__do_clear_bss>
+  6a:	95 91       	lpm	r25, Z+
+  6c:	85 91       	lpm	r24, Z+
+  6e:	ef 01       	movw	r28, r30
+  70:	f9 2f       	mov	r31, r25
+  72:	e8 2f       	mov	r30, r24
+  74:	05 90       	lpm	r0, Z+
+  76:	0d 92       	st	X+, r0
+  78:	a2 17       	cp	r26, r18
+  7a:	b3 07       	cpc	r27, r19
+  7c:	d9 f7       	brne	.-10     	; 0x74 <__do_copy_data+0x20>
+  7e:	fe 01       	movw	r30, r28
+  80:	04 c0       	rjmp	.+8      	; 0x8a <__do_clear_bss+0x8>
+
+00000082 <__do_clear_bss>:
+  82:	1d 92       	st	X+, r1
+  84:	a2 17       	cp	r26, r18
+  86:	b3 07       	cpc	r27, r19
+  88:	e1 f7       	brne	.-8      	; 0x82 <__do_clear_bss>
+  8a:	e8 34       	cpi	r30, 0x48	; 72
+  8c:	f4 07       	cpc	r31, r20
+  8e:	31 f7       	brne	.-52     	; 0x5c <__do_copy_data+0x8>
+  90:	99 d1       	rcall	.+818    	; 0x3c4 <main>
+  92:	00 c0       	rjmp	.+0      	; 0x94 <_exit>
+
+00000094 <_exit>:
+  94:	f8 94       	cli
+
+00000096 <__stop_program>:
+  96:	ff cf       	rjmp	.-2      	; 0x96 <__stop_program>
+
+Disassembly of section .text:
+
+000005f2 <__bad_interrupt>:
+ 5f2:	06 cd       	rjmp	.-1524   	; 0x0 <__TEXT_REGION_ORIGIN__>
+
+Disassembly of section .text.SearchBuses:
+
+00000098 <SearchBuses>:
+ *  \retval SEARCH_SUCCESSFUL   Search completed successfully.
+ *  \retval SEARCH_CRC_ERROR    A CRC error occured. Probably because of noise
+ *                              during transmission.
+ */
+unsigned char SearchBuses(OWI_device *devices, unsigned char len)
+{
+  98:	cf 92       	push	r12
+  9a:	df 92       	push	r13
+  9c:	ef 92       	push	r14
+  9e:	ff 92       	push	r15
+  a0:	0f 93       	push	r16
+  a2:	1f 93       	push	r17
+  a4:	cf 93       	push	r28
+  a6:	df 93       	push	r29
+  a8:	ec 01       	movw	r28, r24
+	unsigned char  lastDeviation;
+	unsigned char  numDevices;
+
+	// Initialize all addresses as zero, on bus 0 (does not exist).
+	// Do a search on the bus to discover all addresses.
+	for (i = 0; i < len; i++) {
+  aa:	20 e0       	ldi	r18, 0x00	; 0
+  ac:	18 c0       	rjmp	.+48     	; 0xde <SearchBuses+0x46>
+		devices[i].bus = 0x00;
+  ae:	82 2f       	mov	r24, r18
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	dc 01       	movw	r26, r24
+  b4:	aa 0f       	add	r26, r26
+  b6:	bb 1f       	adc	r27, r27
+  b8:	aa 0f       	add	r26, r26
+  ba:	bb 1f       	adc	r27, r27
+  bc:	aa 0f       	add	r26, r26
+  be:	bb 1f       	adc	r27, r27
+  c0:	a8 0f       	add	r26, r24
+  c2:	b9 1f       	adc	r27, r25
+  c4:	ac 0f       	add	r26, r28
+  c6:	bd 1f       	adc	r27, r29
+  c8:	1c 92       	st	X, r1
+		for (j = 0; j < 8; j++) {
+  ca:	80 e0       	ldi	r24, 0x00	; 0
+  cc:	05 c0       	rjmp	.+10     	; 0xd8 <SearchBuses+0x40>
+			devices[i].id[j] = 0x00;
+  ce:	fd 01       	movw	r30, r26
+  d0:	e8 0f       	add	r30, r24
+  d2:	f1 1d       	adc	r31, r1
+  d4:	11 82       	std	Z+1, r1	; 0x01
+
+	// Initialize all addresses as zero, on bus 0 (does not exist).
+	// Do a search on the bus to discover all addresses.
+	for (i = 0; i < len; i++) {
+		devices[i].bus = 0x00;
+		for (j = 0; j < 8; j++) {
+  d6:	8f 5f       	subi	r24, 0xFF	; 255
+  d8:	88 30       	cpi	r24, 0x08	; 8
+  da:	c8 f3       	brcs	.-14     	; 0xce <SearchBuses+0x36>
+	unsigned char  lastDeviation;
+	unsigned char  numDevices;
+
+	// Initialize all addresses as zero, on bus 0 (does not exist).
+	// Do a search on the bus to discover all addresses.
+	for (i = 0; i < len; i++) {
+  dc:	2f 5f       	subi	r18, 0xFF	; 255
+  de:	26 17       	cp	r18, r22
+  e0:	30 f3       	brcs	.-52     	; 0xae <SearchBuses+0x16>
+			devices[i].id[j] = 0x00;
+		}
+	}
+
+	// Find the buses with slave devices.
+	presence = OWI_DetectPresence();
+  e2:	f6 d1       	rcall	.+1004   	; 0x4d0 <OWI_DetectPresence>
+  e4:	c8 2e       	mov	r12, r24
+
+	numDevices = 0;
+	newID      = devices[0].id;
+  e6:	8e 01       	movw	r16, r28
+  e8:	0f 5f       	subi	r16, 0xFF	; 255
+  ea:	1f 4f       	sbci	r17, 0xFF	; 255
+	}
+
+	// Find the buses with slave devices.
+	presence = OWI_DetectPresence();
+
+	numDevices = 0;
+  ec:	f1 2c       	mov	r15, r1
+	newID      = devices[0].id;
+
+	// Go through all buses with slave devices.
+	for (currentBus = 0x01; currentBus; currentBus <<= 1) {
+  ee:	ee 24       	eor	r14, r14
+  f0:	e3 94       	inc	r14
+  f2:	3a c0       	rjmp	.+116    	; 0x168 <SearchBuses+0xd0>
+		lastDeviation = 0;
+		currentID     = newID;
+		if (currentBus & presence) // Devices available on this bus.
+  f4:	8e 2d       	mov	r24, r14
+  f6:	8c 21       	and	r24, r12
+  f8:	b1 f1       	breq	.+108    	; 0x166 <SearchBuses+0xce>
+  fa:	e0 2f       	mov	r30, r16
+  fc:	f1 2f       	mov	r31, r17
+  fe:	d1 2c       	mov	r13, r1
+ 100:	01 c0       	rjmp	.+2      	; 0x104 <SearchBuses+0x6c>
+				OWI_DetectPresence(currentBus);
+				lastDeviation           = OWI_SearchRom(newID, lastDeviation, currentBus);
+				currentID               = newID;
+				devices[numDevices].bus = currentBus;
+				numDevices++;
+				newID = devices[numDevices].id;
+ 102:	8c 01       	movw	r16, r24
+		if (currentBus & presence) // Devices available on this bus.
+		{
+			// Do slave search on each bus, and place identifiers and corresponding
+			// bus "addresses" in the array.
+			do {
+				memcpy(newID, currentID, 8);
+ 104:	88 e0       	ldi	r24, 0x08	; 8
+ 106:	d8 01       	movw	r26, r16
+ 108:	01 90       	ld	r0, Z+
+ 10a:	0d 92       	st	X+, r0
+ 10c:	8a 95       	dec	r24
+ 10e:	e1 f7       	brne	.-8      	; 0x108 <SearchBuses+0x70>
+				OWI_DetectPresence(currentBus);
+ 110:	8e 2d       	mov	r24, r14
+ 112:	90 e0       	ldi	r25, 0x00	; 0
+ 114:	dd d1       	rcall	.+954    	; 0x4d0 <OWI_DetectPresence>
+				lastDeviation           = OWI_SearchRom(newID, lastDeviation, currentBus);
+ 116:	4e 2d       	mov	r20, r14
+ 118:	6d 2d       	mov	r22, r13
+ 11a:	c8 01       	movw	r24, r16
+ 11c:	b5 d0       	rcall	.+362    	; 0x288 <OWI_SearchRom>
+ 11e:	d8 2e       	mov	r13, r24
+				currentID               = newID;
+				devices[numDevices].bus = currentBus;
+ 120:	8f 2d       	mov	r24, r15
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	fc 01       	movw	r30, r24
+ 126:	ee 0f       	add	r30, r30
+ 128:	ff 1f       	adc	r31, r31
+ 12a:	ee 0f       	add	r30, r30
+ 12c:	ff 1f       	adc	r31, r31
+ 12e:	ee 0f       	add	r30, r30
+ 130:	ff 1f       	adc	r31, r31
+ 132:	8e 0f       	add	r24, r30
+ 134:	9f 1f       	adc	r25, r31
+ 136:	fe 01       	movw	r30, r28
+ 138:	e8 0f       	add	r30, r24
+ 13a:	f9 1f       	adc	r31, r25
+ 13c:	e0 82       	st	Z, r14
+				numDevices++;
+ 13e:	f3 94       	inc	r15
+				newID = devices[numDevices].id;
+ 140:	8f 2d       	mov	r24, r15
+ 142:	90 e0       	ldi	r25, 0x00	; 0
+ 144:	9c 01       	movw	r18, r24
+ 146:	22 0f       	add	r18, r18
+ 148:	33 1f       	adc	r19, r19
+ 14a:	22 0f       	add	r18, r18
+ 14c:	33 1f       	adc	r19, r19
+ 14e:	22 0f       	add	r18, r18
+ 150:	33 1f       	adc	r19, r19
+ 152:	82 0f       	add	r24, r18
+ 154:	93 1f       	adc	r25, r19
+ 156:	8c 0f       	add	r24, r28
+ 158:	9d 1f       	adc	r25, r29
+ 15a:	01 96       	adiw	r24, 0x01	; 1
+			// bus "addresses" in the array.
+			do {
+				memcpy(newID, currentID, 8);
+				OWI_DetectPresence(currentBus);
+				lastDeviation           = OWI_SearchRom(newID, lastDeviation, currentBus);
+				currentID               = newID;
+ 15c:	e0 2f       	mov	r30, r16
+ 15e:	f1 2f       	mov	r31, r17
+				devices[numDevices].bus = currentBus;
+				numDevices++;
+				newID = devices[numDevices].id;
+			} while (lastDeviation != OWI_ROM_SEARCH_FINISHED);
+ 160:	d1 10       	cpse	r13, r1
+ 162:	cf cf       	rjmp	.-98     	; 0x102 <SearchBuses+0x6a>
+				OWI_DetectPresence(currentBus);
+				lastDeviation           = OWI_SearchRom(newID, lastDeviation, currentBus);
+				currentID               = newID;
+				devices[numDevices].bus = currentBus;
+				numDevices++;
+				newID = devices[numDevices].id;
+ 164:	8c 01       	movw	r16, r24
+
+	numDevices = 0;
+	newID      = devices[0].id;
+
+	// Go through all buses with slave devices.
+	for (currentBus = 0x01; currentBus; currentBus <<= 1) {
+ 166:	ee 0c       	add	r14, r14
+ 168:	e1 10       	cpse	r14, r1
+ 16a:	c4 cf       	rjmp	.-120    	; 0xf4 <SearchBuses+0x5c>
+ 16c:	10 e0       	ldi	r17, 0x00	; 0
+ 16e:	12 c0       	rjmp	.+36     	; 0x194 <SearchBuses+0xfc>
+	}
+
+	// Go through all the devices and do CRC check.
+	for (i = 0; i < numDevices; i++) {
+		// If any id has a crc error, return error.
+		if (OWI_CheckRomCRC(devices[i].id) != OWI_CRC_OK) {
+ 170:	81 2f       	mov	r24, r17
+ 172:	90 e0       	ldi	r25, 0x00	; 0
+ 174:	9c 01       	movw	r18, r24
+ 176:	22 0f       	add	r18, r18
+ 178:	33 1f       	adc	r19, r19
+ 17a:	22 0f       	add	r18, r18
+ 17c:	33 1f       	adc	r19, r19
+ 17e:	22 0f       	add	r18, r18
+ 180:	33 1f       	adc	r19, r19
+ 182:	82 0f       	add	r24, r18
+ 184:	93 1f       	adc	r25, r19
+ 186:	8c 0f       	add	r24, r28
+ 188:	9d 1f       	adc	r25, r29
+ 18a:	01 96       	adiw	r24, 0x01	; 1
+ 18c:	6f d1       	rcall	.+734    	; 0x46c <OWI_CheckRomCRC>
+ 18e:	81 11       	cpse	r24, r1
+ 190:	05 c0       	rjmp	.+10     	; 0x19c <SearchBuses+0x104>
+			} while (lastDeviation != OWI_ROM_SEARCH_FINISHED);
+		}
+	}
+
+	// Go through all the devices and do CRC check.
+	for (i = 0; i < numDevices; i++) {
+ 192:	1f 5f       	subi	r17, 0xFF	; 255
+ 194:	1f 15       	cp	r17, r15
+ 196:	60 f3       	brcs	.-40     	; 0x170 <SearchBuses+0xd8>
+		if (OWI_CheckRomCRC(devices[i].id) != OWI_CRC_OK) {
+			return SEARCH_CRC_ERROR;
+		}
+	}
+	// Else, return Successful.
+	return SEARCH_SUCCESSFUL;
+ 198:	80 e0       	ldi	r24, 0x00	; 0
+ 19a:	01 c0       	rjmp	.+2      	; 0x19e <SearchBuses+0x106>
+
+	// Go through all the devices and do CRC check.
+	for (i = 0; i < numDevices; i++) {
+		// If any id has a crc error, return error.
+		if (OWI_CheckRomCRC(devices[i].id) != OWI_CRC_OK) {
+			return SEARCH_CRC_ERROR;
+ 19c:	81 e0       	ldi	r24, 0x01	; 1
+		}
+	}
+	// Else, return Successful.
+	return SEARCH_SUCCESSFUL;
+}
+ 19e:	df 91       	pop	r29
+ 1a0:	cf 91       	pop	r28
+ 1a2:	1f 91       	pop	r17
+ 1a4:	0f 91       	pop	r16
+ 1a6:	ff 90       	pop	r15
+ 1a8:	ef 90       	pop	r14
+ 1aa:	df 90       	pop	r13
+ 1ac:	cf 90       	pop	r12
+ 1ae:	08 95       	ret
+
+Disassembly of section .text.FindFamily:
+
+0000054c <FindFamily>:
+ *
+ *  \return A pointer to a device of the family.
+ *  \retval NULL    if no device of the family was found.
+ */
+OWI_device *FindFamily(unsigned char familyID, OWI_device *devices, unsigned char size)
+{
+ 54c:	fb 01       	movw	r30, r22
+	unsigned char i = 0;
+ 54e:	90 e0       	ldi	r25, 0x00	; 0
+
+	// Search through the array.
+	while (i < size) {
+ 550:	05 c0       	rjmp	.+10     	; 0x55c <FindFamily+0x10>
+		// Return the pointer if there is a family id match.
+		if ((*devices).id[0] == familyID) {
+ 552:	21 81       	ldd	r18, Z+1	; 0x01
+ 554:	28 17       	cp	r18, r24
+ 556:	39 f0       	breq	.+14     	; 0x566 <FindFamily+0x1a>
+			return devices;
+		}
+		devices++;
+ 558:	39 96       	adiw	r30, 0x09	; 9
+		i++;
+ 55a:	9f 5f       	subi	r25, 0xFF	; 255
+OWI_device *FindFamily(unsigned char familyID, OWI_device *devices, unsigned char size)
+{
+	unsigned char i = 0;
+
+	// Search through the array.
+	while (i < size) {
+ 55c:	94 17       	cp	r25, r20
+ 55e:	c8 f3       	brcs	.-14     	; 0x552 <FindFamily+0x6>
+		}
+		devices++;
+		i++;
+	}
+	// Else, return NULL.
+	return NULL;
+ 560:	80 e0       	ldi	r24, 0x00	; 0
+ 562:	90 e0       	ldi	r25, 0x00	; 0
+ 564:	08 95       	ret
+
+	// Search through the array.
+	while (i < size) {
+		// Return the pointer if there is a family id match.
+		if ((*devices).id[0] == familyID) {
+			return devices;
+ 566:	8e 2f       	mov	r24, r30
+ 568:	9f 2f       	mov	r25, r31
+		devices++;
+		i++;
+	}
+	// Else, return NULL.
+	return NULL;
+}
+ 56a:	08 95       	ret
+
+Disassembly of section .text.DS18B20_ReadTemperature:
+
+00000354 <DS18B20_ReadTemperature>:
+ *  \param  id  The 64 bit identifier of the DS1820.
+ *
+ *  \return The 16 bit signed temperature read from the DS1820.
+ */
+signed int DS18B20_ReadTemperature(unsigned char bus, unsigned char *id)
+{
+ 354:	ef 92       	push	r14
+ 356:	ff 92       	push	r15
+ 358:	1f 93       	push	r17
+ 35a:	cf 93       	push	r28
+ 35c:	df 93       	push	r29
+ 35e:	18 2f       	mov	r17, r24
+ 360:	7b 01       	movw	r14, r22
+	signed int temperature;
+
+	// Reset, presence.
+	if (!OWI_DetectPresence(bus)) {
+ 362:	c8 2f       	mov	r28, r24
+ 364:	d0 e0       	ldi	r29, 0x00	; 0
+ 366:	ce 01       	movw	r24, r28
+ 368:	b3 d0       	rcall	.+358    	; 0x4d0 <OWI_DetectPresence>
+ 36a:	88 23       	and	r24, r24
+ 36c:	01 f1       	breq	.+64     	; 0x3ae <DS18B20_ReadTemperature+0x5a>
+		return DS18B20_ERROR; // Error
+	}
+	// Match the id found earlier.
+	OWI_MatchRom(id, bus);
+ 36e:	61 2f       	mov	r22, r17
+ 370:	c7 01       	movw	r24, r14
+ 372:	5d d0       	rcall	.+186    	; 0x42e <OWI_MatchRom>
+	// Send start conversion command.
+	OWI_SendByte(DS18B20_START_CONVERSION, bus);
+ 374:	61 2f       	mov	r22, r17
+ 376:	84 e4       	ldi	r24, 0x44	; 68
+ 378:	93 d0       	rcall	.+294    	; 0x4a0 <OWI_SendByte>
+	// Wait until conversion is finished.
+	// Bus line is held low until conversion is finished.
+	while (!OWI_ReadBit(bus)) {
+ 37a:	ce 01       	movw	r24, r28
+ 37c:	2c d1       	rcall	.+600    	; 0x5d6 <OWI_ReadBit>
+ 37e:	88 23       	and	r24, r24
+ 380:	e1 f3       	breq	.-8      	; 0x37a <DS18B20_ReadTemperature+0x26>
+	}
+	// Reset, presence.
+	if (!OWI_DetectPresence(bus)) {
+ 382:	ce 01       	movw	r24, r28
+ 384:	a5 d0       	rcall	.+330    	; 0x4d0 <OWI_DetectPresence>
+ 386:	88 23       	and	r24, r24
+ 388:	a9 f0       	breq	.+42     	; 0x3b4 <DS18B20_ReadTemperature+0x60>
+		return DS18B20_ERROR; // Error
+	}
+	// Match id again.
+	OWI_MatchRom(id, bus);
+ 38a:	61 2f       	mov	r22, r17
+ 38c:	c7 01       	movw	r24, r14
+ 38e:	4f d0       	rcall	.+158    	; 0x42e <OWI_MatchRom>
+	// Send READ SCRATCHPAD command.
+	OWI_SendByte(DS18B20_READ_SCRATCHPAD, bus);
+ 390:	61 2f       	mov	r22, r17
+ 392:	8e eb       	ldi	r24, 0xBE	; 190
+ 394:	85 d0       	rcall	.+266    	; 0x4a0 <OWI_SendByte>
+	// Read only two first bytes (temperature low, temperature high)
+	// and place them in the 16 bit temperature variable.
+	temperature = OWI_ReceiveByte(bus);
+ 396:	81 2f       	mov	r24, r17
+ 398:	b1 d0       	rcall	.+354    	; 0x4fc <OWI_ReceiveByte>
+ 39a:	c8 2f       	mov	r28, r24
+ 39c:	d0 e0       	ldi	r29, 0x00	; 0
+	temperature |= (OWI_ReceiveByte(bus) << 8);
+ 39e:	81 2f       	mov	r24, r17
+ 3a0:	ad d0       	rcall	.+346    	; 0x4fc <OWI_ReceiveByte>
+ 3a2:	90 e0       	ldi	r25, 0x00	; 0
+ 3a4:	98 2f       	mov	r25, r24
+ 3a6:	88 27       	eor	r24, r24
+
+	return temperature;
+ 3a8:	8c 2b       	or	r24, r28
+ 3aa:	9d 2b       	or	r25, r29
+ 3ac:	05 c0       	rjmp	.+10     	; 0x3b8 <DS18B20_ReadTemperature+0x64>
+{
+	signed int temperature;
+
+	// Reset, presence.
+	if (!OWI_DetectPresence(bus)) {
+		return DS18B20_ERROR; // Error
+ 3ae:	88 e1       	ldi	r24, 0x18	; 24
+ 3b0:	9c ef       	ldi	r25, 0xFC	; 252
+ 3b2:	02 c0       	rjmp	.+4      	; 0x3b8 <DS18B20_ReadTemperature+0x64>
+	// Bus line is held low until conversion is finished.
+	while (!OWI_ReadBit(bus)) {
+	}
+	// Reset, presence.
+	if (!OWI_DetectPresence(bus)) {
+		return DS18B20_ERROR; // Error
+ 3b4:	88 e1       	ldi	r24, 0x18	; 24
+ 3b6:	9c ef       	ldi	r25, 0xFC	; 252
+	// and place them in the 16 bit temperature variable.
+	temperature = OWI_ReceiveByte(bus);
+	temperature |= (OWI_ReceiveByte(bus) << 8);
+
+	return temperature;
+}
+ 3b8:	df 91       	pop	r29
+ 3ba:	cf 91       	pop	r28
+ 3bc:	1f 91       	pop	r17
+ 3be:	ff 90       	pop	r15
+ 3c0:	ef 90       	pop	r14
+ 3c2:	08 95       	ret
+
+Disassembly of section .text.main:
+
+000003c4 <main>:
+ *  on the buses defined by BUSES. It then tries to find a DS18B20
+ *  device on a bus, and communicate with it to read temperature
+ *  This example is intended to show how the polled 1-Wire(R) driver can be used.
+ */
+int main(void)
+{
+ 3c4:	cf 93       	push	r28
+ 3c6:	df 93       	push	r29
+ 3c8:	00 d0       	rcall	.+0      	; 0x3ca <main+0x6>
+ 3ca:	cd b7       	in	r28, 0x3d	; 61
+ 3cc:	de b7       	in	r29, 0x3e	; 62
+	static OWI_device   devices[MAX_DEVICES];
+	OWI_device *        ds1820;
+	volatile signed int temperature = 0;
+ 3ce:	19 82       	std	Y+1, r1	; 0x01
+ 3d0:	1a 82       	std	Y+2, r1	; 0x02
+
+	// Initialize PORTB as output. Can be used to display values on
+	// the LEDs on a STK500 development board.
+	PORTB.DIR = 0xff;
+ 3d2:	8f ef       	ldi	r24, 0xFF	; 255
+ 3d4:	80 93 20 04 	sts	0x0420, r24	; 0x800420 <__RODATA_PM_OFFSET__+0x7f8420>
+
+	// Set main clock prescaler to div 2. Clock should be running at 10 MHz
+	// provided default fuse settings are used for main clock
+	_PROTECTED_WRITE(CLKCTRL_MCLKCTRLB, CLKCTRL_PDIV_2X_gc | CLKCTRL_PEN_bm);
+ 3d8:	21 e0       	ldi	r18, 0x01	; 1
+ 3da:	30 e0       	ldi	r19, 0x00	; 0
+ 3dc:	88 ed       	ldi	r24, 0xD8	; 216
+ 3de:	84 bf       	out	0x34, r24	; 52
+ 3e0:	20 93 61 00 	sts	0x0061, r18	; 0x800061 <__RODATA_PM_OFFSET__+0x7f8061>
+
+	OWI_Init();
+ 3e4:	e5 de       	rcall	.-566    	; 0x1b0 <OWI_Init>
+
+	// Do the bus search until all ids are read without crc error.
+	while (SearchBuses(devices, MAX_DEVICES) != SEARCH_SUCCESSFUL) {
+ 3e6:	68 e0       	ldi	r22, 0x08	; 8
+ 3e8:	84 e0       	ldi	r24, 0x04	; 4
+ 3ea:	9e e3       	ldi	r25, 0x3E	; 62
+ 3ec:	55 de       	rcall	.-854    	; 0x98 <__data_load_end>
+ 3ee:	81 11       	cpse	r24, r1
+ 3f0:	fa cf       	rjmp	.-12     	; 0x3e6 <main+0x22>
+	}
+
+	// See if there is a DS1820 on a bus.
+	ds1820 = FindFamily(DS18B20_FAMILY_ID, devices, MAX_DEVICES);
+ 3f2:	48 e0       	ldi	r20, 0x08	; 8
+ 3f4:	64 e0       	ldi	r22, 0x04	; 4
+ 3f6:	7e e3       	ldi	r23, 0x3E	; 62
+ 3f8:	88 e2       	ldi	r24, 0x28	; 40
+ 3fa:	a8 d0       	rcall	.+336    	; 0x54c <FindFamily>
+ 3fc:	8c 01       	movw	r16, r24
+	// Do something useful with the slave devices in an eternal loop.
+	for (;;) {
+		// If there is a DS1820 temperature sensor on a bus, read the
+		// temperature.
+		// The DS1820 must have Vdd pin connected for this code to work.
+		if (ds1820 != NULL) {
+ 3fe:	01 15       	cp	r16, r1
+ 400:	11 05       	cpc	r17, r1
+ 402:	41 f0       	breq	.+16     	; 0x414 <__LOCK_REGION_LENGTH__+0x14>
+			temperature = DS18B20_ReadTemperature((*ds1820).bus, (*ds1820).id);
+ 404:	b8 01       	movw	r22, r16
+ 406:	6f 5f       	subi	r22, 0xFF	; 255
+ 408:	7f 4f       	sbci	r23, 0xFF	; 255
+ 40a:	f8 01       	movw	r30, r16
+ 40c:	80 81       	ld	r24, Z
+ 40e:	a2 df       	rcall	.-188    	; 0x354 <DS18B20_ReadTemperature>
+ 410:	89 83       	std	Y+1, r24	; 0x01
+ 412:	9a 83       	std	Y+2, r25	; 0x02
+
+		// Discard lsb of temperature and output to PORTB.
+		//PORTB.OUT = ~(temperature >> 1);
+		
+		// Discard fractional part of temperature and output to PORTB.
+		PORTB.OUT = temperature >> 4;
+ 414:	89 81       	ldd	r24, Y+1	; 0x01
+ 416:	9a 81       	ldd	r25, Y+2	; 0x02
+ 418:	95 95       	asr	r25
+ 41a:	87 95       	ror	r24
+ 41c:	95 95       	asr	r25
+ 41e:	87 95       	ror	r24
+ 420:	95 95       	asr	r25
+ 422:	87 95       	ror	r24
+ 424:	95 95       	asr	r25
+ 426:	87 95       	ror	r24
+ 428:	80 93 24 04 	sts	0x0424, r24	; 0x800424 <__RODATA_PM_OFFSET__+0x7f8424>
+	}
+ 42c:	e8 cf       	rjmp	.-48     	; 0x3fe <main+0x3a>
+
+Disassembly of section .text.__vector_2:
+
+0000058c <__vector_2>:
+{
+	return 0;
+}
+
+ISR(BOD_VLM_vect)
+{
+ 58c:	1f 92       	push	r1
+ 58e:	0f 92       	push	r0
+ 590:	0f b6       	in	r0, 0x3f	; 63
+ 592:	0f 92       	push	r0
+ 594:	11 24       	eor	r1, r1
+ 596:	8f 93       	push	r24
+	/* Insert your AC interrupt handling code here */
+
+	/* The interrupt flag has to be cleared manually */
+	BOD.INTFLAGS = BOD_VLMIE_bm;
+ 598:	81 e0       	ldi	r24, 0x01	; 1
+ 59a:	80 93 8a 00 	sts	0x008A, r24	; 0x80008a <__RODATA_PM_OFFSET__+0x7f808a>
+}
+ 59e:	8f 91       	pop	r24
+ 5a0:	0f 90       	pop	r0
+ 5a2:	0f be       	out	0x3f, r0	; 63
+ 5a4:	0f 90       	pop	r0
+ 5a6:	1f 90       	pop	r1
+ 5a8:	18 95       	reti
+
+Disassembly of section .text.OWI_ComputeCRC8:
+
+00000526 <OWI_ComputeCRC8>:
+ *  \note   Constantly passing the return value of this function
+ *          As the seed argument computes the CRC8 value of a
+ *          longer string of data.
+ */
+unsigned char OWI_ComputeCRC8(unsigned char inData, unsigned char seed)
+{
+ 526:	28 2f       	mov	r18, r24
+	unsigned char bitsLeft;
+	unsigned char temp;
+
+	for (bitsLeft = 8; bitsLeft > 0; bitsLeft--) {
+ 528:	98 e0       	ldi	r25, 0x08	; 8
+ 52a:	0c c0       	rjmp	.+24     	; 0x544 <OWI_ComputeCRC8+0x1e>
+		temp = ((seed ^ inData) & 0x01);
+ 52c:	82 2f       	mov	r24, r18
+ 52e:	86 27       	eor	r24, r22
+		if (temp == 0) {
+ 530:	80 fd       	sbrc	r24, 0
+ 532:	02 c0       	rjmp	.+4      	; 0x538 <OWI_ComputeCRC8+0x12>
+			seed >>= 1;
+ 534:	66 95       	lsr	r22
+ 536:	04 c0       	rjmp	.+8      	; 0x540 <OWI_ComputeCRC8+0x1a>
+		} else {
+			seed ^= 0x18;
+ 538:	88 e1       	ldi	r24, 0x18	; 24
+ 53a:	68 27       	eor	r22, r24
+			seed >>= 1;
+ 53c:	66 95       	lsr	r22
+			seed |= 0x80;
+ 53e:	60 68       	ori	r22, 0x80	; 128
+		}
+		inData >>= 1;
+ 540:	26 95       	lsr	r18
+unsigned char OWI_ComputeCRC8(unsigned char inData, unsigned char seed)
+{
+	unsigned char bitsLeft;
+	unsigned char temp;
+
+	for (bitsLeft = 8; bitsLeft > 0; bitsLeft--) {
+ 542:	91 50       	subi	r25, 0x01	; 1
+ 544:	91 11       	cpse	r25, r1
+ 546:	f2 cf       	rjmp	.-28     	; 0x52c <OWI_ComputeCRC8+0x6>
+			seed |= 0x80;
+		}
+		inData >>= 1;
+	}
+	return seed;
+}
+ 548:	86 2f       	mov	r24, r22
+ 54a:	08 95       	ret
+
+Disassembly of section .text.OWI_CheckRomCRC:
+
+0000046c <OWI_CheckRomCRC>:
+ *
+ *  \retval OWI_CRC_OK      The CRC's matched.
+ *  \retval OWI_CRC_ERROR   There was a discrepancy between the calculated and the stored CRC.
+ */
+unsigned char OWI_CheckRomCRC(unsigned char *romValue)
+{
+ 46c:	0f 93       	push	r16
+ 46e:	1f 93       	push	r17
+ 470:	cf 93       	push	r28
+ 472:	8c 01       	movw	r16, r24
+	unsigned char i;
+	unsigned char crc8 = 0;
+ 474:	80 e0       	ldi	r24, 0x00	; 0
+
+	for (i = 0; i < 7; i++) {
+ 476:	c0 e0       	ldi	r28, 0x00	; 0
+ 478:	06 c0       	rjmp	.+12     	; 0x486 <OWI_CheckRomCRC+0x1a>
+		crc8 = OWI_ComputeCRC8(*romValue, crc8);
+ 47a:	68 2f       	mov	r22, r24
+ 47c:	f8 01       	movw	r30, r16
+ 47e:	81 91       	ld	r24, Z+
+ 480:	8f 01       	movw	r16, r30
+ 482:	51 d0       	rcall	.+162    	; 0x526 <OWI_ComputeCRC8>
+unsigned char OWI_CheckRomCRC(unsigned char *romValue)
+{
+	unsigned char i;
+	unsigned char crc8 = 0;
+
+	for (i = 0; i < 7; i++) {
+ 484:	cf 5f       	subi	r28, 0xFF	; 255
+ 486:	c7 30       	cpi	r28, 0x07	; 7
+ 488:	c0 f3       	brcs	.-16     	; 0x47a <OWI_CheckRomCRC+0xe>
+		crc8 = OWI_ComputeCRC8(*romValue, crc8);
+		romValue++;
+	}
+	if (crc8 == (*romValue)) {
+ 48a:	f8 01       	movw	r30, r16
+ 48c:	90 81       	ld	r25, Z
+ 48e:	89 13       	cpse	r24, r25
+ 490:	02 c0       	rjmp	.+4      	; 0x496 <OWI_CheckRomCRC+0x2a>
+		return OWI_CRC_OK;
+ 492:	80 e0       	ldi	r24, 0x00	; 0
+ 494:	01 c0       	rjmp	.+2      	; 0x498 <OWI_CheckRomCRC+0x2c>
+	}
+	return OWI_CRC_ERROR;
+ 496:	81 e0       	ldi	r24, 0x01	; 1
+}
+ 498:	cf 91       	pop	r28
+ 49a:	1f 91       	pop	r17
+ 49c:	0f 91       	pop	r16
+ 49e:	08 95       	ret
+
+Disassembly of section .text.OWI_SendByte:
+
+000004a0 <OWI_SendByte>:
+ *  \param  data    The data to send on the bus(es).
+ *
+ *  \param  pins    A bitmask of the buses to send the data to.
+ */
+void OWI_SendByte(unsigned char data, unsigned char pins)
+{
+ 4a0:	1f 93       	push	r17
+ 4a2:	cf 93       	push	r28
+ 4a4:	df 93       	push	r29
+ 4a6:	d8 2f       	mov	r29, r24
+ 4a8:	16 2f       	mov	r17, r22
+	unsigned char temp;
+	unsigned char i;
+
+	// Do once for each bit
+	for (i = 0; i < 8; i++) {
+ 4aa:	c0 e0       	ldi	r28, 0x00	; 0
+ 4ac:	0b c0       	rjmp	.+22     	; 0x4c4 <OWI_SendByte+0x24>
+		// Determine if lsb is '0' or '1' and transmit corresponding
+		// waveform on the bus.
+		temp = data & 0x01;
+		if (temp) {
+ 4ae:	d0 ff       	sbrs	r29, 0
+ 4b0:	04 c0       	rjmp	.+8      	; 0x4ba <OWI_SendByte+0x1a>
+			OWI_WriteBit1(pins);
+ 4b2:	81 2f       	mov	r24, r17
+ 4b4:	90 e0       	ldi	r25, 0x00	; 0
+ 4b6:	97 d0       	rcall	.+302    	; 0x5e6 <OWI_WriteBit1>
+ 4b8:	03 c0       	rjmp	.+6      	; 0x4c0 <OWI_SendByte+0x20>
+		} else {
+			OWI_WriteBit0(pins);
+ 4ba:	81 2f       	mov	r24, r17
+ 4bc:	90 e0       	ldi	r25, 0x00	; 0
+ 4be:	96 d0       	rcall	.+300    	; 0x5ec <OWI_WriteBit0>
+		}
+		// Right shift the data to get next bit.
+		data >>= 1;
+ 4c0:	d6 95       	lsr	r29
+{
+	unsigned char temp;
+	unsigned char i;
+
+	// Do once for each bit
+	for (i = 0; i < 8; i++) {
+ 4c2:	cf 5f       	subi	r28, 0xFF	; 255
+ 4c4:	c8 30       	cpi	r28, 0x08	; 8
+ 4c6:	98 f3       	brcs	.-26     	; 0x4ae <OWI_SendByte+0xe>
+			OWI_WriteBit0(pins);
+		}
+		// Right shift the data to get next bit.
+		data >>= 1;
+	}
+}
+ 4c8:	df 91       	pop	r29
+ 4ca:	cf 91       	pop	r28
+ 4cc:	1f 91       	pop	r17
+ 4ce:	08 95       	ret
+
+Disassembly of section .text.OWI_ReceiveByte:
+
+000004fc <OWI_ReceiveByte>:
+ *  \param  pin     A bitmask of the bus to read from.
+ *
+ *  \return     The byte read from the bus.
+ */
+unsigned char OWI_ReceiveByte(unsigned char pin)
+{
+ 4fc:	1f 93       	push	r17
+ 4fe:	cf 93       	push	r28
+ 500:	df 93       	push	r29
+ 502:	18 2f       	mov	r17, r24
+
+	// Clear the temporary input variable.
+	data = 0x00;
+
+	// Do once for each bit
+	for (i = 0; i < 8; i++) {
+ 504:	c0 e0       	ldi	r28, 0x00	; 0
+{
+	unsigned char data;
+	unsigned char i;
+
+	// Clear the temporary input variable.
+	data = 0x00;
+ 506:	d0 e0       	ldi	r29, 0x00	; 0
+
+	// Do once for each bit
+	for (i = 0; i < 8; i++) {
+ 508:	07 c0       	rjmp	.+14     	; 0x518 <OWI_ReceiveByte+0x1c>
+		// Shift temporary input variable right.
+		data >>= 1;
+ 50a:	d6 95       	lsr	r29
+		// Set the msb if a '1' value is read from the bus.
+		// Leave as it is ('0') else.
+		if (OWI_ReadBit(pin)) {
+ 50c:	81 2f       	mov	r24, r17
+ 50e:	90 e0       	ldi	r25, 0x00	; 0
+ 510:	62 d0       	rcall	.+196    	; 0x5d6 <OWI_ReadBit>
+ 512:	81 11       	cpse	r24, r1
+			// Set msb
+			data |= 0x80;
+ 514:	d0 68       	ori	r29, 0x80	; 128
+
+	// Clear the temporary input variable.
+	data = 0x00;
+
+	// Do once for each bit
+	for (i = 0; i < 8; i++) {
+ 516:	cf 5f       	subi	r28, 0xFF	; 255
+ 518:	c8 30       	cpi	r28, 0x08	; 8
+ 51a:	b8 f3       	brcs	.-18     	; 0x50a <OWI_ReceiveByte+0xe>
+			// Set msb
+			data |= 0x80;
+		}
+	}
+	return data;
+}
+ 51c:	8d 2f       	mov	r24, r29
+ 51e:	df 91       	pop	r29
+ 520:	cf 91       	pop	r28
+ 522:	1f 91       	pop	r17
+ 524:	08 95       	ret
+
+Disassembly of section .text.OWI_MatchRom:
+
+0000042e <OWI_MatchRom>:
+ *  \param  romValue    A pointer to the ID to match against.
+ *
+ *  \param  pins    A bitmask of the buses to perform the MATCH ROM command on.
+ */
+void OWI_MatchRom(unsigned char *romValue, unsigned char pins)
+{
+ 42e:	ef 92       	push	r14
+ 430:	ff 92       	push	r15
+ 432:	0f 93       	push	r16
+ 434:	1f 93       	push	r17
+ 436:	cf 93       	push	r28
+ 438:	df 93       	push	r29
+ 43a:	8c 01       	movw	r16, r24
+ 43c:	d6 2f       	mov	r29, r22
+	unsigned char bytesLeft = 8;
+
+	// Send the MATCH ROM command.
+	OWI_SendByte(OWI_ROM_MATCH, pins);
+ 43e:	85 e5       	ldi	r24, 0x55	; 85
+ 440:	2f d0       	rcall	.+94     	; 0x4a0 <OWI_SendByte>
+ *
+ *  \param  pins    A bitmask of the buses to perform the MATCH ROM command on.
+ */
+void OWI_MatchRom(unsigned char *romValue, unsigned char pins)
+{
+	unsigned char bytesLeft = 8;
+ 442:	c8 e0       	ldi	r28, 0x08	; 8
+
+	// Send the MATCH ROM command.
+	OWI_SendByte(OWI_ROM_MATCH, pins);
+
+	// Do once for each byte.
+	while (bytesLeft > 0) {
+ 444:	0a c0       	rjmp	.+20     	; 0x45a <OWI_MatchRom+0x2c>
+		// Transmit 1 byte of the ID to match.
+		OWI_SendByte(*romValue++, pins);
+ 446:	78 01       	movw	r14, r16
+ 448:	8f ef       	ldi	r24, 0xFF	; 255
+ 44a:	e8 1a       	sub	r14, r24
+ 44c:	f8 0a       	sbc	r15, r24
+ 44e:	6d 2f       	mov	r22, r29
+ 450:	f8 01       	movw	r30, r16
+ 452:	80 81       	ld	r24, Z
+ 454:	25 d0       	rcall	.+74     	; 0x4a0 <OWI_SendByte>
+		bytesLeft--;
+ 456:	c1 50       	subi	r28, 0x01	; 1
+	OWI_SendByte(OWI_ROM_MATCH, pins);
+
+	// Do once for each byte.
+	while (bytesLeft > 0) {
+		// Transmit 1 byte of the ID to match.
+		OWI_SendByte(*romValue++, pins);
+ 458:	87 01       	movw	r16, r14
+
+	// Send the MATCH ROM command.
+	OWI_SendByte(OWI_ROM_MATCH, pins);
+
+	// Do once for each byte.
+	while (bytesLeft > 0) {
+ 45a:	c1 11       	cpse	r28, r1
+ 45c:	f4 cf       	rjmp	.-24     	; 0x446 <OWI_MatchRom+0x18>
+		// Transmit 1 byte of the ID to match.
+		OWI_SendByte(*romValue++, pins);
+		bytesLeft--;
+	}
+}
+ 45e:	df 91       	pop	r29
+ 460:	cf 91       	pop	r28
+ 462:	1f 91       	pop	r17
+ 464:	0f 91       	pop	r16
+ 466:	ff 90       	pop	r15
+ 468:	ef 90       	pop	r14
+ 46a:	08 95       	ret
+
+Disassembly of section .text.OWI_SearchRom:
+
+00000288 <OWI_SearchRom>:
+	while (bytesLeft > 0) {
+		// Place the received data in memory.
+		*romValue++ = OWI_ReceiveByte(pin);
+		bytesLeft--;
+	}
+}
+ 288:	af 92       	push	r10
+ 28a:	bf 92       	push	r11
+ 28c:	cf 92       	push	r12
+ 28e:	df 92       	push	r13
+ 290:	ef 92       	push	r14
+ 292:	ff 92       	push	r15
+ 294:	0f 93       	push	r16
+ 296:	1f 93       	push	r17
+ 298:	cf 93       	push	r28
+ 29a:	df 93       	push	r29
+ 29c:	7c 01       	movw	r14, r24
+ 29e:	b6 2e       	mov	r11, r22
+ 2a0:	c4 2e       	mov	r12, r20
+ 2a2:	64 2f       	mov	r22, r20
+ 2a4:	80 ef       	ldi	r24, 0xF0	; 240
+ 2a6:	fc d0       	rcall	.+504    	; 0x4a0 <OWI_SendByte>
+ 2a8:	c1 e0       	ldi	r28, 0x01	; 1
+ 2aa:	a1 2c       	mov	r10, r1
+ 2ac:	d1 e0       	ldi	r29, 0x01	; 1
+ 2ae:	41 c0       	rjmp	.+130    	; 0x332 <OWI_SearchRom+0xaa>
+ 2b0:	0c 2d       	mov	r16, r12
+ 2b2:	10 e0       	ldi	r17, 0x00	; 0
+ 2b4:	c8 01       	movw	r24, r16
+ 2b6:	8f d1       	rcall	.+798    	; 0x5d6 <OWI_ReadBit>
+ 2b8:	d8 2e       	mov	r13, r24
+ 2ba:	c8 01       	movw	r24, r16
+ 2bc:	8c d1       	rcall	.+792    	; 0x5d6 <OWI_ReadBit>
+ 2be:	dd 20       	and	r13, r13
+ 2c0:	11 f0       	breq	.+4      	; 0x2c6 <OWI_SearchRom+0x3e>
+ 2c2:	81 11       	cpse	r24, r1
+ 2c4:	3b c0       	rjmp	.+118    	; 0x33c <OWI_SearchRom+0xb4>
+ 2c6:	d8 16       	cp	r13, r24
+ 2c8:	71 f0       	breq	.+28     	; 0x2e6 <OWI_SearchRom+0x5e>
+ 2ca:	dd 20       	and	r13, r13
+ 2cc:	29 f0       	breq	.+10     	; 0x2d8 <OWI_SearchRom+0x50>
+ 2ce:	f7 01       	movw	r30, r14
+ 2d0:	90 81       	ld	r25, Z
+ 2d2:	9c 2b       	or	r25, r28
+ 2d4:	90 83       	st	Z, r25
+ 2d6:	1d c0       	rjmp	.+58     	; 0x312 <OWI_SearchRom+0x8a>
+ 2d8:	f7 01       	movw	r30, r14
+ 2da:	20 81       	ld	r18, Z
+ 2dc:	9c 2f       	mov	r25, r28
+ 2de:	90 95       	com	r25
+ 2e0:	92 23       	and	r25, r18
+ 2e2:	90 83       	st	Z, r25
+ 2e4:	16 c0       	rjmp	.+44     	; 0x312 <OWI_SearchRom+0x8a>
+ 2e6:	db 11       	cpse	r29, r11
+ 2e8:	05 c0       	rjmp	.+10     	; 0x2f4 <OWI_SearchRom+0x6c>
+ 2ea:	f7 01       	movw	r30, r14
+ 2ec:	80 81       	ld	r24, Z
+ 2ee:	8c 2b       	or	r24, r28
+ 2f0:	80 83       	st	Z, r24
+ 2f2:	0f c0       	rjmp	.+30     	; 0x312 <OWI_SearchRom+0x8a>
+ 2f4:	bd 16       	cp	r11, r29
+ 2f6:	40 f4       	brcc	.+16     	; 0x308 <OWI_SearchRom+0x80>
+ 2f8:	f7 01       	movw	r30, r14
+ 2fa:	90 81       	ld	r25, Z
+ 2fc:	8c 2f       	mov	r24, r28
+ 2fe:	80 95       	com	r24
+ 300:	89 23       	and	r24, r25
+ 302:	80 83       	st	Z, r24
+ 304:	ad 2e       	mov	r10, r29
+ 306:	05 c0       	rjmp	.+10     	; 0x312 <OWI_SearchRom+0x8a>
+ 308:	f7 01       	movw	r30, r14
+ 30a:	80 81       	ld	r24, Z
+ 30c:	8c 23       	and	r24, r28
+ 30e:	09 f4       	brne	.+2      	; 0x312 <OWI_SearchRom+0x8a>
+ 310:	ad 2e       	mov	r10, r29
+ 312:	f7 01       	movw	r30, r14
+ 314:	90 81       	ld	r25, Z
+ 316:	9c 23       	and	r25, r28
+ 318:	19 f0       	breq	.+6      	; 0x320 <OWI_SearchRom+0x98>
+ 31a:	c8 01       	movw	r24, r16
+ 31c:	64 d1       	rcall	.+712    	; 0x5e6 <OWI_WriteBit1>
+ 31e:	02 c0       	rjmp	.+4      	; 0x324 <OWI_SearchRom+0x9c>
+ 320:	c8 01       	movw	r24, r16
+ 322:	64 d1       	rcall	.+712    	; 0x5ec <OWI_WriteBit0>
+ 324:	df 5f       	subi	r29, 0xFF	; 255
+ 326:	cc 0f       	add	r28, r28
+ 328:	21 f4       	brne	.+8      	; 0x332 <OWI_SearchRom+0xaa>
+ 32a:	ff ef       	ldi	r31, 0xFF	; 255
+ 32c:	ef 1a       	sub	r14, r31
+ 32e:	ff 0a       	sbc	r15, r31
+ 330:	c1 e0       	ldi	r28, 0x01	; 1
+ 332:	d1 34       	cpi	r29, 0x41	; 65
+ 334:	08 f4       	brcc	.+2      	; 0x338 <OWI_SearchRom+0xb0>
+ 336:	bc cf       	rjmp	.-136    	; 0x2b0 <OWI_SearchRom+0x28>
+ 338:	8a 2d       	mov	r24, r10
+ 33a:	01 c0       	rjmp	.+2      	; 0x33e <OWI_SearchRom+0xb6>
+ 33c:	8f ef       	ldi	r24, 0xFF	; 255
+ 33e:	df 91       	pop	r29
+ 340:	cf 91       	pop	r28
+ 342:	1f 91       	pop	r17
+ 344:	0f 91       	pop	r16
+ 346:	ff 90       	pop	r15
+ 348:	ef 90       	pop	r14
+ 34a:	df 90       	pop	r13
+ 34c:	cf 90       	pop	r12
+ 34e:	bf 90       	pop	r11
+ 350:	af 90       	pop	r10
+ 352:	08 95       	ret
+
+Disassembly of section .text.OWI_Init:
+
+000001b0 <OWI_Init>:
+ *
+ *  This function initializes the 1-Wire bus by configuring the UART,
+ *  and the pin.
+ */
+void OWI_Init()
+{
+ 1b0:	cf 92       	push	r12
+ 1b2:	df 92       	push	r13
+ 1b4:	ef 92       	push	r14
+ 1b6:	ff 92       	push	r15
+ 1b8:	0f 93       	push	r16
+ 1ba:	1f 93       	push	r17
+	OWI_PINCONF = PORT_PULLUPEN_bm;
+ 1bc:	e0 e0       	ldi	r30, 0x00	; 0
+ 1be:	f4 e0       	ldi	r31, 0x04	; 4
+ 1c0:	98 e0       	ldi	r25, 0x08	; 8
+ 1c2:	91 8b       	std	Z+17, r25	; 0x11
+	// Set TX pin as output
+	OWI_DDR |= OWI_PIN;
+ 1c4:	80 81       	ld	r24, Z
+ 1c6:	82 60       	ori	r24, 0x02	; 2
+ 1c8:	80 83       	st	Z, r24
+	// Set TX pin high
+	OWI_PORT |= OWI_PIN;
+ 1ca:	81 b1       	in	r24, 0x01	; 1
+ 1cc:	82 60       	ori	r24, 0x02	; 2
+ 1ce:	81 b9       	out	0x01, r24	; 1
+#ifdef USE_ALTERNATE_PIN
+	// Use alternate pin for UART
+	PORTMUX.CTRLB |= PORTMUX_USART0_ALTERNATE_gc;
+ 1d0:	e0 e0       	ldi	r30, 0x00	; 0
+ 1d2:	f2 e0       	ldi	r31, 0x02	; 2
+ 1d4:	81 81       	ldd	r24, Z+1	; 0x01
+ 1d6:	81 60       	ori	r24, 0x01	; 1
+ 1d8:	81 83       	std	Z+1, r24	; 0x01
+#endif
+	// Enable loop back mode
+	USART0.CTRLA = USART_LBME_bm;
+ 1da:	e0 e0       	ldi	r30, 0x00	; 0
+ 1dc:	f8 e0       	ldi	r31, 0x08	; 8
+ 1de:	95 83       	std	Z+5, r25	; 0x05
+
+	// Enable Open drain mode so line can be pulled low by slave. Enable TX and RX
+	USART0.CTRLB = USART_ODME_bm | USART_RXEN_bm | USART_TXEN_bm;
+ 1e0:	88 ec       	ldi	r24, 0xC8	; 200
+ 1e2:	86 83       	std	Z+6, r24	; 0x06
+
+	// Set 8-bit UART and 1 stop bit
+	USART0.CTRLC = USART_CHSIZE_8BIT_gc | USART_SBMODE_1BIT_gc;
+ 1e4:	83 e0       	ldi	r24, 0x03	; 3
+ 1e6:	87 83       	std	Z+7, r24	; 0x07
+
+	// Calculate baud register value for 9600 baud
+	// Baud rate compensated with factory stored frequency error
+	// Synchronous communication without Auto-baud (Sync Field)
+	// 20MHz Clock, and 3V. For different voltage and clock this should be changed
+	int8_t  sigrow_value = SIGROW.OSC20ERR3V; // read signed error
+ 1e8:	c0 90 24 11 	lds	r12, 0x1124	; 0x801124 <__RODATA_PM_OFFSET__+0x7f9124>
+	int32_t baud         = BAUD_9600;         // ideal baud rate
+	baud *= (1024 + sigrow_value);            // sum resolution + error
+ 1ec:	0c 2c       	mov	r0, r12
+ 1ee:	00 0c       	add	r0, r0
+ 1f0:	dd 08       	sbc	r13, r13
+ 1f2:	2c ef       	ldi	r18, 0xFC	; 252
+ 1f4:	d2 1a       	sub	r13, r18
+ 1f6:	0d 2c       	mov	r0, r13
+ 1f8:	00 0c       	add	r0, r0
+ 1fa:	ee 08       	sbc	r14, r14
+ 1fc:	ff 08       	sbc	r15, r15
+ 1fe:	a6 e4       	ldi	r26, 0x46	; 70
+ 200:	b0 e1       	ldi	r27, 0x10	; 16
+ 202:	a7 01       	movw	r20, r14
+ 204:	96 01       	movw	r18, r12
+ 206:	dd d1       	rcall	.+954    	; 0x5c2 <__muluhisi3>
+	baud /= 1024;                             // divide by resolution
+ 208:	8b 01       	movw	r16, r22
+ 20a:	9c 01       	movw	r18, r24
+ 20c:	99 23       	and	r25, r25
+ 20e:	24 f4       	brge	.+8      	; 0x218 <__DATA_REGION_LENGTH__+0x18>
+ 210:	01 50       	subi	r16, 0x01	; 1
+ 212:	1c 4f       	sbci	r17, 0xFC	; 252
+ 214:	2f 4f       	sbci	r18, 0xFF	; 255
+ 216:	3f 4f       	sbci	r19, 0xFF	; 255
+ 218:	d9 01       	movw	r26, r18
+ 21a:	c8 01       	movw	r24, r16
+ 21c:	07 2e       	mov	r0, r23
+ 21e:	7a e0       	ldi	r23, 0x0A	; 10
+ 220:	b5 95       	asr	r27
+ 222:	a7 95       	ror	r26
+ 224:	97 95       	ror	r25
+ 226:	87 95       	ror	r24
+ 228:	7a 95       	dec	r23
+ 22a:	d1 f7       	brne	.-12     	; 0x220 <__DATA_REGION_LENGTH__+0x20>
+ 22c:	70 2d       	mov	r23, r0
+	baud_9600 = (int16_t)baud;
+ 22e:	80 93 02 3e 	sts	0x3E02, r24	; 0x803e02 <baud_9600>
+ 232:	90 93 03 3e 	sts	0x3E03, r25	; 0x803e03 <baud_9600+0x1>
+	// Set baud rate to 115200
+	// Baud rate compensated with factory stored frequency error
+	// Synchronous communication without Auto-baud (Sync Field)
+	// 20MHz Clock, and 3V. For different voltage and clock this should be changed
+	baud = BAUD_115200;            // ideal baud rate
+	baud *= (1024 + sigrow_value); // sum resolution + error
+ 236:	ab e5       	ldi	r26, 0x5B	; 91
+ 238:	b1 e0       	ldi	r27, 0x01	; 1
+ 23a:	a7 01       	movw	r20, r14
+ 23c:	96 01       	movw	r18, r12
+ 23e:	c1 d1       	rcall	.+898    	; 0x5c2 <__muluhisi3>
+	baud /= 1024;                  // divide by resolution
+ 240:	6b 01       	movw	r12, r22
+ 242:	7c 01       	movw	r14, r24
+ 244:	99 23       	and	r25, r25
+ 246:	34 f4       	brge	.+12     	; 0x254 <__DATA_REGION_LENGTH__+0x54>
+ 248:	2f ef       	ldi	r18, 0xFF	; 255
+ 24a:	c2 0e       	add	r12, r18
+ 24c:	23 e0       	ldi	r18, 0x03	; 3
+ 24e:	d2 1e       	adc	r13, r18
+ 250:	e1 1c       	adc	r14, r1
+ 252:	f1 1c       	adc	r15, r1
+ 254:	d7 01       	movw	r26, r14
+ 256:	c6 01       	movw	r24, r12
+ 258:	07 2e       	mov	r0, r23
+ 25a:	7a e0       	ldi	r23, 0x0A	; 10
+ 25c:	b5 95       	asr	r27
+ 25e:	a7 95       	ror	r26
+ 260:	97 95       	ror	r25
+ 262:	87 95       	ror	r24
+ 264:	7a 95       	dec	r23
+ 266:	d1 f7       	brne	.-12     	; 0x25c <__DATA_REGION_LENGTH__+0x5c>
+ 268:	70 2d       	mov	r23, r0
+	baud_115200 = (int16_t)baud;
+ 26a:	80 93 00 3e 	sts	0x3E00, r24	; 0x803e00 <__DATA_REGION_ORIGIN__>
+ 26e:	90 93 01 3e 	sts	0x3E01, r25	; 0x803e01 <__DATA_REGION_ORIGIN__+0x1>
+	USART0.BAUD = baud_115200; // set adjusted baud rate
+ 272:	80 93 08 08 	sts	0x0808, r24	; 0x800808 <__RODATA_PM_OFFSET__+0x7f8808>
+ 276:	90 93 09 08 	sts	0x0809, r25	; 0x800809 <__RODATA_PM_OFFSET__+0x7f8809>
+}
+ 27a:	1f 91       	pop	r17
+ 27c:	0f 91       	pop	r16
+ 27e:	ff 90       	pop	r15
+ 280:	ef 90       	pop	r14
+ 282:	df 90       	pop	r13
+ 284:	cf 90       	pop	r12
+ 286:	08 95       	ret
+
+Disassembly of section .text.OWI_TouchBit:
+
+0000056c <OWI_TouchBit>:
+ */
+unsigned char OWI_TouchBit(unsigned char outValue)
+{
+	// Place the output value in the UART transmit buffer, and wait
+	// until it is received by the UART receiver.
+	USART0.TXDATAL = outValue;
+ 56c:	80 93 02 08 	sts	0x0802, r24	; 0x800802 <__RODATA_PM_OFFSET__+0x7f8802>
+	while (!(USART0.STATUS & USART_RXCIF_bm)) {
+ 570:	80 91 04 08 	lds	r24, 0x0804	; 0x800804 <__RODATA_PM_OFFSET__+0x7f8804>
+ 574:	88 23       	and	r24, r24
+ 576:	e4 f7       	brge	.-8      	; 0x570 <OWI_TouchBit+0x4>
+	}
+	// Set the UART Baud Rate back to 115200kbps when finished.
+	USART0.BAUD = baud_115200;
+ 578:	80 91 00 3e 	lds	r24, 0x3E00	; 0x803e00 <__DATA_REGION_ORIGIN__>
+ 57c:	90 91 01 3e 	lds	r25, 0x3E01	; 0x803e01 <__DATA_REGION_ORIGIN__+0x1>
+ 580:	e0 e0       	ldi	r30, 0x00	; 0
+ 582:	f8 e0       	ldi	r31, 0x08	; 8
+ 584:	80 87       	std	Z+8, r24	; 0x08
+ 586:	91 87       	std	Z+9, r25	; 0x09
+
+	return USART0.RXDATAL;
+ 588:	80 81       	ld	r24, Z
+}
+ 58a:	08 95       	ret
+
+Disassembly of section .text.OWI_WriteBit1:
+
+000005e6 <OWI_WriteBit1>:
+ *  Generates the waveform for transmission of a '1' bit on the 1-Wire
+ *  bus.
+ */
+void OWI_WriteBit1()
+{
+	OWI_TouchBit(OWI_UART_WRITE1);
+ 5e6:	8f ef       	ldi	r24, 0xFF	; 255
+ 5e8:	c1 df       	rcall	.-126    	; 0x56c <OWI_TouchBit>
+ 5ea:	08 95       	ret
+
+Disassembly of section .text.OWI_WriteBit0:
+
+000005ec <OWI_WriteBit0>:
+ *  Generates the waveform for transmission of a '0' bit on the 1-Wire(R)
+ *  bus.
+ */
+void OWI_WriteBit0()
+{
+	OWI_TouchBit(OWI_UART_WRITE0);
+ 5ec:	80 e0       	ldi	r24, 0x00	; 0
+ 5ee:	be df       	rcall	.-132    	; 0x56c <OWI_TouchBit>
+ 5f0:	08 95       	ret
+
+Disassembly of section .text.OWI_ReadBit:
+
+000005d6 <OWI_ReadBit>:
+ */
+unsigned char OWI_ReadBit()
+{
+	// Return 1 if the value received matches the value sent.
+	// Return 0 else. (A slave held the bus low).
+	return (OWI_TouchBit(OWI_UART_READ_BIT) == OWI_UART_READ_BIT);
+ 5d6:	8f ef       	ldi	r24, 0xFF	; 255
+ 5d8:	c9 df       	rcall	.-110    	; 0x56c <OWI_TouchBit>
+ 5da:	91 e0       	ldi	r25, 0x01	; 1
+ 5dc:	8f 3f       	cpi	r24, 0xFF	; 255
+ 5de:	09 f0       	breq	.+2      	; 0x5e2 <OWI_ReadBit+0xc>
+ 5e0:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 5e2:	89 2f       	mov	r24, r25
+ 5e4:	08 95       	ret
+
+Disassembly of section .text.OWI_DetectPresence:
+
+000004d0 <OWI_DetectPresence>:
+ *  \return non zero value when a presence signal was detected.
+ */
+unsigned char OWI_DetectPresence()
+{
+	// Reset UART receiver to clear RXC register.
+	USART0.CTRLB &= ~(USART_RXEN_bm);
+ 4d0:	e0 e0       	ldi	r30, 0x00	; 0
+ 4d2:	f8 e0       	ldi	r31, 0x08	; 8
+ 4d4:	86 81       	ldd	r24, Z+6	; 0x06
+ 4d6:	8f 77       	andi	r24, 0x7F	; 127
+ 4d8:	86 83       	std	Z+6, r24	; 0x06
+	USART0.CTRLB |= (USART_RXEN_bm);
+ 4da:	86 81       	ldd	r24, Z+6	; 0x06
+ 4dc:	80 68       	ori	r24, 0x80	; 128
+ 4de:	86 83       	std	Z+6, r24	; 0x06
+
+	// Set UART Baud Rate to 9600 for Reset/Presence signaling.
+	USART0.BAUD = baud_9600;
+ 4e0:	80 91 02 3e 	lds	r24, 0x3E02	; 0x803e02 <baud_9600>
+ 4e4:	90 91 03 3e 	lds	r25, 0x3E03	; 0x803e03 <baud_9600+0x1>
+ 4e8:	80 87       	std	Z+8, r24	; 0x08
+ 4ea:	91 87       	std	Z+9, r25	; 0x09
+
+	// Return 0 if the value received matches the value sent.
+	// return 1 else. (Presence detected)
+	return (OWI_TouchBit(OWI_UART_RESET) != OWI_UART_RESET);
+ 4ec:	80 ef       	ldi	r24, 0xF0	; 240
+ 4ee:	3e d0       	rcall	.+124    	; 0x56c <OWI_TouchBit>
+ 4f0:	91 e0       	ldi	r25, 0x01	; 1
+ 4f2:	80 3f       	cpi	r24, 0xF0	; 240
+ 4f4:	09 f4       	brne	.+2      	; 0x4f8 <OWI_DetectPresence+0x28>
+ 4f6:	90 e0       	ldi	r25, 0x00	; 0
+}
+ 4f8:	89 2f       	mov	r24, r25
+ 4fa:	08 95       	ret
+
+Disassembly of section .text.libgcc.mul:
+
+000005c2 <__muluhisi3>:
+ 5c2:	f3 df       	rcall	.-26     	; 0x5aa <__umulhisi3>
+ 5c4:	a5 9f       	mul	r26, r21
+ 5c6:	90 0d       	add	r25, r0
+ 5c8:	b4 9f       	mul	r27, r20
+ 5ca:	90 0d       	add	r25, r0
+ 5cc:	a4 9f       	mul	r26, r20
+ 5ce:	80 0d       	add	r24, r0
+ 5d0:	91 1d       	adc	r25, r1
+ 5d2:	11 24       	eor	r1, r1
+ 5d4:	08 95       	ret
+
+Disassembly of section .text.libgcc.mul:
+
+000005aa <__umulhisi3>:
+ 5aa:	a2 9f       	mul	r26, r18
+ 5ac:	b0 01       	movw	r22, r0
+ 5ae:	b3 9f       	mul	r27, r19
+ 5b0:	c0 01       	movw	r24, r0
+ 5b2:	a3 9f       	mul	r26, r19
+ 5b4:	01 d0       	rcall	.+2      	; 0x5b8 <__umulhisi3+0xe>
+ 5b6:	b2 9f       	mul	r27, r18
+ 5b8:	70 0d       	add	r23, r0
+ 5ba:	81 1d       	adc	r24, r1
+ 5bc:	11 24       	eor	r1, r1
+ 5be:	91 1d       	adc	r25, r1
+ 5c0:	08 95       	ret

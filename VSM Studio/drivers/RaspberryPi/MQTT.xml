@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DRIVER HEADER="MQTT">
+   
+   <ENUMERATION   NAME="QOS">
+      <CONSTANT   NAME="Level_0"       VALUE="0"/>
+      <CONSTANT   NAME="Level_1"       VALUE="1"/>
+      <CONSTANT   NAME="Level_2"       VALUE="2"/>
+   </ENUMERATION>
+   
+   <INTERRUPT     NAME="onConnect"                          DESC="Connect Callback"       HOOK="attachConnectHandler"/>
+   <INTERRUPT     NAME="onMessage"                          DESC="Message Callback"       HOOK="attachMessageHandler"/> 
+   
+   <FUNCTION                                                DESC="Return true if topic is the same as the callback">
+      <PARAMETER  NAME="Topic"            TYPE="STRING"     DESC="Topic to check" />
+      <RETURN                             TYPE="BOOLEAN" />
+   </FUNCTION>
+   
+   <METHOD        NAME="setClientId"                        DESC="Changes the name of the client">
+      <PARAMETER  NAME="clientId"         TYPE="STRING"     DESC="The new client Identifier"/>
+   </METHOD>
+   
+   <METHOD        NAME="setWillMessage"                     DESC="Add a message to for the client in the event of disconnection">
+      <PARAMETER  NAME="topic"            TYPE="STRING"     DESC="Topic the will will be sent to"/>
+      <PARAMETER  NAME="QoS"              TYPE="QOS"        DESC="QoS level of the will"                    DEFAULT="Level_0"/>
+      <PARAMETER  NAME="retain"           TYPE="BOOLEAN"    DESC="If the will is remembered by the broker"  DEFAULT="FALSE"/>
+      <PARAMETER  NAME="will"             TYPE="LIST"       DESC="Message in the will"/>
+   </METHOD>
+   
+   <METHOD        NAME="connect"                            DESC="Add the MQTT broker and port connection details">
+      <PARAMETER  NAME="cleanSession"     TYPE="BOOLEAN"    DESC="Receave old messages"                     DEFAULT="TRUE"/>
+   </METHOD>
+   
+   <METHOD        NAME="subscribe"                          DESC="Subscribe to Topic">
+      <PARAMETER  NAME="topic"            TYPE="STRING"     DESC="Topic you with to subscribe to"/>
+      <PARAMETER  NAME="QoS"              TYPE="QOS"        DESC="QoS level within topic"                   DEFAULT="Level_0"/>
+   </METHOD>
+   
+   <METHOD        NAME="readMessage"                        DESC="Return Message">
+      <RETURN     NAME="lastMessage"      TYPE="STRING"     DESC="Last Message Receaved"                    DEFAULT="Message"/>
+   </METHOD>
+   
+   <METHOD        NAME="readList"                           DESC="Read the mqtt message list">
+       <PARAMETER TYPE="LIST"             BYREF="1"         DESC="List of variables to read."/>
+   </METHOD>
+   
+   <METHOD        NAME="readTopic"                          DESC="Return Message">
+      <RETURN     NAME="lastMessageTopic" TYPE="STRING"     DESC="Last Topic Read"                          DEFAULT="Topic" />
+   </METHOD> 
+   
+   <METHOD        NAME="publish"                            DESC="Send message to Broker">
+      <PARAMETER  NAME="topic"            TYPE="STRING"     DESC="Topic to send too"/>
+      <PARAMETER  NAME="QoS"              TYPE="QOS"        DESC="Quality of Service level"                 DEFAULT="Level_0"/>
+      <PARAMETER  NAME="retain"           TYPE="BOOLEAN"    DESC="Save in broker, and resend every time"    DEFAULT="FALSE"/>
+      <PARAMETER  NAME="message"          TYPE="LIST"       DESC="List of values to send"/>
+   </METHOD>
+   
+   <METHOD        NAME="publishRaw"                         DESC="Send a raw string to Broker">
+      <PARAMETER  NAME="topic"            TYPE="STRING"     DESC="Topic to send too"/>
+      <PARAMETER  NAME="QoS"              TYPE="QOS"        DESC="Quality of Service level"                 DEFAULT="Level_0"/>
+      <PARAMETER  NAME="retain"           TYPE="BOOLEAN"    DESC="Save in broker, and resend every time"    DEFAULT="FALSE"/>
+      <PARAMETER  NAME="message"          TYPE="STRING"     DESC="String to send"/>
+   </METHOD> 
+
+   <METHOD        NAME="unsubscribe"                        DESC="Unsubscribe from Topic">
+      <PARAMETER  NAME="topic"            TYPE="STRING"/>
+   </METHOD> 
+   
+   <METHOD        NAME="disconnect"                         DESC="Disconnect from MQTT broker"/>
+   
+</DRIVER>

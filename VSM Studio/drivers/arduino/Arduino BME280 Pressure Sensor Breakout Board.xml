@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Breakout Peripherals" FILE="Arduino/Arduino BME280 Pressure Sensor Breakout Board.pdsclip" DESC="Arduino BME280 Digital Pressure Sensor Breakout Board" FAMILY="ARDUINO">
+   <PERIPHERAL TYPE="BME280 Digital Pressure Sensor" ELEMENT="S1">
+      <INTERFACE OBJECT="BME280">
+         <PORT NAME="I2C"/>
+         <SETUP NAME="begin"/>
+         <CONFIG>
+          <!-- Temp and Pressure configuration -->
+          <PROPERTY NAME="SETPOINT1" ALIAS="PRESSURE" ELEMENT="S1" TYPE="FLOAT"/>
+          <PROPERTY NAME="SETPOINT2" ALIAS="TEMP"     ELEMENT="S1" TYPE="FLOAT"/>
+          <PROPERTY NAME="SETPOINT3" ALIAS="HUMIDITY" ELEMENT="S1" TYPE="FLOAT"/>
+         </CONFIG>
+      </INTERFACE>
+      <DRIVER FILE="bme280/bme280.xml"/>
+   </PERIPHERAL>
+</CLIP>
+

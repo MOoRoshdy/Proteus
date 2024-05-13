@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!-- Driver Descriptor for Arduino LCD Display -->
+<DRIVER HEADER="Keys.h">
+ <REQUIRE HEADER="Core.h"/>
+    <METHOD NAME="readKey" DESC="The Read Value of a key">
+      <RETURN NAME="readKey" TYPE="INTEGER" DEFAULT="KeyNumber" DESC="The Value of a key"/>
+    </METHOD>
+</DRIVER>

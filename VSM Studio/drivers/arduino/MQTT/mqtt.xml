@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!-- Driver Descriptor for  MQTT module -->
+<DRIVER HEADER="mqtt.h">
+   <REQUIRE HEADER="bridge.h" />
+   <REQUIRE HEADER="pubsubclient.h" />
+
+  <ENUMERATION   NAME="QOS">
+      <CONSTANT   NAME="Level_0"       VALUE="0"/>
+      <CONSTANT   NAME="Level_1"       VALUE="1"/>
+      <!--CONSTANT   NAME="Level_2"       VALUE="2"/-->
+   </ENUMERATION>
+
+  <INTERRUPT NAME="onConnect" DESC="Connect Callback" HOOK="attachConnectHandler" />
+  <INTERRUPT NAME="onMessage" DESC="Message Callback" HOOK="attachMessageHandler" />
+
+  <FUNCTION DESC="Return true if topic is the same as the callback">
+      <PARAMETER NAME="name" TYPE="STRING" DESC="Topic to check" />
+      <RETURN TYPE="BOOLEAN" />
+   </FUNCTION>
+   
+   <METHOD        NAME="setClientId"                        DESC="Changes the name of the client">7
+      <PARAMETER  NAME="clientId"         TYPE="STRING"     DESC="The new client Identifier"/>
+   </METHOD>
+   
+   <METHOD NAME="setWillMessage" DESC="Set a message which will be triggered on disconnect">
+      <PARAMETER NAME="willTopic" TYPE="STRING" DESC="Topic to post to if this client disconnects" />
+      <PARAMETER NAME="willRetain" TYPE="BOOLEAN" DESC="Retain the will for the future" DEFAULT="FALSE"/>
+      <PARAMETER NAME="willMessage" TYPE="STRING" DESC="Message that will be sent when the device disconnects" />
+   </METHOD>
+   
+   <METHOD NAME="connect" DESC="Connect to the specified server">
+      <PARAMETER NAME="cleanSession" TYPE="BOOLEAN" DESC="Start a new session on the broker, pending messages will be discarded." DEFAULT="TRUE"/>
+   </METHOD>
+
+   <METHOD NAME="disconnect" DESC="Disconnect from the MQTT server"></METHOD>
+
+   <METHOD NAME="subscribe" DESC="Subscribe to a MQTT topic">
+      <PARAMETER NAME="topic" TYPE="STRING" DESC="Topic to subscribe to" />
+      <PARAMETER NAME="qos" TYPE="QOS" Desc="Quality of service to subscribe to (0 or 1)" DEFAULT="Level_0"/>
+   </METHOD>
+
+   <METHOD NAME="unsubscribe" DESC="Unsubscribe to a MQTT topic">
+      <PARAMETER NAME="topic" TYPE="STRING" DESC="Topic to unsubscribe to" />
+   </METHOD>
+   <!-- TODO -->
+   <METHOD NAME="publish" DESC="Publish a message to a MQTT topic">
+      <PARAMETER NAME="topic" TYPE="STRING" DESC="Topic to publish to" />
+      <PARAMETER NAME="retained" TYPE="BOOLEAN" DESC="Retain the message" DEFAULT="FALSE"/>
+      <PARAMETER NAME="message" TYPE="LIST" DESC="Message to send" />
+   </METHOD>
+
+   <METHOD NAME="publishRaw" DESC="Send a raw string to Broker">
+      <PARAMETER NAME="topic" TYPE="STRING" DESC="Topic to publish to" />
+      <PARAMETER NAME="retained" TYPE="BOOLEAN" DESC="Retain the message" DEFAULT="FALSE"/>
+      <PARAMETER NAME="message" TYPE="STRING" DESC="Message to send" />
+   </METHOD>
+
+   <METHOD NAME="readMessage" DESC="Read the mqtt message">
+      <RETURN TYPE="STRING" DEFAULT="mqttMessage" />
+   </METHOD>
+
+   <METHOD NAME="readList" DESC="Read the mqtt message list">
+      <PARAMETER TYPE="LIST" BYREF="1" DESC="Comma separated list of variables to receive list data" />
+   </METHOD>
+
+   <METHOD NAME="readTopic" DESC="Read the mqtt topic">
+      <RETURN TYPE="STRING" DEFAULT="mqttTopic" />
+   </METHOD>
+
+</DRIVER>

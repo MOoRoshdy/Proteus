@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Breakout Peripherals" FILE="Arduino/Arduino LCD Keypad Shield.pdsclip" FAMILY="ARDUINO" DESC="LCD Display With Keys">
+   <PERIPHERAL TYPE="Arduino LCD" ELEMENT="LCD1" >
+      <!-- Hardware Interface -->
+      <INTERFACE OBJECT="AlphanumericLcd">
+         <PIN NAME="RS" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO8"/>
+         </PIN>
+         <PIN NAME="E" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO9"/>
+         </PIN>
+         <PIN NAME="D4" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO4"/>
+         </PIN>
+         <PIN NAME="D5" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO5"/>
+         </PIN>
+         <PIN NAME="D6" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO6"/>
+         </PIN>
+         <PIN NAME="D7" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO7"/>
+         </PIN>
+         <SETUP NAME="begin">
+             <PROPERTY NAME="NUMCOLS" ELEMENT="LCD1" TYPE="INTEGER"/>
+             <PROPERTY NAME="NUMROWS" ELEMENT="LCD1" TYPE="INTEGER"/>
+         </SETUP>   
+      </INTERFACE>
+      <DRIVER FILE="AlphanumericLcd/AlphanumericLcd.xml"/> 
+   </PERIPHERAL>
+   
+   <PERIPHERAL TYPE="Arduino Keys" ELEMENT="KEY" >
+      <INTERFACE OBJECT="LCDKeypad"/>
+      <DRIVER FILE="AlphanumericLcd/Keys.xml"/>
+   </PERIPHERAL>
+</CLIP>
+

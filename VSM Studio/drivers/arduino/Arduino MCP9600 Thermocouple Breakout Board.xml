@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Adafruit" FILE="Arduino/Arduino MCP9600 Thermocouple Breakout Board.pdsclip" DESC="Arduino MCP9600 Thermocouple Breakout Board" FAMILY="ARDUINO">
+   <PERIPHERAL TYPE="MCP9600 Thermocouple Converter" ELEMENT="TC1">
+      <INTERFACE OBJECT="Adafruit_MCP9600">
+         <PORT NAME="I2C"/>
+         <SETUP NAME="begin"/>
+      </INTERFACE>
+      <DRIVER FILE="mcp960x/mcp9600.xml"/>
+   </PERIPHERAL>
+</CLIP>
+

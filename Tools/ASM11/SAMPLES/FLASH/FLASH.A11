@@ -1,0 +1,840 @@
+	$TABSIZE	10
+;************************************************************
+;*						*
+;* 68HC11 Enhanced EVBU2 Am29F010 FLASH Programming Utility	*
+;*						*
+;*  Copyright (C) 1998 Mark Schultz - All Rights Reserved	*
+;*						*
+;*----------------------------------------------------------*
+;* Author:	Mark Schultz <mschultz@jps.net>	*
+;* Version:	0.04  Revised 14-Aug-98		*
+;*----------------------------------------------------------*
+;* Assembled with Tony Papadimitriou's ASM11, version	*
+;* 1.11beta					*
+;*						*
+;* Tested on modified Motorola EVBU2 with Am29F010 FLASH	*
+;* device mapped in HC11 address space at $8000-$FFFF.	*
+;* FLASH address lines FA15 and FA16 driven by PB0 and PB1	*
+;* provided by a 68HC24 PRU.				*
+;************************************************************
+;Tabs:	11	21	31	41	51	61	71
+
+;------------------------------------------------------------------------------
+;Version History:
+;
+;0.01   11-Aug-98	- First test version
+;0.02   12-Aug-98	- Modified all JMPs and JSRs to use relative forms.
+;		- Added "helper" branches to allow all-relative addressing.
+;		- Modified MSG routine to use subroutine return address as
+;		  string pointer.
+;0.03   13-Aug-98	- Changed all LSRD instructions to "DB $04" to work around
+;		  object code generation bug in ASM11 v1.09beta.
+;0.04   14-Aug-98	- Changed "DB $04" back to "LSRD" after obtaining v1.11beta
+;		  version of ASM11 that has LSRD bug fixed.
+;		- Added comments pertaining to S-record structure and
+;		  FLASH programming/erasure algorithms.
+;		- Various minor modifications to reduce code size.
+;		  Code size for this version: $01FC bytes
+;0.05   17-Aug-98	- Added instruction to disable bootloader ROM if active
+;		  Code size for this version: $01FE bytes
+;------------------------------------------------------------------------------
+;Abstract:
+;
+;This utility can be used to program a memory-mapped 128Kx8 5V-only FLASH ROM
+;using a standard S-record file transmitted via the SCI.  The utility may be
+;loaded and executed from anywhere in the HC11 address space without
+;modification, as long as it is not run from the FLASH device being programmed.
+;The utility is small enough to run out of the (512-byte) EEPROM present
+;in most HC11 variants.
+;
+;------------------------------------------------------------------------------
+;Usage notes:
+;
+;Unfortunately, given the size of this utility and it's RAM requirements, this
+;program cannot be bootloaded and executed out of internal RAM unless run on a
+;HC11 variant equipped with a large (600+ byte) internal RAM array.  Various
+;resource ORG's will have to be changed if execution out of RAM is desired.
+;The program IS small enough (barely!) to fit within the 512-byte EEPROM found
+;on many HC11 variants.
+;
+;This utility has been written using all-relative addressing modes, allowing it
+;to be executed from any location in the HC11 address space.  The program is
+;ORG'd to location $2000 but may be relocated to any address without code
+;modification, ORG change or re-assembly.
+;
+;As presently written, the program assumes that the FLASH ROM is connected to
+;a HC11 configured to run in expanded mode, with the FLASH device mapped to
+;addresses $8000-$FFFF.  FLASH address bits A15 and A16 are assumed to be
+;driven with output port pins PB0 and PB1.  On the modified EVBU2 on which this
+;utility was debugged and tested, PB0 and PB1 signals were provided by a 68HC24
+;Port Recovery Unit (PRU).  Any HC11 output port may be used to drive FA15 and
+;FA16 once appropriate assignments are made to the FA15 and FA16 port-definition
+;constants.
+;
+;RAM locations $0000-$0007 are used to hold internal variables.  The 40 bytes
+;following are used as a S-record data buffer, allowing for record sizes up
+;to 90 bytes total.  The stack is set to the end of RAM for a E-series device
+;($01FF).  Worst-case stack usage should be 7 bytes or less.  Interrupts are
+;not utilitized, and disabled on startup.  The SCI is set to operate at 9600
+;bps (w/8 MHz clock) using a 8-bit word size.  Most of the behaviors described
+;above may changed by modifying the appropriate constants.
+;
+;This utility offers a number of helpful features to facilitate FLASH
+;programming.  When started, the user is prompted (Sec:) to specify a sector
+;number (a 16K block of the FLASH array) to be programmed, or optionally erased.
+;Entering a value from 0 to 7 simply selects a destination sector, which is
+;only relevant as far as how FLASH address bits A15 and A16 are set during
+;programming.  A value of 8 to F will initiate erasure of sector (n-8);
+;e.g. entering "B" causes sector 3 to be erased.  Entering Ctrl-E causes the
+;entire array (all 128K bytes) to be erased.  If a erase operation is specified,
+;the sector prompt "Sec:" will be re-issued to allow erasure of additional
+;sectors until such time as a "normal" sector number (0..7) is entered.
+;
+;Note: Entries made at the "Sec:" prompt are executed immediately; it is not
+;necessary to transmit <CR> after specifying a sector # to select or erase.
+;
+;An optional offset may be specified, which will be ADDED to all S-record
+;addresses when the FLASH is programmed.  This is entered at the "Ofs:" prompt,
+;which is generated after the "Sec:" prompt.  Since the final address
+;calculation ignores any carry beyond 16 bits, a negative offset may be applied
+;by specifying it's two's compliment value.  Entering "EC00" will effectively
+;subtract $1400 from S-record addresses sent in the programming phase.
+;
+;Once the sector number and offset have been entered, the program enters the
+;S-record interpreter, as indicated by the "Send!" prompt.  The program will
+;generate a prompt character after each S-record is processed.  There are three
+;possible prompts: "*" indicates that a record was processed without incident.
+;"?" indicates a parsing or checksum error in the data sent.  If a "/" is sent,
+;an error occured while attempting to program the FLASH device.  The S-record
+;data sent to the interpreter is NOT echoed back to the user's terminal.
+;
+;The program will remain in the S-record interpreter mode using the previously
+;specified settings until a <ESC> character ($1B) is received.  Reception of
+;a end-of-data S-record (one that starts with "S9...") will NOT terminate the
+;S-record interpreter/programmer.  Once <ESC> is received, the program will
+;resume operation at the "Sec:" prompt.
+;
+;If the FLASH device to be programmed overlaps the internal ROM or EEPROM space,
+;and the data addresses to be programmed fall within these overlapped areas,
+;it is up to the user to de-map these resources by writing the appropriate
+;value to the CONFIG register before starting this utility.  THIS PROGRAM DOES
+;NOT MODIFY THE CONFIG REGISTER IN ANY WAY.  If overlapping internal resources
+;are in the memory map a verify error will likely occur when programming is
+;attempted.  It is permissible to leave internal resources enabled if the
+;location(s) to be programmed do not overlap these resources.
+;
+;------------------------------------------------------------------------------
+;Notes regarding coding style:
+;
+;To keep the code size small and to allow for use of relative jumps and
+;subroutine calls throught, some "unusual" coding practices have been used.
+;The ordering and position of subroutine and code blocks is somewhat unusual,
+;even "spahetti-like" but has been done so to facilitate the use of relative
+;addressing.  "Helper" branches are located throught the code which serve to
+;extend the range of distant branches and subroutine calls.  Use of "helper"
+;branches can be identified by looking at the label being used to call a given
+;routine; all BRx/BSR's that employ "helper" branches use labels with a "$"
+;or "$$" suffix.
+;
+;The <Msg> subroutine, used to transmit text strings via the SCI, employs a
+;unusual but effective method to determine the address of the string which it
+;is to send - it expects the NUL-terminated string which is to be sent to
+;follow the BSR/JSR which calls the MSG routine.  Execution resumes with the
+;code following the terminating NUL of the string sent.
+;------------------------------------------------------------------------------
+
+	$LISTOFF
+	$INCLUDE	"HC11E.I11"
+	$INCLUDE	"CHARS.I11"
+	$LISTON
+
+;------------------------------------------------------------------------------
+
+;	Character constants
+
+EraseAck	EQU	'!'		;Erasure acknowledge character
+ErrorChr	EQU	'?'		;Bad entry character
+
+EraAllChr	EQU	$05		;Erase-all command character
+
+SRecLead	EQU	'S'		;Lead-in character for S-records
+
+PromptChr	EQU	'*'		;S-record prompt character
+BadRecChr	EQU	'?'		;Prompt/response if bad S-record
+PgmErrChr	EQU	'/'		;Prompt/response if flash program error
+
+;------------------------------------------------------------------------------
+
+;	Application-specific resource definitions
+;	These may be changed to conform to your design
+
+FA15	EQU	PORTB		;FLASH ROM address line 15
+FA15_	EQU	PORTB_		;
+FA15.	EQU	PB0.		;
+;FA15D_	EQU	DDRB_		;(DDR address if needed)
+;FA15D	EQU	DDRB		;
+
+FA16	EQU	PORTB		;FLASH ROM address line 16
+FA16_	EQU	PORTB_		;
+FA16.	EQU	PB1.		;
+;FA16D_	EQU	DDRB_		;(DDR address if needed)
+;FA16D	EQU	DDRB		;
+
+MyBaud    EQU       SCP1.+SCP0.         ;SCI baud rate (9600 @ 8 MHz)
+
+BufSize	EQU	40		;Size of buffer to hold S-record data
+
+Stack	EQU	$01FF		;Stack base (highest) address
+
+;------------------------------------------------------------------------------
+
+;	FLASH programming constants
+
+FOffset	EQU	$8000		;Base address of FLASH ROM in memory map
+
+FUnlkA1	EQU	$5555		;Write unlock address 1 \  Device addr's
+FUnlkA2	EQU	$2AAA		;Write unlock address 2  | Add <FOffset>
+FCmdA	EQU	$5555		;Command write address  /  for MCU addr
+
+FUnlkV1	EQU	$AA		;Write unlock value 1
+FUnlkV2	EQU	$55		;Write unlock value 2
+
+FCmdID	EQU	$90		;Command: Read chip IDs
+FCmdPgm	EQU	$A0		;Command: Program byte
+FCmdErase	EQU	$80		;Command: Sector or chip erase
+FCmdReset	EQU	$F0		;Command: Reset to read state
+
+FCmdCEra	EQU	$10		;Erase subcommand: Entire chip
+FCmdSEra	EQU	$30		;Erase subcommand: Single sector
+
+;------------------------------------------------------------------------------
+
+;	Variable declarations
+;	Location may be changed to suit your needs
+
+;	Variables following should be located in page 0
+
+	ORG	$0000		;Start of variable block
+
+Sector	DS	1		;Sector # selected for programming
+Offset	DS	2		;Offset to add to S-record addresses
+NumBuf	DS	1		;Temporary used by numeric parser
+
+RecType	DS	1		;S-record type field
+Length	DS	1		;S-record length field
+Address	DS	2		;S-record address field
+Checksum	DS	1		;S-record running checksum
+
+;	Variables following may be located anywhere in RAM
+
+SBuffer	DS	BufSize		;S-record data field in binary format
+
+;------------------------------------------------------------------------------
+
+	ORG	$2000		;Change to desired load address
+
+;	Initialization:
+;	- Disable XIRQ & STOP
+;	- Set up stack
+;	- CPU in expanded bus mode
+;	- Set up SCI for 9600bps, 8 bit wordsize, multidrop features off
+
+Start	LDAA	#S.+X.+I.		;Disable STOP and XIRQ, IRQs off
+	TAP			;
+	LDS	#Stack		;Set up stack pointer
+
+	LDX	#IOBase		;Point to I/O registers
+	BSET	HPRIO_,X,#MDA.	;Enable expanded bus mode
+	BCLR	HPRIO_,X,#RBOOT.	;Disable bootloader ROM
+
+	LDAA	#MyBaud		;Set SCI baud rate
+	STAA	BAUD_,X		;
+	LDAA	#TE.+RE.		;Tx,Rx enabled, IRQs off
+	STAA	SCCR2_,X		;
+	CLR	SCCR1_,X		;8 bit wordsize
+
+	CLRA			;D <- 0
+	CLRB			;
+	STD	@Offset		;Default S-record address offset
+	STAA	@Sector		;Default sector # to program
+
+;	BCLR	FA15D_,X,FA15.	;(DDR initialization here if needed)
+;	BCLR	FA16D_,X,FA16.	;
+
+	BRA	Main		;Skip over GETNUM and MSG subroutines
+
+;-------------------------------------------------------------------------------
+
+;*******************************************************************************
+;Subroutine:	GetNum
+;Function:	Get (up to) 4-digit hex number w/entry echoback & editing
+;
+;		X <- Integer representation of value entered
+;		A <- Last character received from SCI
+;
+;Notes:		Backspace may be used to delete digit(s) entered
+;		Entry is terminated when <CR> received
+;		<ESC> also terminates entry, returns w/carry set
+;		The terminating character (CR or ESC) is NOT echoed back.
+;
+;		The backspacing routine does not echo a destructive
+;		backspace, and can become "confused" about the number of
+;		digits previously entered if the first digit(s) entered
+;		were 0's.  The accuracy of the returned result is not
+;		affected by these minor deficiencies.
+;
+;Stack usage:	7 bytes (including BSR/JSR)
+;Destroyed:	B
+;*******************************************************************************
+
+GetNum	LDX	#0		;Zero number accumulator
+
+GetNum1	BSR	GetHexD$		;Get a digit
+	BCC	GetNum2		; If valid, add to accumulator
+	CMPA	#ESC		;Abort entry ?
+	BEQ	GetNum3		; Yes, exit (carry set)
+	CMPA	#CR		;End of entry ?
+	BEQ	GetNum4		; Yes, exit (carry clear)
+	CMPA	#BS		;Backspace ?
+	BNE	GetNum1		; No, invalid digit, ignore
+
+;	Backspace processing
+
+	INX			;(INX/DEX: 2-byte test for X=0)
+	DEX			;Current entry = 0 ?
+	BEQ	GetNum1		; If entry = 0, ignore backspace
+	BSR	CharOut$		;Echo backspace
+
+	XGDX			;D <- Value so far
+	LSRD			;Shift 1 hex digit right
+	LSRD			;
+	LSRD			;
+	LSRD			;
+	XGDX			;Put # back in storage
+	BRA	GetNum1		;Get next character
+
+;	Valid digit entered
+
+GetNum2	CPX	#$1000		;Room for another digit ?
+	BHS	GetNum1		; No, ignore new digit
+	BSR	CharOut$		;Echo digit received
+
+	XGDX			;D <- Value so far (X has digit)
+	LSLD			;Shift 1 hex digit left
+	LSLD			; (make room for new digit)
+	LSLD			;
+	LSLD			;
+	XGDX			;Put # back in storage, B <- new digit
+	ABX			;Add new digit to accumulator
+	BRA	GetNum1		;Get next digit
+
+;	<ESC> received - abort entry
+
+GetNum3	SEC			;Flag aborted entry
+	RTS			;Exit
+
+;	<CR> received - standard exit
+
+GetNum4	CLC			;Clear abort flag
+	RTS			;Exit
+
+;---------------------------------------
+GetHexD$	BRA	GetHexD$$		;Help for GETHEXD call
+;---------------------------------------
+
+;*******************************************************************************
+;Subroutine:	Msg
+;Function:	Transmit zero-terminated string via SCI
+;
+;Notes:		String to be transmitted is retrieved from the code space
+;		immediately following the calling instruction.  The string
+;		should be terminated with a NUL.  Execution resumes at
+;		the point immediately following the terminating NUL of
+;		the string.
+;
+;Stack usage:	5 bytes (including BSR/JSR)
+;Destroyed:	A,X
+;*******************************************************************************
+
+Msg	PULX			;Pop return address - start of string
+
+Msg1	LDAA	0,X		;Get char from string
+	BEQ	Msg2		; Exit if end of string
+	BSR	CharOut$		;Transmit character
+	INX			;Point to next character
+	BRA	Msg1		;Continue transmission
+
+Msg2	JMP	1,X		;Return to caller, skipping over string
+
+;-------------------------------------------------------------------------------
+
+;	Prompt for sector select/erase
+;	If 0-7, set sector address & advance to offset prompt.
+;	If 8-F, erase sector (n-8) and re-issue sector prompt.
+;	If <ESC>, advance to offset prompt (use last selected/erased sector)
+;	If <Ctrl-E>, erase entire device & re-issue sector prompt.
+
+Main	BSR	Msg		;Transmit sector select/erase prompt
+	DB	CR,LF,'Sec (+8=Era):',NUL
+
+	BSR	GetHexD$$		;Get single hex digit
+	BCC	Main1		;Set or erase sector if valid digit
+	CMPA	#ESC		;ESC entered ?
+	BEQ	Main6		; Yes, exit sector set/erase mode
+	CMPA	#EraAllChr	;"Erase all" character ?
+	BEQ	Main5		; Yes, erase entire array
+
+	LDAA	#ErrorChr		;Invalid entry - transmit error char
+	BRA	Main4		;Send char, return to sector prompt
+
+;---------------------------------------
+GetNum$	BRA	GetNum		;Help for GETNUM call
+;---------------------------------------
+
+;	Valid sector address entered
+;	0-7 sets sector only, 8-F erases sector (n-8).
+
+Main1	BSR	CharOut		;Echo entry
+
+	STAB	@Sector		;Save sector #
+	CMPB	#8		;Erase sector request ?
+	BLO	Main6		; No, advance to offset prompt
+
+;	Erase sector
+;
+;	Sector erase procedure:
+;	1. Write unlock sequence:
+;	   Value <FUnlkV1> written to address <FUnlkA1>
+;	   Value <FUnlkV2> written to address <FUnlkA2>
+;	   These writes must occur with FA15=FA16=0
+;	2. Write generic erase-enable command:
+;	   Value <FCmdErase> written to address <FCmdA>
+;	3. Write unlock sequence again (same as step 1).
+;	4. Write "erase sector" command:
+;	   Value <FCmdSEra> written to any address in the sector to be erased.
+;	   (address bits FA14,FA15,FA16 relevant, others ignored)
+;
+;	Note: Verification of erasure is not performed.
+
+	BSR	FUnlock		;Send unlock sequence
+	LDAA	#FCmdErase	;Erase command prebyte
+	STAA	FCmdA+FOffset	;
+	BSR	FUnlock		;Send unlock sequence again
+	TBA			;A <- Sector address
+	BSR	FSector		;Select sector to erase
+
+	LDX	#FOffset		;Assume even sector
+	BITA	#$01		;Odd sector ?
+	BEQ	Main2		; No
+	LDX	#FOffset+$4000	; Yes, set address for odd sector
+
+Main2	LDAA	#FCmdSEra		;Sector erase command
+	STAA	0,X		;Send to sector base address
+
+Main3	LDAA	#EraseAck		;Acknowledge erase request
+Main4	BSR	CharOut		;
+Main$$	BRA	Main		;Issue sector prompt again
+
+;---------------------------------------
+GetHexD$$	BRA	GetHexD		;Help for GETHEXD call
+CharOut$	BRA	CharOut		;Help for CHAROUT call
+Msg$	BRA	Msg		;Help for MSG call
+;---------------------------------------
+
+;	Erase entire FLASH array
+;
+;	Entire device erase procedure:
+;	1. Write unlock sequence:
+;	   Value <FUnlkV1> written to address <FUnlkA1>
+;	   Value <FUnlkV2> written to address <FUnlkA2>
+;	   These writes must occur with FA15=FA16=0
+;	2. Write generic erase-enable command:
+;	   Value <FCmdErase> written to address <FCmdA>
+;	3. Write unlock sequence again (same as step 1).
+;	4. Write "erase device" command:
+;	   Value <FCmdCEra> written to address <FCmdA>
+;
+;	Note: Verification of erasure is not performed.
+
+Main5	BSR	FUnlock		;Send unlock sequence
+	LDAA	#FCmdErase	;Erase command prebyte
+	STAA	FCmdA+FOffset	;
+	BSR	FUnlock		;Send unlock sequence again
+	LDAA	#FCmdCEra		;Erase entire device command
+	STAA	FCmdA+FOffset	;
+	BRA	Main3		;Echo "!" & issue sector prompt again
+
+;	Prompt for load address offset
+
+Main6	BSR	Msg		;Send offset prompt
+	DB	CR,LF,'Ofs:',NUL
+
+	BSR	GetNum$		;Get offset (4-digit hex)
+	BCS	Main7		;Use default offset if <ESC> rec'd
+	STX	@Offset		;Save offset entered
+
+;	Send prompt to start sending S-records
+;	Jump to S-record read & program routine
+
+Main7	BSR	Msg$		;Transmit S-record send prompt
+	DB	CR,LF,'Send!',CR,LF,NUL
+	BRA	Program$		;Start S-record read & program routine
+
+;*******************************************************************************
+;Subroutine:	CharIn
+;Function:	Read next available character from SCI receive queue
+;		Waits for character to be received before returning
+;		Ignores characters with SCI error bits set
+;
+;		A <- Character received from SCI (MSB stripped)
+;
+;Stack usage:	3 bytes (including BSR/JSR)
+;Destroyed:	Nothing
+;*******************************************************************************
+
+CharIn	PSHB			;Save B
+
+CharIn1	LDAB	SCSR		;Get SCI status
+	BITB	#RDRF.		;Data ready ?
+	BEQ	CharIn1		; No, wait
+
+	LDAA	SCDR		;Get character received
+	BITB	#NF.+FE.		;Any errors ?
+	BNE	CharIn		; Yes, discard data
+
+	ANDA	#$7F		;Strip MSbit
+	PULB			;Recover B
+	RTS			;Exit
+
+;*******************************************************************************
+;Subroutine:	CharOut
+;Function:	Transmit character via SCI transmitter
+;		Waits for TDRE before sending character
+;
+;		A -> Character to send via SCI
+;
+;Stack usage:	3 bytes (including BSR/JSR)
+;Destroyed:	Nothing
+;*******************************************************************************
+
+CharOut	PSHA			;Save character to send
+
+CharOut1	LDAA	SCSR		;Check SCI status
+	BITA	#TDRE.		;Transmit data register clear ?
+	BEQ	CharOut1		; No, wait
+
+	PULA			;Recover character
+	STAA	SCDR		;Transmit
+	RTS			;Exit
+
+;*******************************************************************************
+;Subroutine:	FUnlock
+;Function:	Send array write unlock sequence to FLASH
+;
+;		Write <FUnlkV1> to <FUnlkA1>      ($AA to $5555)
+;		Write <FUnlkV2> to <FUnlkA2>      ($55 to $2AAA)
+;
+;		Values specified above are device addresses.  The value
+;		<FOffset> is added to these addresses to account for the
+;		FLASH ROM's position in the HC11 memory map.
+;
+;Stack usage:	6 bytes (including BSR/JSR)
+;Destroyed:	A
+;*******************************************************************************
+
+FUnlock	CLRA			;A16=A15=0 for unlock commands
+	BSR	FSector		;
+	LDAA	#FUnlkV1		;1st unlock write cycle
+	STAA	FOffset+FUnlkA1	;
+	LDAA	#FUnlkV2		;2nd unlock write cycle
+	STAA	FOffset+FUnlkA2	;
+	RTS			;Exit
+
+;*******************************************************************************
+;Subroutine:	FSector
+;Function:	Set FLASH A15 & A16 lines to requested sector address
+;
+;		A -> Sector # (bits 1-2 relevant; all others ignored)
+;
+;		This implementation assumes that the 128Kx8 FLASH ROM
+;		device is mapped such that a 32K page exists in the HC11
+;		address space at any given time.  Device address bits A15
+;		(FA15) and A16 (FA16) are driven by HC11 output ports.
+;		This routine accepts a FLASH sector number (0-7, specifying
+;		a 16K segment of the device) and uses the upper two bits
+;		of this value (bits 1 & 2) to drive the appropriate HC11
+;		output pins which in turn bank in the appropriate 32K
+;		FLASH memory block into the HC11 address space.
+;
+;		Since the least significant bit (bit 0) of the sector number
+;		is not relevant to the bank switching scheme, it is ignored.
+;
+;Stack usage:	4 bytes (including BSR/JSR)
+;Destroyed:	Nothing
+;*******************************************************************************
+
+FSector	PSHX			;Save X
+	LDX	#IOBase		;Point to I/O register base address
+	BCLR	FA15_,X,FA15.+FA16.	;Assume sector 0
+
+	BITA	#$02		;A15 = 1 ?
+	BEQ	FSector1		; No:  FA15 = 0
+	BSET	FA15_,X,FA15.	; Yes: FA15 = 1
+
+FSector1	BITA	#$04		;A16 = 1 ?
+	BEQ	FSector2		; No:  FA16 = 0
+	BSET	FA16_,X,FA16.	; Yes: FA16 = 1
+
+FSector2	PULX			;Restore X
+	RTS			;Exit
+
+;---------------------------------------
+Program$	BRA	Program		;Help for PROGRAM branch
+Main$	BRA	Main$$		;Help for MAIN branch
+;---------------------------------------
+
+;*******************************************************************************
+;Subroutine:	GetHexD
+;Function:	Get single char from SCI, interpret as hex digit
+;
+;		A <- Actual character received (converted to uppercase)
+;		B <- Integer value of digit received (0-15)
+;		Carry set on exit if digit was not valid hex
+;
+;Note:		Character read is NOT echoed back
+;
+;Stack usage:	5 bytes (including BSR/JSR)
+;Destroyed:	Nothing
+;*******************************************************************************
+
+GetHexD	BSR	CharIn		;Get character from SCI
+	CMPA	#'a'		;Lowercase?
+	BLO	GetHexD1		; No
+	CMPA	#'z'		;Lowercase?
+	BHI	GetHexD1		; No
+	SUBA	#'a'-'A'		;Subtract lowercase offset
+
+GetHexD1	TAB			;B <- Character received
+
+	SUBB	#'0'		;Subtract ASCII digit offset
+	BLO	GetHexDER		; Exit if not valid digit
+	CMPB	#10		;Digit = 0..9 ?
+	BLO	GetHexDOK		; Yes, exit now
+
+	SUBB	#'A'-'0'-10	;Subtract alpha offset
+	BLO	GetHexDER		; Exit if underflow (invalid digit)
+	CMPB	#10		;Valid digit ?
+	BLO	GetHexDER		; No, exit
+	CMPB	#15		;Valid digit ?
+	BHI	GetHexDER		; No, exit
+
+GetHexDOK	CLC			;Standard exit - no error
+	RTS			;
+
+GetHexDER	SEC			;Error exit
+	RTS			;
+
+;*******************************************************************************
+;Subroutine:	GetHexB
+;Function:	Get 2-digit (byte) hex # from SCI
+;
+;		A <- Last character received from SCI
+;		B <- Integer representation of value received
+;
+;Note:		Character(s) read are NOT echoed back
+;
+;Stack usage:	7 bytes (including BSR/JSR)
+;Destroyed:	Nothing
+;*******************************************************************************
+
+GetHexB	BSR	GetHexD		;Get Most Significant Digit (MSD)
+	BCS	GetHexBX		;Exit if error
+
+	LSLB			;Move digit into MSD position
+	LSLB			;
+	LSLB			;
+	LSLB			;
+	STAB	@NumBuf		;Save for later
+
+	BSR	GetHexD		;Get Least Significant Digit (LSD)
+	BCS	GetHexBX		;Exit if error
+
+	ADDB	@NumBuf		;Add MSD*16 + LSD
+	STAB	@NumBuf		;Save result
+	ADDB	@Checksum		;Add value to checksum
+	STAB	@Checksum		;
+	LDAB	@NumBuf		;Recover converted value
+
+	CLC			;No errors
+GetHexBX	RTS			;Exit
+
+;---------------------------------------
+FUnlock$	BRA	FUnlock		;Help for FUNLOCK call
+FSector$	BRA	FSector		;Help for FSECTOR call
+;---------------------------------------
+
+;-------------------------------------------------------------------------------
+
+;	S-record read & programming routine
+;
+;	S-record format reference:
+;
+;	S10898184D61726BBC <CR>
+;	^^^-^---^-------^- ^---
+;	||| |   |       |  |____ End-of-line character, usually $0D.
+;	||| |   |       |_______ 1's compliment 8-bit checksum (modulo 2^8)
+;         ||| |   |                Checksum based on 8-bit integer value of all
+;	||| |   |                2-char pairs, NOT including "S" and rectype.
+;	||| |   |_______________ Data field: (length-3) 2-char ASCII HEX pairs
+;	||| |___________________ Address field: base location to write data.
+;	|||_____________________ Length field: # of 2-char pairs including
+;	||                       address field & checksum but not "S" lead-in
+;	||                       or record type.
+;	||______________________ Record type: 0=Header, 1=Data, 9=End.
+;	|_______________________ Lead-in character, uppercase "S" = $53
+
+Program	LDAA	#PromptChr	;Transmit prompt character
+Program1	BSR	CharOut		;
+	CLR	Checksum		;Reset checksum counter
+
+;	Wait for starting "S"
+
+Program2	BSR	GetHexD		;Get character (this does UC conversion)
+	CMPA	#SRecLead		;S-record lead-in ?
+	BEQ	Program3		; Yes, get record type
+	CMPA	#ESC		;Escape ?
+	BNE	Program2		; No, resume scan for leading "S"
+
+	BRA	Main$		;Abort: Restart everything
+
+;	Get record type
+
+Program3	BSR	GetHexD		;Get record type code
+	BCS	ProgramE		;Abort if error
+	STAB	@RecType		;Save record type
+
+;	Get record length field
+;
+;	Note: Record length specified in a S-record includes the 2 bytes
+;	for address plus 1 byte for checksum.  A "null" S-record (no data
+;	field) will have a specified length of 03.  The read and program
+;	loops expect length to be expressed in terms of the size of the data
+;	field only, plus 1.  Subtracting 2 from the length specified in the
+;	S-record will provide the proper length count for the read & program
+;	routines.
+
+	BSR	GetHexB		;Get record length
+	BCS	ProgramE		;Abort if error
+	SUBB	#2		;Subtract 2 bytes for address
+	BLS	ProgramE		;Error if record length <= 0
+	STAB	@Length		;Save record length
+
+;	Get address field
+
+	BSR	GetHexB		;Get address MSB
+	BCS	ProgramE		;Abort if error
+	STAB	@Address		;Save address MSB
+
+	BSR	GetHexB		;Get address LSB
+	BCS	ProgramE		;Abort if error
+	STAB	@Address+1	;Save address LSB
+
+;	Get data field, save in buffer
+
+	LDX	#SBuffer		;Reset save pointer
+	LDY	@Length		;Save length count in X
+
+Program4	DEC	Length		;Decrement length counter
+	BEQ	Program5		;If Length = 0, data field read complete
+
+	BSR	GetHexB		;Get data byte
+	BCS	ProgramE		;Abort if error
+	STAB	0,X		;Save in buffer
+	INX			;Point to next location
+
+	BRA	Program4		;Get next data byte
+
+;	Get & verify checksum field
+
+Program5	STY	@Length		;Restore length count
+
+Program6	BSR	GetHexB		;Get checksum
+	BCS	ProgramE		;Abort if error
+	LDAA	@Checksum		;Get checksum accumulation
+	COMA			;Should be $FF, inversion should set Z
+	BEQ	ProgramF		;If valid, program FLASH with data
+
+;	Bad record - send error prompt & restart
+
+ProgramE	LDAA	#BadRecChr	;Transmit "bad record" character
+Program1$	BRA	Program1		;Restart S-record loader
+
+;	Set-up for FLASH programming operation
+
+ProgramF	LDAA	@RecType		;Get S-record type code
+	CMPA	#1		;Type 1 data record ?
+	BNE	Program		; No, ignore it
+
+	LDD	@Offset		;Get user-specified offset
+	ADDD	@Address		;Add to S-record addr, ignore overflow
+	XGDX			;X <- Programming base address
+	LDY	#SBuffer		;Y <- S-record data base address
+
+;	Program/verify FLASH with S-record data
+;
+;	Programming algorithm for a Am29F010 FLASH device:
+;
+;	1. Write unlock sequence:
+;	   Value <FUnlkV1> written to address <FUnlkA1>
+;	   Value <FUnlkV2> written to address <FUnlkA2>
+;	   These writes must occur with FA15=FA16=0
+;	2. Write "program byte" command:
+;	   Value <FCmdPgm> written to address <FCmdA>
+;	3. Write desired value to desired address
+;	   (<FSector> routine used to set address bits FA15 & FA16 properly)
+;	4. Wait for delay/verification - see below
+
+ProgramF1	DEC	Length		;Decrement length counter
+	BEQ	Program		;Done w/record if length count at 0
+
+	BSR	FUnlock$		;Send unlock sequence
+	LDAA	#FCmdPgm		;Send program command
+	STAA	FOffset+FCmdA	;
+	LDAA	@Sector		;Set sector address (A15 & A16)
+	BSR	FSector$		;
+	LDAA	0,Y		;Get S-record data
+	STAA	0,X		;Write to FLASH
+	TAB			;Copy byte written to B
+
+;	FLASH programming delay/verification procedure:
+;
+;	1. Read value from address just programmed
+;	2. IF bit 7 of value read = bit 7 of value programmed THEN
+;	     Programming complete, value written properly
+;	3. IF bit 5 of value read = 0 THEN
+;	     Write not complete, repeat starting at step 1
+;	4. IF bit 7 of value read = bit 7 of value programmed THEN
+;	     Programming complete, value written properly
+;	5. Value not written properly (verify error) if read bit 5 = 1
+;	   (indicating write cycle complete) and bit 7 read/data mismatch.
+;
+;	This procedure is identical to the recommended procedure for data
+;	write verification as published in the Am29F010 data sheet.
+
+ProgramF2	TBA			;Get S-record data
+	ANDA	#$80		;Mask all except bit 7
+	EORA	0,X		;DATA bit 7 = FLASH bit 7 ?
+	BPL	ProgramF3		; Yes, byte written OK
+	BITA	#$20		;FLASH bit 5 = 0 ?
+	BEQ	ProgramF2		; Yes, write not complete
+	EORB	0,X		;Bit 7 data = Bit 7 FLASH ?
+	BMI	ProgramF4		; No, write error
+
+ProgramF3	INX			;Point to next FLASH address
+	INY			;Point to next S-record byte
+	BRA	ProgramF1		;Resume programming
+
+;	FLASH programming error
+
+ProgramF4	LDAA	#PgmErrChr	;Transmit programming error character
+	BRA	Program1$		;Resume S-record scan

@@ -1,0 +1,685 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+                              C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o (exit)
+c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+                              build/Debug/production/_ext/1472/main.o (__do_copy_data)
+
+Allocating common symbols
+Common symbol       size              file
+
+input_pass          0x14              build/Debug/production/_ext/1472/main.o
+key_pressed         0x1               build/Debug/production/_ext/1472/main.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ .bss           0x00000000        0x0 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/bod.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/bod.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/bod.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/clkctrl.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/clkctrl.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/clkctrl.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/cpuint.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/cpuint.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/cpuint.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/driver_init.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/driver_init.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/driver_init.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/protected_io.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/protected_io.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/protected_io.o
+ .text.protected_write_io
+                0x00000000        0x8 build/Debug/production/_ext/1360937237/protected_io.o
+ .debug_line    0x00000000       0x55 build/Debug/production/_ext/1360937237/protected_io.o
+ .debug_info    0x00000000       0x7a build/Debug/production/_ext/1360937237/protected_io.o
+ .debug_abbrev  0x00000000       0x14 build/Debug/production/_ext/1360937237/protected_io.o
+ .debug_aranges
+                0x00000000       0x20 build/Debug/production/_ext/1360937237/protected_io.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/rtc.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/rtc.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/rtc.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1360937237/slpctrl.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1360937237/slpctrl.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1360937237/slpctrl.o
+ .text.SLPCTRL_set_sleep_mode
+                0x00000000       0x10 build/Debug/production/_ext/1360937237/slpctrl.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1472/atmel_start.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1472/atmel_start.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1472/atmel_start.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1472/driver_isr.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1472/driver_isr.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1472/driver_isr.o
+ .debug_info    0x00000000      0x230 build/Debug/production/_ext/1472/driver_isr.o
+ .debug_abbrev  0x00000000       0x1b build/Debug/production/_ext/1472/driver_isr.o
+ .debug_aranges
+                0x00000000       0x18 build/Debug/production/_ext/1472/driver_isr.o
+ .debug_line    0x00000000       0x1a build/Debug/production/_ext/1472/driver_isr.o
+ .debug_str     0x00000000        0x0 build/Debug/production/_ext/1472/driver_isr.o
+ .comment       0x00000000       0x30 build/Debug/production/_ext/1472/driver_isr.o
+ .text          0x00000000        0x0 build/Debug/production/_ext/1472/main.o
+ .data          0x00000000        0x0 build/Debug/production/_ext/1472/main.o
+ .bss           0x00000000        0x0 build/Debug/production/_ext/1472/main.o
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00004000         xr
+data             0x00803c00         0x00000400         rw !x
+eeprom           0x00810000         0x00000100         rw !x
+fuse             0x00820000         0x0000000a         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x803c00
+                0x00008000                __RODATA_PM_OFFSET__ = 0x8000
+LOAD C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+                0x00000001                __MPLAB_BUILD = 0x1
+LOAD build/Debug/production/_ext/1360937237/bod.o
+LOAD build/Debug/production/_ext/1360937237/clkctrl.o
+LOAD build/Debug/production/_ext/1360937237/cpuint.o
+LOAD build/Debug/production/_ext/1360937237/driver_init.o
+LOAD build/Debug/production/_ext/1360937237/protected_io.o
+LOAD build/Debug/production/_ext/1360937237/rtc.o
+LOAD build/Debug/production/_ext/1360937237/slpctrl.o
+LOAD build/Debug/production/_ext/1472/atmel_start.o
+LOAD build/Debug/production/_ext/1472/driver_isr.o
+LOAD build/Debug/production/_ext/1472/main.o
+START GROUP
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libm.a
+LOAD c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega3\libc.a
+LOAD C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3\libattiny1607.a
+END GROUP
+                [0x00000000]                __TEXT_REGION_ORIGIN__ = DEFINED (__TEXT_REGION_ORIGIN__)?__TEXT_REGION_ORIGIN__:0x0
+                [0x00803c00]                __DATA_REGION_ORIGIN__ = DEFINED (__DATA_REGION_ORIGIN__)?__DATA_REGION_ORIGIN__:0x802000
+                [0x00004000]                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x100000
+                [0x00000400]                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
+                [0x00000100]                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                [0x0000000a]                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x00000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x00000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x00000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+                0x00008000                __RODATA_PM_OFFSET__ = DEFINED (__RODATA_PM_OFFSET__)?__RODATA_PM_OFFSET__:0x8000
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000       0xe8
+ *(.vectors)
+ .vectors       0x00000000       0x7c C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.dinit)
+ .dinit         0x0000007c       0x18 data_init
+                0x00000094                . = ALIGN (0x2)
+                0x00000094                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000094        0x0 linker stubs
+ *(.trampolines*)
+                0x00000094                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+                0x00000094                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000094                __ctors_start = .
+ *(.ctors)
+                0x00000094                __ctors_end = .
+                0x00000094                __dtors_start = .
+ *(.dtors)
+                0x00000094                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000094        0x0 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+                0x00000094                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000094        0xc C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000a0       0x3c c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_copy_data.o)
+                0x000000a0                __do_copy_data
+                0x000000ce                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000dc        0x8 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ *(.init9)
+                0x000000e4                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000000e4        0x0 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+                0x000000e4                _exit
+                0x000000e4                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000000e4        0x4 c:/program files (x86)/microchip/xc8/v2.10/avr/bin/../lib/gcc/avr/5.4.0/avrxmega3\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000000e8                _etext = .
+
+.rodata
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.r*)
+
+.data           0x00803c00        0x0 load address 0x000000e8
+                [!provide]                PROVIDE (__data_start, .)
+ *(.gnu.linkonce.d*)
+                0x00803c00                . = ALIGN (0x2)
+                0x00803c00                _edata = .
+                [!provide]                PROVIDE (__data_end, .)
+
+.bss            0x00803c00       0x15
+                [!provide]                PROVIDE (__bss_start, .)
+ *(COMMON)
+ COMMON         0x00803c00       0x15 build/Debug/production/_ext/1472/main.o
+                0x00803c00                input_pass
+                0x00803c14                key_pressed
+                [!provide]                PROVIDE (__bss_end, .)
+                0x000000e8                __data_load_start = LOADADDR (.data)
+                0x000000e8                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00803c15        0x0
+                [!provide]                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                [!provide]                PROVIDE (__noinit_end, .)
+                0x00803c15                _end = .
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x2f
+ *(.comment)
+ .comment       0x00000000       0x2f build/Debug/production/_ext/1360937237/bod.o
+                                 0x30 (size before relaxing)
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1360937237/clkctrl.o
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1360937237/cpuint.o
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1360937237/driver_init.o
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1360937237/rtc.o
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1360937237/slpctrl.o
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1472/atmel_start.o
+ .comment       0x0000002f       0x30 build/Debug/production/_ext/1472/main.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x158
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 build/Debug/production/_ext/1360937237/bod.o
+ .debug_aranges
+                0x00000020       0x20 build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_aranges
+                0x00000040       0x20 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_aranges
+                0x00000060       0x28 build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_aranges
+                0x00000088       0x20 build/Debug/production/_ext/1360937237/rtc.o
+ .debug_aranges
+                0x000000a8       0x28 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_aranges
+                0x000000d0       0x20 build/Debug/production/_ext/1472/atmel_start.o
+ .debug_aranges
+                0x000000f0       0x68 build/Debug/production/_ext/1472/main.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x5c38
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000     0x1495 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ .debug_info    0x00001495      0x263 build/Debug/production/_ext/1360937237/bod.o
+ .debug_info    0x000016f8      0x26b build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_info    0x00001963      0x269 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_info    0x00001bcc     0x1df9 build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_info    0x000039c5      0x847 build/Debug/production/_ext/1360937237/rtc.o
+ .debug_info    0x0000420c      0x3b3 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_info    0x000045bf      0x279 build/Debug/production/_ext/1472/atmel_start.o
+ .debug_info    0x00004838     0x1400 build/Debug/production/_ext/1472/main.o
+
+.debug_abbrev   0x00000000     0x1abe
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000     0x1378 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ .debug_abbrev  0x00001378       0x46 build/Debug/production/_ext/1360937237/bod.o
+ .debug_abbrev  0x000013be       0x46 build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_abbrev  0x00001404       0x46 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_abbrev  0x0000144a      0x1e7 build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_abbrev  0x00001631       0xdb build/Debug/production/_ext/1360937237/rtc.o
+ .debug_abbrev  0x0000170c       0xcb build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_abbrev  0x000017d7       0x58 build/Debug/production/_ext/1472/atmel_start.o
+ .debug_abbrev  0x0000182f      0x28f build/Debug/production/_ext/1472/main.o
+
+.debug_line     0x00000000      0xca1
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x00000000      0x151 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ .debug_line    0x00000151       0x87 build/Debug/production/_ext/1360937237/bod.o
+ .debug_line    0x000001d8       0x8b build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_line    0x00000263       0x90 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_line    0x000002f3      0x31c build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_line    0x0000060f      0x111 build/Debug/production/_ext/1360937237/rtc.o
+ .debug_line    0x00000720      0x111 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_line    0x00000831       0x5e build/Debug/production/_ext/1472/atmel_start.o
+ .debug_line    0x0000088f      0x412 build/Debug/production/_ext/1472/main.o
+
+.debug_frame    0x00000000      0x208
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x24 build/Debug/production/_ext/1360937237/bod.o
+ .debug_frame   0x00000024       0x24 build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_frame   0x00000048       0x24 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_frame   0x0000006c       0x34 build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_frame   0x000000a0       0x24 build/Debug/production/_ext/1360937237/rtc.o
+ .debug_frame   0x000000c4       0x34 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_frame   0x000000f8       0x24 build/Debug/production/_ext/1472/atmel_start.o
+ .debug_frame   0x0000011c       0xec build/Debug/production/_ext/1472/main.o
+
+.debug_str      0x00000000      0x96d
+ *(.debug_str)
+ .debug_str     0x00000000      0x8c7 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+ .debug_str     0x000008c7        0x0 build/Debug/production/_ext/1360937237/bod.o
+ .debug_str     0x000008c7        0x0 build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_str     0x000008c7        0x0 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_str     0x000008c7       0x6a build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_str     0x00000931        0x0 build/Debug/production/_ext/1360937237/rtc.o
+ .debug_str     0x00000931        0x0 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_str     0x00000931        0xc build/Debug/production/_ext/1472/atmel_start.o
+ .debug_str     0x0000093d       0x30 build/Debug/production/_ext/1472/main.o
+
+.debug_loc      0x00000000      0xc46
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x832 build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_loc     0x00000832       0x21 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_loc     0x00000853      0x3f3 build/Debug/production/_ext/1472/main.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000       0xd8
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x10 build/Debug/production/_ext/1360937237/bod.o
+ .debug_ranges  0x00000010       0x10 build/Debug/production/_ext/1360937237/clkctrl.o
+ .debug_ranges  0x00000020       0x10 build/Debug/production/_ext/1360937237/cpuint.o
+ .debug_ranges  0x00000030       0x18 build/Debug/production/_ext/1360937237/driver_init.o
+ .debug_ranges  0x00000048       0x10 build/Debug/production/_ext/1360937237/rtc.o
+ .debug_ranges  0x00000058       0x18 build/Debug/production/_ext/1360937237/slpctrl.o
+ .debug_ranges  0x00000070       0x10 build/Debug/production/_ext/1472/atmel_start.o
+ .debug_ranges  0x00000080       0x58 build/Debug/production/_ext/1472/main.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(dist/Debug/production/Advanced_Keypad.X.production.elf elf32-avr)
+LOAD linker stubs
+LOAD data_init
+
+.note.gnu.avr.deviceinfo
+                0x00000000       0x40
+ .note.gnu.avr.deviceinfo
+                0x00000000       0x40 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+
+.bss.cursor     0x00803c39        0x1
+ .bss.cursor    0x00803c39        0x1 build/Debug/production/_ext/1472/main.o
+                0x00803c39                cursor
+
+.text.system_init
+                0x000000e8      0x14a
+ .text.system_init
+                0x000000e8      0x14a build/Debug/production/_ext/1360937237/driver_init.o
+                0x000000e8                system_init
+
+.text.check_passcode
+                0x00000232       0xee
+ .text.check_passcode
+                0x00000232       0xee build/Debug/production/_ext/1472/main.o
+                0x00000232                check_passcode
+
+.text.scan_keys
+                0x00000320       0x76
+ .text.scan_keys
+                0x00000320       0x76 build/Debug/production/_ext/1472/main.o
+                0x00000320                scan_keys
+
+.text.lp_delay_ms
+                0x00000396       0x54
+ .text.lp_delay_ms
+                0x00000396       0x54 build/Debug/production/_ext/1472/main.o
+                0x00000396                lp_delay_ms
+
+.text.mcu_init  0x000003ea       0x4a
+ .text.mcu_init
+                0x000003ea       0x4a build/Debug/production/_ext/1360937237/driver_init.o
+                0x000003ea                mcu_init
+
+.text.main      0x00000434       0x46
+ .text.main     0x00000434       0x46 build/Debug/production/_ext/1472/main.o
+                0x00000434                main
+
+.text.row_output_column_input
+                0x0000047a       0x32
+ .text.row_output_column_input
+                0x0000047a       0x32 build/Debug/production/_ext/1472/main.o
+                0x0000047a                row_output_column_input
+
+.text.row_input_column_output
+                0x000004ac       0x32
+ .text.row_input_column_output
+                0x000004ac       0x32 build/Debug/production/_ext/1472/main.o
+                0x000004ac                row_input_column_output
+
+.text.btn_debounce
+                0x000004de       0x30
+ .text.btn_debounce
+                0x000004de       0x30 build/Debug/production/_ext/1472/main.o
+                0x000004de                btn_debounce
+
+.text.streq     0x0000050e       0x22
+ .text.streq    0x0000050e       0x22 build/Debug/production/_ext/1472/main.o
+                0x0000050e                streq
+
+.text.RTC_0_init
+                0x00000530       0x20
+ .text.RTC_0_init
+                0x00000530       0x20 build/Debug/production/_ext/1360937237/rtc.o
+                0x00000530                RTC_0_init
+
+.text.__vector_5
+                0x00000550       0x1e
+ .text.__vector_5
+                0x00000550       0x1e build/Debug/production/_ext/1472/main.o
+                0x00000550                __vector_5
+
+.text.__vector_7
+                0x0000056e       0x1e
+ .text.__vector_7
+                0x0000056e       0x1e build/Debug/production/_ext/1472/main.o
+                0x0000056e                __vector_7
+
+.text.SLPCTRL_init
+                0x0000058c        0xa
+ .text.SLPCTRL_init
+                0x0000058c        0xa build/Debug/production/_ext/1360937237/slpctrl.o
+                0x0000058c                SLPCTRL_init
+
+.text.CPUINT_init
+                0x00000596        0x6
+ .text.CPUINT_init
+                0x00000596        0x6 build/Debug/production/_ext/1360937237/cpuint.o
+                0x00000596                CPUINT_init
+
+.text.atmel_start_init
+                0x0000059c        0x6
+ .text.atmel_start_init
+                0x0000059c        0x6 build/Debug/production/_ext/1472/atmel_start.o
+                0x0000059c                atmel_start_init
+
+.text           0x000005a2        0x4
+ .text          0x000005a2        0x4 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/ATtiny_DFP/2.1.63/gcc/dev/attiny1607/avrxmega3/crtattiny1607.o
+                0x000005a2                __vector_22
+                0x000005a2                __vector_28
+                0x000005a2                __vector_1
+                0x000005a2                __vector_24
+                0x000005a2                __vector_12
+                0x000005a2                __bad_interrupt
+                0x000005a2                __vector_6
+                0x000005a2                __vector_3
+                0x000005a2                __vector_23
+                0x000005a2                __vector_30
+                0x000005a2                __vector_25
+                0x000005a2                __vector_11
+                0x000005a2                __vector_13
+                0x000005a2                __vector_17
+                0x000005a2                __vector_19
+                0x000005a2                __vector_27
+                0x000005a2                __vector_4
+                0x000005a2                __vector_9
+                0x000005a2                __vector_2
+                0x000005a2                __vector_21
+                0x000005a2                __vector_15
+                0x000005a2                __vector_29
+                0x000005a2                __vector_8
+                0x000005a2                __vector_26
+                0x000005a2                __vector_14
+                0x000005a2                __vector_10
+                0x000005a2                __vector_16
+                0x000005a2                __vector_18
+                0x000005a2                __vector_20
+
+.text.BOD_init  0x000005a6        0x4
+ .text.BOD_init
+                0x000005a6        0x4 build/Debug/production/_ext/1360937237/bod.o
+                0x000005a6                BOD_init
+
+.text.CLKCTRL_init
+                0x000005aa        0x4
+ .text.CLKCTRL_init
+                0x000005aa        0x4 build/Debug/production/_ext/1360937237/clkctrl.o
+                0x000005aa                CLKCTRL_init
+
+.data.passcode  0x00803c15       0x14 load address 0x000005ae
+ .data.passcode
+                0x00803c15       0x14 build/Debug/production/_ext/1472/main.o
+                0x00803c15                passcode
+
+.data.btn_value
+                0x00803c29       0x10 load address 0x000005c2
+ .data.btn_value
+                0x00803c29       0x10 build/Debug/production/_ext/1472/main.o
+                0x00803c29                btn_value

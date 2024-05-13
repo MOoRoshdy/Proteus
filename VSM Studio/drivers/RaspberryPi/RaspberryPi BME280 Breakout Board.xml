@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Adafruit" FILE="Raspberry Pi/RaspberryPi BME280 Breakout Board.pdsclip" FAMILY="Raspberry Pi" DESC="BME280 Breakout Board">
+   <PERIPHERAL TYPE="RPi BME280" ELEMENT="U1" >
+     <!-- Hardware Interface -->
+     <INTERFACE OBJECT="BME280">
+     </INTERFACE>
+   
+     <!-- Firmware Driver -->
+     <DRIVER HEADER="Generic">
+     
+         <!-- Methods for BME280 Wrapper
+         <METHOD NAME="getValues" DESC="Return the current values">        
+            <RETURN NAME="humidity" TYPE="FLOAT" DEFAULT="humidity" DESC="Return the current humidity"/>
+            <RETURN NAME="pressure" TYPE="FLOAT" DEFAULT="pressure" DESC="Return the current pressure"/>
+            <RETURN NAME="temperature" TYPE="FLOAT" DEFAULT="temperature"  DESC="Return the current temperature"/>
+         </METHOD>  -->
+         
+         <METHOD NAME="getHumidity" DESC="Return the current humidity">        
+            <RETURN NAME="humidity" TYPE="FLOAT" DEFAULT="humidity" DESC="Return the current humidity"/>
+         </METHOD>
+         
+         <METHOD NAME="getPressure" DESC="Return the current pressure">        
+            <RETURN NAME="pressure" TYPE="FLOAT" DEFAULT="pressure" DESC="Return the current pressure"/>
+         </METHOD> 
+         
+         <METHOD NAME="getTemperature" DESC="Return the current temperature">        
+            <RETURN NAME="temperature" TYPE="FLOAT" DEFAULT="temperature" DESC="Return the current temperature"/>
+         </METHOD>
+         
+         
+         <METHOD NAME="getAltitude" DESC="Return the current altitude given the current pressure at sea level">  
+            <PARAMETER NAME="seaLevelPressure" TYPE="FLOAT" DEFAULT="1013" DESC="Barometric pressure at sea level in hPa"/>
+            <RETURN NAME="altitude" TYPE="FLOAT" DEFAULT="altitude" DESC="Return the current altitude"/>
+         </METHOD>
+     </DRIVER>
+   </PERIPHERAL>
+</CLIP>	
+  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!-- Driver Descriptor for IR remote -->
+<DRIVER HEADER="IR_Remote.h">
+   <REQUIRE HEADER="IRremote.h"/>
+
+   <METHOD NAME="getKey" DESC="Return the key that is pressed">
+      <RETURN NAME="key"  TYPE="STRING" DEFAULT="key"/>
+   </METHOD>
+
+   <METHOD NAME="getCode" DESC="Return the Code of the key that is pressed">
+      <RETURN NAME="code"  TYPE="INTEGER" DEFAULT="IRCode"/>
+   </METHOD>
+   
+   <METHOD NAME="getProtocol" DESC="Return the Code Protocol">
+      <RETURN NAME="protocol"  TYPE="STRING" DEFAULT="IRProtocol"/>
+   </METHOD>
+
+   <METHOD NAME="getRaw" DESC="Return the Raw timings">
+      <RETURN NAME="raw"  TYPE="STRING" DEFAULT="IRRaw"/>
+   </METHOD>
+
+   <INTERRUPT DESC="Pressed Interrupt" HOOK="attachKeyInterruptHandler"/>    
+
+</DRIVER>

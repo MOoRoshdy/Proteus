@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<CLIP CATEGORY="Breakout Peripherals" FILE="Arduino/Arduino Keyes remote.pdsclip" DESC="Arduino TSOP38238 based IR Remote" FAMILY="ARDUINO">
+   <PERIPHERAL TYPE="IR Transmitter" ELEMENT="I1">
+      <INTERFACE OBJECT="Keyes_Remote">
+         <SETUP NAME="begin"/>
+         <LOOP NAME="poll"/>
+         <PIN NAME="IO" TYPE="DIGITAL">
+            <TERMINAL ELEMENT="IO11"/>
+         </PIN>
+      </INTERFACE>
+      <DRIVER FILE="IR_Remote/IR_Remote.xml"/>
+   </PERIPHERAL>
+</CLIP>
+
